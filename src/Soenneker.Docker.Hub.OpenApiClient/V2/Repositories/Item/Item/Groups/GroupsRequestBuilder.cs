@@ -34,7 +34,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Repositories.Item.Item.Groups
         {
         }
         /// <summary>
-        /// Assign a group (Team) to a repository for access
+        /// Assigns an organization group (team) to a repository with a specified permission level.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryGroup"/></returns>
         /// <param name="body">The request body</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Repositories.Item.Item.Groups
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryGroup>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryGroup.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Assign a group (Team) to a repository for access
+        /// Assigns an organization group (team) to a repository with a specified permission level.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

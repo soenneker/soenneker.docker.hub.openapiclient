@@ -40,7 +40,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
         {
         }
         /// <summary>
-        /// Updates the immutable tags configuration for this repository.**Only users with administrative privileges for the repository can modify these settings.**
+        /// Updates the immutable tags configuration for this repository.**Only users with administrative privileges for the repository can modify these settings.**&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo"/></returns>
         /// <param name="body">The request body</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates the immutable tags configuration for this repository.**Only users with administrative privileges for the repository can modify these settings.**
+        /// Updates the immutable tags configuration for this repository.**Only users with administrative privileges for the repository can modify these settings.**&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

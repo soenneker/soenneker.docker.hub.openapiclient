@@ -46,7 +46,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
         {
         }
         /// <summary>
-        /// Returns a repository within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.
+        /// Returns a repository within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -75,7 +75,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Check a repository within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.
+        /// Check a repository within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -104,7 +104,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a repository within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.
+        /// Returns a repository within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -123,7 +123,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return requestInfo;
         }
         /// <summary>
-        /// Check a repository within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.
+        /// Check a repository within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

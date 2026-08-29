@@ -34,7 +34,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
         {
         }
         /// <summary>
-        /// Validates  the immutable tags regex pass in parameter and returns a list of tags matching it in this repository.**Only users with administrative privileges for the repository call this endpoint.**
+        /// Validates the immutable tags regex passed in the request body and returns a list of tags matching it in this repository.**Only users with administrative privileges for the repository can call this endpoint.**&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ImmutableTagsVerifyResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.ImmutableTagsVerifyResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.ImmutableTagsVerifyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Validates  the immutable tags regex pass in parameter and returns a list of tags matching it in this repository.**Only users with administrative privileges for the repository call this endpoint.**
+        /// Validates the immutable tags regex passed in the request body and returns a list of tags matching it in this repository.**Only users with administrative privileges for the repository can call this endpoint.**&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

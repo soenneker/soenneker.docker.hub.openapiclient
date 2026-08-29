@@ -1323,6 +1323,7 @@
           "repositories"
         ],
         "summary": "List repository tags",
+        "description": "Returns the list of tags for the specified repository.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "ListRepositoryTags",
         "parameters": [
           {
@@ -1364,6 +1365,7 @@
           "repositories"
         ],
         "summary": "Check repository tags",
+        "description": "Checks whether the repository has any tags.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "HeadV2NamespacesByNamespaceValueRepositoriesByRepositoryTags",
         "responses": {
           "200": {
@@ -1397,6 +1399,7 @@
           "repositories"
         ],
         "summary": "Read repository tag",
+        "description": "Returns details for a specific tag in the specified repository.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "GetRepositoryTag",
         "responses": {
           "200": {
@@ -1420,6 +1423,7 @@
           "repositories"
         ],
         "summary": "Check repository tag",
+        "description": "Checks whether the specified tag exists in the repository.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "HeadV2NamespacesByNamespaceValueRepositoriesByRepositoryTagsByTag",
         "responses": {
           "200": {
@@ -1456,7 +1460,7 @@
           "repositories"
         ],
         "summary": "Update repository immutable tags",
-        "description": "Updates the immutable tags configuration for this repository.\n\n**Only users with administrative privileges for the repository can modify these settings.**\n",
+        "description": "Updates the immutable tags configuration for this repository.\n\n**Only users with administrative privileges for the repository can modify these settings.**\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "UpdateRepositoryImmutableTags",
         "requestBody": {
           "$ref": "#/components/requestBodies/update_repository_immutable_tags_request"
@@ -1499,7 +1503,7 @@
           "repositories"
         ],
         "summary": "Verify repository immutable tags",
-        "description": "Validates  the immutable tags regex pass in parameter and returns a list of tags matching it in this repository.\n\n**Only users with administrative privileges for the repository call this endpoint.**\n",
+        "description": "Validates the immutable tags regex passed in the request body and returns a list of tags matching it in this repository.\n\n**Only users with administrative privileges for the repository can call this endpoint.**\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "VerifyRepositoryImmutableTags",
         "requestBody": {
           "$ref": "#/components/requestBodies/immutable_tags_verify_request"
@@ -1542,6 +1546,7 @@
           "repositories"
         ],
         "summary": "Assign a group (Team) to a repository for access",
+        "description": "Assigns an organization group (team) to a repository with a specified permission level.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "CreateRepositoryGroup",
         "requestBody": {
           "content": {
@@ -1614,7 +1619,7 @@
           "repositories"
         ],
         "summary": "List repositories in a namespace",
-        "description": "Returns a list of repositories within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n",
+        "description": "Returns a list of repositories within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n\n**OAT listing behavior**: an OAT with the \u0060scope-repository-list\u0060 scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal \u0060200\u0060 with no indication that private repositories were withheld.\n",
         "operationId": "ListNamespaceRepositories",
         "parameters": [
           {
@@ -1800,7 +1805,7 @@
           "repositories"
         ],
         "summary": "Create a new repository",
-        "description": "Creates a new repository within the specified namespace. The repository will be created\nwith the provided metadata including name, description, and privacy settings.\n",
+        "description": "Creates a new repository within the specified namespace. The repository will be created\nwith the provided metadata including name, description, and privacy settings.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "CreateRepository",
         "requestBody": {
           "content": {
@@ -1890,7 +1895,7 @@
           "repositories"
         ],
         "summary": "Get repository in a namespace",
-        "description": "Returns a repository within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n",
+        "description": "Returns a repository within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "GetRepository",
         "responses": {
           "200": {
@@ -1955,7 +1960,7 @@
           "repositories"
         ],
         "summary": "Check repository in a namespace",
-        "description": "Check a repository within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n",
+        "description": "Check a repository within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
         "operationId": "CheckRepository",
         "responses": {
           "200": {
@@ -7268,7 +7273,7 @@
     },
     {
       "name": "org-access-tokens",
-      "description": "The organization access token endpoints allow you to manage organization access tokens (OATs). See [Organization access tokens](https://docs.docker.com/security/for-admins/access-tokens/) for more information.\n",
+      "description": "The organization access token endpoints allow you to manage organization access tokens (OATs). See [Organization access tokens](https://docs.docker.com/security/for-admins/access-tokens/) for more information.\n\nOATs only authenticate requests to the modern namespace-scoped routes under \u0060/v2/namespaces/{namespace}/repositories/\u0060. Legacy repository paths are OAT unsupported, regardless of the token\u0027s scopes, and reject every OAT with \u0060403 token issued from organization access token is not allowed\u0060:\n\n- \u0060GET /v2/repositories/{namespace}/{repository}\u0060 \u2014 use [Get repository](#tag/repositories/operation/GetRepository) instead.\n- \u0060GET /v2/repositories/{namespace}\u0060 \u2014 use [List repositories](#tag/repositories/operation/listNamespaceRepositories) instead.\n- \u0060GET /v2/users/{username}/repositories\u0060 \u2014 use [List repositories](#tag/repositories/operation/listNamespaceRepositories) instead.\n",
       "x-displayName": "Organization Access Tokens",
       "x-audience": "public"
     }

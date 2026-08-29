@@ -47,7 +47,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
         {
         }
         /// <summary>
-        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.
+        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ListRepositoriesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -76,7 +76,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.ListRepositoriesResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.ListRepositoriesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a new repository within the specified namespace. The repository will be createdwith the provided metadata including name, description, and privacy settings.
+        /// Creates a new repository within the specified namespace. The repository will be createdwith the provided metadata including name, description, and privacy settings.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo"/></returns>
         /// <param name="body">The request body</param>
@@ -109,7 +109,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.
+        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -128,7 +128,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             return requestInfo;
         }
         /// <summary>
-        /// Creates a new repository within the specified namespace. The repository will be createdwith the provided metadata including name, description, and privacy settings.
+        /// Creates a new repository within the specified namespace. The repository will be createdwith the provided metadata including name, description, and privacy settings.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -159,7 +159,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             return new global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.RepositoriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.
+        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RepositoriesRequestBuilderGetQueryParameters 
