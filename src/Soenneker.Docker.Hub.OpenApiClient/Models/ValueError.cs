@@ -19,10 +19,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <summary>The fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueErrorFields? Fields { get; set; }
+        public List<string>? Fields { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueErrorFields Fields { get; set; }
+        public List<string> Fields { get; set; }
 #endif
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
@@ -59,7 +59,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueErrorFields>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueErrorFields.CreateFromDiscriminatorValue); } },
+                { "fields", n => { Fields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
         }
@@ -70,7 +70,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueErrorFields>("fields", Fields);
+            writer.WriteCollectionOfPrimitiveValues<string>("fields", Fields);
             writer.WriteStringValue("text", Text);
             writer.WriteAdditionalData(AdditionalData);
         }

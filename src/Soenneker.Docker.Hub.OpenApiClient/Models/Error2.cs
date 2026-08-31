@@ -26,10 +26,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <summary>The errinfo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2Errinfo? Errinfo { get; set; }
+        public List<string>? Errinfo { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2Errinfo Errinfo { get; set; }
+        public List<string> Errinfo { get; set; }
 #endif
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
@@ -67,7 +67,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "detail", n => { Detail = n.GetStringValue(); } },
-                { "errinfo", n => { Errinfo = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2Errinfo>(global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2Errinfo.CreateFromDiscriminatorValue); } },
+                { "errinfo", n => { Errinfo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
             };
         }
@@ -79,7 +79,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("detail", Detail);
-            writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2Errinfo>("errinfo", Errinfo);
+            writer.WriteCollectionOfPrimitiveValues<string>("errinfo", Errinfo);
             writer.WriteStringValue("message", MessageEscaped);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -3847,7 +3847,10 @@
         "type": "object",
         "properties": {
           "fields": {
-            "$ref": "#/components/schemas/ValueErrorFields"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "text": {
             "type": "string"
@@ -4369,7 +4372,10 @@
         "type": "object",
         "properties": {
           "errinfo": {
-            "$ref": "#/components/schemas/Error2Errinfo"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "detail": {
             "type": "string"
@@ -5739,12 +5745,6 @@
           "type": "string"
         }
       },
-      "ValueErrorFields": {
-        "type": "object",
-        "items": {
-          "type": "string"
-        }
-      },
       "BulkInviteInviteesItem": {
         "type": "object",
         "properties": {
@@ -5759,12 +5759,6 @@
           "invite": {
             "$ref": "#/components/schemas/Invite"
           }
-        }
-      },
-      "Error2Errinfo": {
-        "type": "object",
-        "items": {
-          "type": "string"
         }
       },
       "ScimServiceProviderConfigPatch": {
@@ -6000,29 +5994,6 @@
           }
         }
       },
-      "GetV2OrgsByOrgNameGroups200Response": {
-        "type": "object",
-        "properties": {
-          "count": {
-            "type": "number",
-            "example": 1
-          },
-          "next": {
-            "type": "string",
-            "example": null
-          },
-          "previous": {
-            "type": "string",
-            "example": null
-          },
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrgGroup"
-            }
-          }
-        }
-      },
       "PostV2OrgsByOrgNameGroupsRequest": {
         "required": [
           "name"
@@ -6062,29 +6033,6 @@
           }
         }
       },
-      "GetV2OrgsByOrgNameGroupsByGroupNameMembers200Response": {
-        "type": "object",
-        "properties": {
-          "count": {
-            "type": "number",
-            "example": 1
-          },
-          "next": {
-            "type": "string",
-            "example": null
-          },
-          "previous": {
-            "type": "string",
-            "example": null
-          },
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GroupMember"
-            }
-          }
-        }
-      },
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
@@ -6120,6 +6068,52 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Invite"
+            }
+          }
+        }
+      },
+      "GetV2OrgsByOrgNameGroups200Response": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number",
+            "example": 1
+          },
+          "next": {
+            "type": "string",
+            "example": null
+          },
+          "previous": {
+            "type": "string",
+            "example": null
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrgGroup"
+            }
+          }
+        }
+      },
+      "GetV2OrgsByOrgNameGroupsByGroupNameMembers200Response": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number",
+            "example": 1
+          },
+          "next": {
+            "type": "string",
+            "example": null
+          },
+          "previous": {
+            "type": "string",
+            "example": null
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupMember"
             }
           }
         }
