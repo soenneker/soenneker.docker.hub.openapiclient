@@ -34,6 +34,14 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Role assigned to the team. A core role (`owner`, `editor`, or `member`)or the name of a custom role (not the label or UUID).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Role { get; set; }
+#nullable restore
+#else
+        public string Role { get; set; }
+#endif
         /// <summary>UUID for the group</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,6 +79,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
                 { "id", n => { Id = n.GetDoubleValue(); } },
                 { "member_count", n => { MemberCount = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "role", n => { Role = n.GetStringValue(); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
             };
         }
@@ -85,6 +94,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             writer.WriteDoubleValue("id", Id);
             writer.WriteDoubleValue("member_count", MemberCount);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("role", Role);
             writer.WriteStringValue("uuid", Uuid);
             writer.WriteAdditionalData(AdditionalData);
         }

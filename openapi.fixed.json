@@ -4583,6 +4583,10 @@
             "type": "number",
             "description": "Member count of the group",
             "example": 10
+          },
+          "role": {
+            "type": "string",
+            "description": "Role assigned to the team. A core role (\u0060owner\u0060, \u0060editor\u0060, or \u0060member\u0060)\nor the name of a custom role (not the label or UUID).\n"
           }
         }
       },
@@ -5990,7 +5994,9 @@
         "type": "object",
         "properties": {
           "role": {
-            "$ref": "#/components/schemas/PutV2OrgsByOrgNameMembersByUsernameRequestRole"
+            "type": "string",
+            "description": "Role of the member. Valid values are the core roles\n\u0060owner\u0060, \u0060editor\u0060, and \u0060member\u0060, or the name of an\nexisting [custom role](https://docs.docker.com/enterprise/security/roles-and-permissions/custom-roles/manage/).\nUse the custom role\u0027s name identifier, not its label or UUID.\n",
+            "example": "owner"
           }
         }
       },
@@ -6030,6 +6036,10 @@
           },
           "description": {
             "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role assigned to the team. Valid values are the core roles\n\u0060owner\u0060, \u0060editor\u0060, and \u0060member\u0060, or the name of an\nexisting [custom role](https://docs.docker.com/enterprise/security/roles-and-permissions/custom-roles/manage/).\nUse the custom role\u0027s name identifier, not its label or UUID.\n"
           }
         }
       },
@@ -6464,12 +6474,13 @@
       "OrgMemberRole": {
         "enum": [
           "Owner",
+          "Editor",
           "Member",
           "Invitee"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "User\u0027s role in the Organization",
+        "description": "The member\u0027s role in the organization (\u0060Owner\u0060, \u0060Editor\u0060,\n\u0060Member\u0060, or \u0060Invitee\u0060 for pending invites).\n",
         "example": "Owner"
       },
       "GroupMemberType": {
@@ -6529,34 +6540,6 @@
             {
               "value": "admin",
               "name": "Admin"
-            }
-          ]
-        }
-      },
-      "PutV2OrgsByOrgNameMembersByUsernameRequestRole": {
-        "enum": [
-          "owner",
-          "editor",
-          "member"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Role of the member",
-        "x-ms-enum": {
-          "name": "PutV2OrgsByOrgNameMembersByUsernameRequestRole",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "owner",
-              "name": "Owner"
-            },
-            {
-              "value": "editor",
-              "name": "Editor"
-            },
-            {
-              "value": "member",
-              "name": "Member"
             }
           ]
         }
@@ -7223,7 +7206,7 @@
     },
     {
       "name": "access-tokens",
-      "description": "The Personal Access Token endpoints lets you manage personal access tokens. For more information, see [Access Tokens](https://docs.docker.com/security/access-tokens/).\n\nYou can use a personal access token instead of a password in the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) or in the [Create an authentication token](#operation/PostUsersLogin) route to obtain a bearer token.\n\n### Scopes\n\nFor each scope grouping (in this case \u0022repo\u0022), you only need to define 1 scope as any lower scopes are assumed.\nFor example: If you define \u0060repo:write\u0060, the API assumes the scope of both \u0060repo:read\u0060 *and* \u0060repo:public_read\u0060 as well.\nIf you were to define both \u0060repo:write\u0060 *and* \u0060repo:read\u0060, then \u0060repo:read\u0060 is assumed by \u0060repo:write\u0060 and ignored.\n\n***Treat your personal access token like your password and keep it secret. You cannot retrieve your token after it is generated.***\n",
+      "description": "The Personal Access Token endpoints lets you manage personal access tokens. For more information, see [Access Tokens](https://docs.docker.com/security/access-tokens/personal-access-tokens/).\n\nYou can use a personal access token instead of a password in the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) or in the [Create an authentication token](#operation/PostUsersLogin) route to obtain a bearer token.\n\n### Scopes\n\nFor each scope grouping (in this case \u0022repo\u0022), you only need to define 1 scope as any lower scopes are assumed.\nFor example: If you define \u0060repo:write\u0060, the API assumes the scope of both \u0060repo:read\u0060 *and* \u0060repo:public_read\u0060 as well.\nIf you were to define both \u0060repo:write\u0060 *and* \u0060repo:read\u0060, then \u0060repo:read\u0060 is assumed by \u0060repo:write\u0060 and ignored.\n\n***Treat your personal access token like your password and keep it secret. You cannot retrieve your token after it is generated.***\n",
       "x-displayName": "Personal Access Tokens"
     },
     {

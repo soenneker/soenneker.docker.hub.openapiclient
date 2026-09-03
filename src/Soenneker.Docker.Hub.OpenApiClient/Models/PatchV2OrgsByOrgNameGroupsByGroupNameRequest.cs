@@ -30,6 +30,14 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Role assigned to the team. Valid values are the core roles`owner`, `editor`, and `member`, or the name of anexisting [custom role](https://docs.docker.com/enterprise/security/roles-and-permissions/custom-roles/manage/).Use the custom role&apos;s name identifier, not its label or UUID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Role { get; set; }
+#nullable restore
+#else
+        public string Role { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.PatchV2OrgsByOrgNameGroupsByGroupNameRequest"/> and sets the default values.
         /// </summary>
@@ -57,6 +65,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "role", n => { Role = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -68,6 +77,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

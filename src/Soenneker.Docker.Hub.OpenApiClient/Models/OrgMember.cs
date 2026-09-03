@@ -117,7 +117,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public string ProfileUrl { get; set; }
 #endif
-        /// <summary>User&apos;s role in the Organization</summary>
+        /// <summary>The member&apos;s role in the organization (`Owner`, `Editor`,`Member`, or `Invitee` for pending invites).</summary>
         public global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberRole? Role { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.Docker.Hub.OpenApiClient.Models.UserType? Type { get; set; }

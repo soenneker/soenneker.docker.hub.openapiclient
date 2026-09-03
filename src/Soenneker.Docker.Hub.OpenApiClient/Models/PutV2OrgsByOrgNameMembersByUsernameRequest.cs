@@ -14,8 +14,14 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Role of the member</summary>
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.PutV2OrgsByOrgNameMembersByUsernameRequestRole? Role { get; set; }
+        /// <summary>Role of the member. Valid values are the core roles`owner`, `editor`, and `member`, or the name of anexisting [custom role](https://docs.docker.com/enterprise/security/roles-and-permissions/custom-roles/manage/).Use the custom role&apos;s name identifier, not its label or UUID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Role { get; set; }
+#nullable restore
+#else
+        public string Role { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.PutV2OrgsByOrgNameMembersByUsernameRequest"/> and sets the default values.
         /// </summary>
@@ -41,7 +47,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.PutV2OrgsByOrgNameMembersByUsernameRequestRole>(); } },
+                { "role", n => { Role = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -51,7 +57,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.PutV2OrgsByOrgNameMembersByUsernameRequestRole>("role", Role);
+            writer.WriteStringValue("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

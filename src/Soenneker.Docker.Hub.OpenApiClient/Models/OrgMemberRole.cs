@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.Models
 {
-    /// <summary>User&apos;s role in the Organization</summary>
+    /// <summary>The member&apos;s role in the organization (`Owner`, `Editor`,`Member`, or `Invitee` for pending invites).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OrgMemberRole
     {
         [EnumMember(Value = "Owner")]
         #pragma warning disable CS1591
         Owner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Editor")]
+        #pragma warning disable CS1591
+        Editor,
         #pragma warning restore CS1591
         [EnumMember(Value = "Member")]
         #pragma warning disable CS1591
