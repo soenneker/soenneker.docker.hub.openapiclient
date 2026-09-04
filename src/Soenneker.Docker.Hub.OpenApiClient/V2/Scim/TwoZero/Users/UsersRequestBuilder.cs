@@ -178,16 +178,22 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.Users
             [QueryParameter("attributes")]
             public string Attributes { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("count")]
             public int? Count { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("filter")]
             public string? Filter { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("filter")]
             public string Filter { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>User attribute to sort by.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -199,10 +205,14 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.Users
             [QueryParameter("sortBy")]
             public string SortBy { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("sortOrder")]
             public global::Soenneker.Docker.Hub.OpenApiClient.Models.GetV2Scim20UsersSortOrderParameter? SortOrder { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("startIndex")]
             public int? StartIndex { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

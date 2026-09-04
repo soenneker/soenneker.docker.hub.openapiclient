@@ -125,13 +125,17 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members
             /// <summary>Number of items (rows) per page.</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("role")]
             public global::Soenneker.Docker.Hub.OpenApiClient.Models.Role? Role { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Search term.</summary>
             [QueryParameter("search")]
             public int? Search { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("type")]
             public global::Soenneker.Docker.Hub.OpenApiClient.Models.TypeValue? Type { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }
