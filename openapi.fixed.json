@@ -1,5 +1,6 @@
 {
-  "openapi": "3.0.4",
+  "openapi": "3.2.0",
+  "jsonSchemaDialect": "https://spec.openapis.org/oas/3.1/dialect/base",
   "info": {
     "title": "Docker HUB API",
     "description": "Docker Hub is a service provided by Docker for finding and sharing container images with your team.\n\nIt is the world\u0027s largest library and community for container images.\n\nIn addition to the [Docker Hub UI](https://docs.docker.com/docker-hub/) and [Docker Hub CLI tool](https://github.com/docker/hub-tool#readme) (currently experimental), Docker provides an API that allows you to interact with Docker Hub.\n\nBrowse through the Docker Hub API documentation to explore the supported endpoints.\n",
@@ -22,7 +23,7 @@
           "authentication-api"
         ],
         "summary": "Create an authentication token",
-        "description": "Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.\n\nThe returned token is used in the HTTP Authorization header like \u0060Authorization: Bearer {TOKEN}\u0060.\n\n_**As of September 16, 2024, this route requires a personal access token (PAT) instead of a password if your organization has SSO enforced.**_\n\n\u003Cdiv style=\u0022background-color:rgb(255, 165, 0, .25); padding:5px; border-radius:4px\u0022\u003E\n  \u003Cstrong\u003EDeprecated\u003C/strong\u003E: Use [\u003Ca href=\u0022#tag/authentication-api/operation/AuthCreateAccessToken\u0022\u003ECreate access token\u003C/a\u003E] instead.\n\u003C/div\u003E\n",
+        "description": "Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.\n\nThe returned token is used in the HTTP Authorization header like \u0060Authorization: Bearer {TOKEN}\u0060.\n\n_**As of September 16, 2024, this route requires a personal access token (PAT) instead of a password if your organization has SSO enforced.**_\n\n\n  Deprecated: Use [Create access token](#tag/authentication-api/operation/AuthCreateAccessToken) instead.\n\n",
         "operationId": "PostUsersLogin",
         "requestBody": {
           "description": "Login details.",
@@ -134,6 +135,7 @@
             }
           },
           "401": {
+            "description": "Authentication failed",
             "$ref": "#/components/responses/unauthorized"
           }
         },
@@ -170,9 +172,11 @@
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           }
         },
@@ -193,6 +197,7 @@
           {
             "name": "page",
             "in": "query",
+            "description": "Page number to return.",
             "schema": {
               "type": "number",
               "default": 1
@@ -201,6 +206,7 @@
           {
             "name": "page_size",
             "in": "query",
+            "description": "Number of results per page.",
             "schema": {
               "type": "number",
               "default": 10
@@ -219,9 +225,11 @@
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           }
         },
@@ -262,9 +270,11 @@
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           }
         },
@@ -293,9 +303,11 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -317,9 +329,11 @@
             "description": "A successful response."
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -333,6 +347,7 @@
         {
           "name": "uuid",
           "in": "path",
+          "description": "UUID of the personal access token.",
           "required": true,
           "schema": {
             "type": "string"
@@ -346,7 +361,7 @@
           "audit-logs"
         ],
         "summary": "List audit log actions",
-        "description": "List audit log actions for a namespace to be used as a filter for querying audit log events.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "List audit log actions for a namespace to be used as a filter for querying audit log events.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "AuditLogsListAuditActions",
         "parameters": [
           {
@@ -806,7 +821,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuditLogsListAuditActions500ResponseSchema"
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Example error response",
+                    "value": {
+                      "message": "internal error",
+                      "errinfo": null
+                    }
+                  }
                 }
               }
             }
@@ -816,7 +840,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RpcStatus"
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Example error response",
+                    "value": {
+                      "message": "internal error",
+                      "errinfo": null
+                    }
+                  }
                 }
               }
             }
@@ -835,7 +868,7 @@
           "audit-logs"
         ],
         "summary": "List audit log events",
-        "description": "List audit log events for a given namespace.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "List audit log events for a given namespace.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "AuditLogsListAuditLogs",
         "parameters": [
           {
@@ -980,7 +1013,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuditLogsListAuditLogs500ResponseSchema"
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Example error response",
+                    "value": {
+                      "message": "internal error",
+                      "errinfo": null
+                    }
+                  }
                 }
               }
             }
@@ -990,7 +1032,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RpcStatus"
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Example error response",
+                    "value": {
+                      "message": "internal error",
+                      "errinfo": null
+                    }
+                  }
                 }
               }
             }
@@ -1023,12 +1074,15 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1067,12 +1121,15 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1102,6 +1159,16 @@
         "summary": "Create access token",
         "description": "Create an access token for an organization.\n",
         "operationId": "PostV2OrgsByNameAccessTokens",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1124,15 +1191,19 @@
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1153,6 +1224,7 @@
           {
             "name": "page",
             "in": "query",
+            "description": "Page number to return.",
             "schema": {
               "type": "number",
               "default": 1
@@ -1161,9 +1233,18 @@
           {
             "name": "page_size",
             "in": "query",
+            "description": "Number of results per page.",
             "schema": {
               "type": "number",
               "default": 10
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1179,12 +1260,15 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1215,18 +1299,31 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       },
@@ -1259,18 +1356,31 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       },
@@ -1286,12 +1396,15 @@
             "description": "Access token deleted successfully"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1299,12 +1412,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/org_name"
-        },
         {
           "name": "accessTokenId",
           "in": "path",
@@ -1323,7 +1443,7 @@
           "repositories"
         ],
         "summary": "List repository tags",
-        "description": "Returns the list of tags for the specified repository.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Returns the list of tags for the specified repository.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "ListRepositoryTags",
         "parameters": [
           {
@@ -1341,16 +1461,27 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
+            "description": "list repository tags",
             "$ref": "#/components/responses/list_tags"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1365,16 +1496,18 @@
           "repositories"
         ],
         "summary": "Check repository tags",
-        "description": "Checks whether the repository has any tags.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
-        "operationId": "HeadV2NamespacesByNamespaceValueRepositoriesByRepositoryTags",
+        "description": "Checks whether the repository has any tags.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
+        "operationId": "HeadV2NamespacesByNamespaceRepositoriesByRepositoryTags",
         "responses": {
           "200": {
             "description": "Repository contains tags"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1382,12 +1515,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/namespace"
-        },
         {
           "$ref": "#/components/parameters/repository"
         }
@@ -1399,22 +1539,35 @@
           "repositories"
         ],
         "summary": "Read repository tag",
-        "description": "Returns details for a specific tag in the specified repository.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Returns details for a specific tag in the specified repository.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "GetRepositoryTag",
         "responses": {
           "200": {
+            "description": "repository tag",
             "$ref": "#/components/responses/get_tag"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       },
@@ -1423,16 +1576,18 @@
           "repositories"
         ],
         "summary": "Check repository tag",
-        "description": "Checks whether the specified tag exists in the repository.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
-        "operationId": "HeadV2NamespacesByNamespaceValueRepositoriesByRepositoryTagsByTag",
+        "description": "Checks whether the specified tag exists in the repository.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
+        "operationId": "HeadV2NamespacesByNamespaceRepositoriesByRepositoryTagsByTag",
         "responses": {
           "200": {
             "description": "Repository tag exists"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1440,12 +1595,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/namespace"
-        },
         {
           "$ref": "#/components/parameters/repository"
         },
@@ -1460,25 +1622,30 @@
           "repositories"
         ],
         "summary": "Update repository immutable tags",
-        "description": "Updates the immutable tags configuration for this repository.\n\n**Only users with administrative privileges for the repository can modify these settings.**\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Updates the immutable tags configuration for this repository.\n\n**Only users with administrative privileges for the repository can modify these settings.**\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "UpdateRepositoryImmutableTags",
         "requestBody": {
           "$ref": "#/components/requestBodies/update_repository_immutable_tags_request"
         },
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/update_repository_immutable_tags_response"
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -1486,12 +1653,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/namespace"
-        },
         {
           "$ref": "#/components/parameters/repository"
         }
@@ -1503,25 +1677,30 @@
           "repositories"
         ],
         "summary": "Verify repository immutable tags",
-        "description": "Validates the immutable tags regex passed in the request body and returns a list of tags matching it in this repository.\n\n**Only users with administrative privileges for the repository can call this endpoint.**\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Validates the immutable tags regex passed in the request body and returns a list of tags matching it in this repository.\n\n**Only users with administrative privileges for the repository can call this endpoint.**\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "VerifyRepositoryImmutableTags",
         "requestBody": {
           "$ref": "#/components/requestBodies/immutable_tags_verify_request"
         },
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/immutable_tags_verify_response"
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -1529,12 +1708,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/namespace"
-        },
         {
           "$ref": "#/components/parameters/repository"
         }
@@ -1546,7 +1732,7 @@
           "repositories"
         ],
         "summary": "Assign a group (Team) to a repository for access",
-        "description": "Assigns an organization group (team) to a repository with a specified permission level.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Assigns an organization group (team) to a repository with a specified permission level.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "CreateRepositoryGroup",
         "requestBody": {
           "content": {
@@ -1583,18 +1769,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error2"
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Example error response",
+                    "value": {
+                      "message": "bad request",
+                      "errinfo": null
+                    }
+                  }
                 }
               }
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
           }
         },
@@ -1602,12 +1800,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/namespace"
-        },
         {
           "$ref": "#/components/parameters/repository"
         }
@@ -1619,7 +1824,7 @@
           "repositories"
         ],
         "summary": "List repositories in a namespace",
-        "description": "Returns a list of repositories within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n\n**OAT listing behavior**: an OAT with the \u0060scope-repository-list\u0060 scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal \u0060200\u0060 with no indication that private repositories were withheld.\n",
+        "description": "Returns a list of repositories within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\n\n\n**OAT listing behavior**: an OAT with the \u0060scope-repository-list\u0060 scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal \u0060200\u0060 with no indication that private repositories were withheld.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "ListNamespaceRepositories",
         "parameters": [
           {
@@ -1657,6 +1862,14 @@
             "description": "Order repositories by the specified field. Prefix with \u0027-\u0027 for descending order.\nAvailable options:\n- \u0060name\u0060 / \u0060-name\u0060: Repository name (ascending/descending)\n- \u0060last_updated\u0060 / \u0060-last_updated\u0060: Last update time (ascending/descending)\n- \u0060pull_count\u0060 / \u0060-pull_count\u0060: Number of pulls (ascending/descending)\n",
             "schema": {
               "$ref": "#/components/schemas/ListNamespaceRepositoriesOrderingParameter"
+            }
+          },
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1758,7 +1971,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error2"
+                  "$ref": "#/components/schemas/Error"
                 },
                 "examples": {
                   "invalid_ordering": {
@@ -1777,9 +1990,11 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
@@ -1787,7 +2002,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error2"
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Example error response",
+                    "value": {
+                      "message": "not found",
+                      "errinfo": null
+                    }
+                  }
                 }
               }
             }
@@ -1805,7 +2029,7 @@
           "repositories"
         ],
         "summary": "Create a new repository",
-        "description": "Creates a new repository within the specified namespace. The repository will be created\nwith the provided metadata including name, description, and privacy settings.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Creates a new repository within the specified namespace. The repository will be created\nwith the provided metadata including name, description, and privacy settings.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "CreateRepository",
         "requestBody": {
           "content": {
@@ -1858,36 +2082,55 @@
                     "rules": []
                   },
                   "storage_size": null,
-                  "source": null
+                  "source": null,
+                  "user": "myorganization",
+                  "permissions": {
+                    "read": true,
+                    "write": true,
+                    "admin": true
+                  }
                 }
               }
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           },
           "500": {
+            "description": "Internal",
             "$ref": "#/components/responses/internal_error"
           }
         },
         "security": [
-          {}
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/namespace"
-        }
-      ]
+      "parameters": []
     },
     "/v2/namespaces/{namespaceValue}/repositories/{repository}": {
       "get": {
@@ -1895,7 +2138,7 @@
           "repositories"
         ],
         "summary": "Get repository in a namespace",
-        "description": "Returns a repository within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Returns a repository within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "GetRepository",
         "responses": {
           "200": {
@@ -1930,21 +2173,31 @@
                     "rules": []
                   },
                   "storage_size": null,
-                  "source": null
+                  "source": null,
+                  "user": "myorganization",
+                  "permissions": {
+                    "read": true,
+                    "write": true,
+                    "admin": true
+                  }
                 }
               }
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           },
           "500": {
+            "description": "Internal",
             "$ref": "#/components/responses/internal_error"
           }
         },
@@ -1953,6 +2206,16 @@
             "bearerAuth": []
           },
           {}
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "head": {
@@ -1960,56 +2223,26 @@
           "repositories"
         ],
         "summary": "Check repository in a namespace",
-        "description": "Check a repository within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Check a repository within the specified namespace (organization or user).\n\nPublic repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "CheckRepository",
         "responses": {
           "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RepositoryInfo"
-                },
-                "example": {
-                  "name": "my-app",
-                  "namespace": "myorganization",
-                  "repository_type": "image",
-                  "status": 1,
-                  "status_description": "Active",
-                  "description": "A sample application repository",
-                  "is_private": false,
-                  "is_automated": false,
-                  "star_count": 0,
-                  "pull_count": 0,
-                  "last_updated": "2025-01-20T10:30:00Z",
-                  "date_registered": "2025-01-20T10:30:00Z",
-                  "collaborator_count": 0,
-                  "hub_user": "myorganization",
-                  "has_starred": false,
-                  "full_description": "This is a comprehensive description of my application repository that contains additional details about the project.",
-                  "media_types": [],
-                  "content_types": [],
-                  "categories": [],
-                  "immutable_tags_settings": {
-                    "enabled": false,
-                    "rules": []
-                  },
-                  "storage_size": null,
-                  "source": null
-                }
-              }
-            }
+            "description": "200 response"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           },
           "500": {
+            "description": "Internal",
             "$ref": "#/components/responses/internal_error"
           }
         },
@@ -2018,12 +2251,19 @@
             "bearerAuth": []
           },
           {}
+        ],
+        "parameters": [
+          {
+            "name": "namespaceValue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/namespace"
-        },
         {
           "$ref": "#/components/parameters/repository"
         }
@@ -2035,7 +2275,7 @@
           "orgs"
         ],
         "summary": "List org members",
-        "description": "Returns a list of members for an organization.\n\n_The following fields are only visible to orgs with insights enabled._\n\n- \u0060last_logged_in_at\u0060\n- \u0060last_seen_at\u0060\n- \u0060last_desktop_version\u0060\n\nTo make visible, please see [View Insights for organization users](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Returns a list of members for an organization.\n\n_The following fields are only visible to orgs with insights enabled._\n\n- \u0060last_logged_in_at\u0060\n- \u0060last_seen_at\u0060\n- \u0060last_desktop_version\u0060\n\nTo make visible, please see [View Insights for organization users](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "GetV2OrgsByOrgNameMembers",
         "responses": {
           "200": {
@@ -2043,21 +2283,25 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV2OrgsByOrgNameMembers200ResponseSchema"
+                  "$ref": "#/components/schemas/OrgMemberPaginated"
                 }
               }
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2065,12 +2309,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/org_name"
-        },
         {
           "$ref": "#/components/parameters/search"
         },
@@ -2097,7 +2348,7 @@
           "orgs"
         ],
         "summary": "Export org members CSV",
-        "description": "Export members of an organization as a CSV\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Export members of an organization as a CSV\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "GetV2OrgsByOrgNameMembersExport",
         "responses": {
           "200": {
@@ -2114,20 +2365,25 @@
               "text/csv": {
                 "schema": {
                   "$ref": "#/components/schemas/GetV2OrgsByOrgNameMembersExport200CsvResponseSchema"
-                }
+                },
+                "example": "Name,Username,Email,Type,Role,Teams,Date Joined\nJon Snow,dockeruser,example@docker.com,User,Owner,owners,2021-01-05 21:06:53.5064 \u002B0000 UTC\n"
               }
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2135,13 +2391,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/org_name"
-        }
-      ]
+      "parameters": []
     },
     "/v2/orgs/{orgName}/members/{username}": {
       "put": {
@@ -2149,7 +2411,7 @@
           "orgs"
         ],
         "summary": "Update org member (role)",
-        "description": "Updates the role of a member in the organization.\n***Only users in the \u0022owners\u0022 group of the organization can use this endpoint.***\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Updates the role of a member in the organization.\n***Only users in the \u0022owners\u0022 group of the organization can use this endpoint.***\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "PutV2OrgsByOrgNameMembersByUsername",
         "requestBody": {
           "content": {
@@ -2173,21 +2435,35 @@
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       },
@@ -2196,22 +2472,26 @@
           "orgs"
         ],
         "summary": "Remove member from org",
-        "description": "Removes the member from the org, ie. all groups in the org, unless they\u0027re the last owner\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Removes the member from the org, ie. all groups in the org, unless they\u0027re the last owner\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "DeleteV2OrgsByOrgNameMembersByUsername",
         "responses": {
           "204": {
             "description": "Member removed successfully"
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2219,12 +2499,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/org_name"
-        },
         {
           "$ref": "#/components/parameters/username"
         }
@@ -2236,7 +2523,7 @@
           "invites"
         ],
         "summary": "List org invites",
-        "description": "Return all pending invites for a given org, only team owners can call this endpoint\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Return all pending invites for a given org, only team owners can call this endpoint\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "GetV2OrgsByOrgNameInvites",
         "responses": {
           "200": {
@@ -2250,12 +2537,15 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2263,13 +2553,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/org_name"
-        }
-      ]
+      "parameters": []
     },
     "/v2/orgs/{orgName}/groups": {
       "get": {
@@ -2277,13 +2573,15 @@
           "groups"
         ],
         "summary": "Get groups of an organization",
-        "description": "\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Get groups of an organization.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "GetV2OrgsByOrgNameGroups",
         "parameters": [
           {
+            "description": "Page number (starts on 1).",
             "$ref": "#/components/parameters/page"
           },
           {
+            "description": "Number of items (rows) per page.",
             "$ref": "#/components/parameters/page_size"
           },
           {
@@ -2301,6 +2599,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2315,12 +2621,15 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2335,7 +2644,7 @@
           "groups"
         ],
         "summary": "Create a new group",
-        "description": "Create a new group within an organization.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Create a new group within an organization.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "PostV2OrgsByOrgNameGroups",
         "requestBody": {
           "content": {
@@ -2358,12 +2667,15 @@
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           }
         },
@@ -2371,13 +2683,19 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/org_name"
-        }
-      ]
+      "parameters": []
     },
     "/v2/orgs/{orgName}/groups/{groupName}": {
       "get": {
@@ -2385,7 +2703,7 @@
           "groups"
         ],
         "summary": "Get a group of an organization",
-        "description": "\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Get a group of an organization.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "GetV2OrgsByOrgNameGroupsByGroupName",
         "responses": {
           "200": {
@@ -2399,18 +2717,39 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       },
@@ -2419,7 +2758,7 @@
           "groups"
         ],
         "summary": "Update the details for an organization group",
-        "description": "\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Update the details for an organization group.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "PutV2OrgsByOrgNameGroupsByGroupName",
         "requestBody": {
           "content": {
@@ -2442,18 +2781,39 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       },
@@ -2462,7 +2822,7 @@
           "groups"
         ],
         "summary": "Update some details for an organization group",
-        "description": "\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Update some details for an organization group.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "PatchV2OrgsByOrgNameGroupsByGroupName",
         "requestBody": {
           "content": {
@@ -2485,18 +2845,39 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       },
@@ -2505,19 +2886,22 @@
           "groups"
         ],
         "summary": "Delete an organization group",
-        "description": "\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Delete an organization group.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "DeleteV2OrgsByOrgNameGroupsByGroupName",
         "responses": {
           "204": {
             "description": "Group deleted successfully"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2525,16 +2909,27 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/org_name"
-        },
-        {
-          "$ref": "#/components/parameters/group_name"
-        }
-      ]
+      "parameters": []
     },
     "/v2/orgs/{orgName}/groups/{groupName}/members": {
       "get": {
@@ -2542,25 +2937,37 @@
           "groups"
         ],
         "summary": "List members of a group",
-        "description": "List the members (users) that are in a group.\nIf user is owner of the org or has otherwise elevated permissions, they can search by email and the result will also contain emails.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "List the members (users) that are in a group.\nIf user is owner of the org or has otherwise elevated permissions, they can search by email and the result will also contain emails.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "GetV2OrgsByOrgNameGroupsByGroupNameMembers",
         "parameters": [
           {
-            "$ref": "#/components/parameters/org_name"
-          },
-          {
-            "$ref": "#/components/parameters/group_name"
-          },
-          {
+            "description": "Page number (starts on 1).",
             "$ref": "#/components/parameters/page"
           },
           {
+            "description": "Number of items (rows) per page.",
             "$ref": "#/components/parameters/page_size"
           },
           {
             "name": "search",
             "in": "query",
             "description": "Search members by username, full_name or email.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -2578,12 +2985,15 @@
             }
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2598,14 +3008,24 @@
           "groups"
         ],
         "summary": "Add a member to a group",
-        "description": "\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Add a member to a group.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "PostV2OrgsByOrgNameGroupsByGroupNameMembers",
         "parameters": [
           {
-            "$ref": "#/components/parameters/org_name"
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/group_name"
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -2616,15 +3036,19 @@
             "description": "OK"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           },
           "500": {
+            "description": "Internal",
             "$ref": "#/components/responses/internal_error"
           }
         },
@@ -2641,19 +3065,22 @@
           "groups"
         ],
         "summary": "Remove a user from a group",
-        "description": "\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Remove a user from a group.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "DeleteV2OrgsByOrgNameGroupsByGroupNameMembersByUsername",
         "responses": {
           "204": {
             "description": "User removed successfully"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2661,15 +3088,27 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/org_name"
-        },
-        {
-          "$ref": "#/components/parameters/group_name"
-        },
         {
           "$ref": "#/components/parameters/username"
         }
@@ -2681,19 +3120,22 @@
           "invites"
         ],
         "summary": "Cancel an invite",
-        "description": "Mark the invite as cancelled so it doesn\u0027t show up on the list of pending invites\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Mark the invite as cancelled so it doesn\u0027t show up on the list of pending invites\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "DeleteV2InvitesById",
         "responses": {
           "204": {
             "description": "204 response"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2707,6 +3149,7 @@
         {
           "name": "id",
           "in": "path",
+          "description": "ID of the invitation.",
           "required": true,
           "schema": {
             "type": "string"
@@ -2720,19 +3163,22 @@
           "invites"
         ],
         "summary": "Resend an invite",
-        "description": "Resend a pending invite to the user, any org owner can resend an invite\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Resend a pending invite to the user, any org owner can resend an invite\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "PatchV2InvitesByIdResend",
         "responses": {
           "204": {
             "description": "204 response"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/not_found"
           }
         },
@@ -2746,6 +3192,7 @@
         {
           "name": "id",
           "in": "path",
+          "description": "ID of the invitation.",
           "required": true,
           "schema": {
             "type": "string"
@@ -2759,7 +3206,7 @@
           "invites"
         ],
         "summary": "Bulk create invites",
-        "description": "Create multiple invites by emails or DockerIDs. Only a team owner can create invites.\n\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
+        "description": "Create multiple invites by emails or DockerIDs. Only a team owner can create invites.\n\nThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.\n",
         "operationId": "PostV2InvitesBulk",
         "requestBody": {
           "$ref": "#/components/requestBodies/bulk_invite_request"
@@ -2770,15 +3217,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostV2InvitesBulk202Response"
+                  "$ref": "#/components/schemas/BulkInvite"
                 }
               }
             }
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/bad_request"
           },
           "409": {
+            "description": "Conflict",
             "$ref": "#/components/responses/conflict"
           }
         },
@@ -2804,18 +3253,21 @@
         "operationId": "GetV2Scim20ServiceProviderConfig",
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/scim_get_service_provider_config_resp"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       }
@@ -2830,18 +3282,21 @@
         "operationId": "GetV2Scim20ResourceTypes",
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/scim_get_resource_types_resp"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       }
@@ -2858,6 +3313,7 @@
           {
             "name": "name",
             "in": "path",
+            "description": "Name of the SCIM resource type.",
             "required": true,
             "schema": {
               "type": "string"
@@ -2867,21 +3323,25 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/scim_get_resource_type_resp"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/scim_not_found"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       }
@@ -2896,18 +3356,21 @@
         "operationId": "GetV2Scim20Schemas",
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/scim_get_schemas_resp"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       }
@@ -2924,6 +3387,7 @@
           {
             "name": "id",
             "in": "path",
+            "description": "URN identifying the SCIM schema.",
             "required": true,
             "schema": {
               "type": "string"
@@ -2933,21 +3397,25 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/scim_get_schema_resp"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/scim_not_found"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       }
@@ -2964,7 +3432,7 @@
           {
             "name": "startIndex",
             "in": "query",
-            "description": "",
+            "description": "One-based index of the first result to return.",
             "schema": {
               "minimum": 1,
               "type": "integer"
@@ -2974,7 +3442,7 @@
           {
             "name": "count",
             "in": "query",
-            "description": "",
+            "description": "Maximum number of results to return.",
             "schema": {
               "maximum": 200,
               "minimum": 1,
@@ -2985,18 +3453,20 @@
           {
             "name": "filter",
             "in": "query",
-            "description": "",
+            "description": "SCIM filter expression used to select users.",
             "schema": {
               "type": "string"
             },
             "example": "userName eq \u0022jon.snow@docker.com\u0022"
           },
           {
+            "description": "Comma delimited list of attributes to limit to in the response.",
             "$ref": "#/components/parameters/scim_attributes"
           },
           {
             "name": "sortOrder",
             "in": "query",
+            "description": "Sort direction applied to the attribute specified by sortBy.",
             "schema": {
               "$ref": "#/components/schemas/GetV2Scim20UsersSortOrderParameter"
             }
@@ -3013,27 +3483,33 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/scim_get_users_resp"
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/scim_bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/scim_forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/scim_not_found"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       },
@@ -3049,30 +3525,37 @@
         },
         "responses": {
           "201": {
+            "description": "",
             "$ref": "#/components/responses/scim_create_user_resp"
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/scim_bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/scim_forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/scim_not_found"
           },
           "409": {
+            "description": "Conflict",
             "$ref": "#/components/responses/scim_conflict"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       }
@@ -3087,27 +3570,33 @@
         "operationId": "GetV2Scim20UsersById",
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/scim_get_user_resp"
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/scim_bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/scim_forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/scim_not_found"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       },
@@ -3123,30 +3612,37 @@
         },
         "responses": {
           "200": {
+            "description": "",
             "$ref": "#/components/responses/scim_update_user_resp"
           },
           "400": {
+            "description": "Bad Request",
             "$ref": "#/components/responses/scim_bad_request"
           },
           "401": {
+            "description": "Unauthorized",
             "$ref": "#/components/responses/scim_unauthorized"
           },
           "403": {
+            "description": "Forbidden",
             "$ref": "#/components/responses/scim_forbidden"
           },
           "404": {
+            "description": "Not Found",
             "$ref": "#/components/responses/scim_not_found"
           },
           "409": {
+            "description": "Conflict",
             "$ref": "#/components/responses/scim_conflict"
           },
           "500": {
+            "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
           }
         },
         "security": [
           {
-            "bearerSCIMAuth": []
+            "scimToken": []
           }
         ]
       },
@@ -3160,6 +3656,15 @@
   "components": {
     "schemas": {
       "UpdateRepositoryImmutableTagsRequest": {
+        "examples": [
+          {
+            "immutable_tags": true,
+            "immutable_tags_rules": [
+              "v.*",
+              ".*-RELEASE"
+            ]
+          }
+        ],
         "required": [
           "immutable_tags",
           "immutable_tags_rules"
@@ -3262,6 +3767,41 @@
         }
       },
       "RepositoryInfo": {
+        "examples": [
+          {
+            "name": "my-app",
+            "namespace": "myorganization",
+            "repository_type": "image",
+            "status": 1,
+            "status_description": "Active",
+            "description": "A sample application repository",
+            "is_private": false,
+            "is_automated": false,
+            "star_count": 0,
+            "pull_count": 0,
+            "last_updated": "2025-01-20T10:30:00Z",
+            "date_registered": "2025-01-20T10:30:00Z",
+            "collaborator_count": 0,
+            "hub_user": "myorganization",
+            "has_starred": false,
+            "full_description": "This is a comprehensive description of my application repository that contains additional details about the project.",
+            "media_types": [],
+            "content_types": [],
+            "categories": [],
+            "immutable_tags_settings": {
+              "enabled": false,
+              "rules": []
+            },
+            "storage_size": null,
+            "source": null,
+            "user": "myorganization",
+            "permissions": {
+              "read": true,
+              "write": true,
+              "admin": true
+            }
+          }
+        ],
         "required": [
           "user",
           "name",
@@ -3298,9 +3838,11 @@
             "description": "Repository namespace"
           },
           "repository_type": {
-            "type": "string",
-            "description": "Type of the repository",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Type of the repository"
           },
           "status": {
             "type": "integer",
@@ -3339,10 +3881,12 @@
             "example": "2021-01-05T21:06:53.506400Z"
           },
           "last_modified": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "ISO 8601 timestamp of when repository was last modified",
             "format": "date-time",
-            "nullable": true,
             "example": "2021-01-05T21:06:53.506400Z"
           },
           "date_registered": {
@@ -3357,23 +3901,29 @@
             "format": "int64"
           },
           "affiliation": {
-            "type": "string",
-            "description": "Repository affiliation",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Repository affiliation"
           },
           "hub_user": {
-            "type": "string",
-            "description": "Hub user information",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Hub user information"
           },
           "has_starred": {
             "type": "boolean",
             "description": "Whether the current user has starred this repository"
           },
           "full_description": {
-            "type": "string",
-            "description": "Full description of the repository",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Full description of the repository"
           },
           "permissions": {
             "$ref": "#/components/schemas/RepoPermissions"
@@ -3381,8 +3931,10 @@
           "media_types": {
             "type": "array",
             "items": {
-              "type": "string",
-              "nullable": true
+              "type": [
+                "null",
+                "string"
+              ]
             },
             "description": "Supported media types"
           },
@@ -3404,15 +3956,19 @@
             "$ref": "#/components/schemas/ImmutableTagsSettings"
           },
           "storage_size": {
-            "type": "integer",
+            "type": [
+              "null",
+              "integer"
+            ],
             "description": "Storage size in bytes",
-            "format": "int64",
-            "nullable": true
+            "format": "int64"
           },
           "source": {
-            "type": "string",
-            "description": "Source of the repository, where it was created from",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Source of the repository, where it was created from"
           }
         }
       },
@@ -3459,20 +4015,34 @@
         }
       },
       "ImmutableTagsVerifyRequest": {
+        "examples": [
+          {
+            "regex": "v.*"
+          }
+        ],
         "required": [
           "regex"
         ],
         "type": "object",
         "properties": {
           "regex": {
-            "pattern": "^[a-z0-9]\u002B((\\\\.|_|__|-\u002B)[a-z0-9]\u002B)*(\\\\/[a-z0-9]\u002B((\\\\.|_|__|-\u002B)[a-z0-9]\u002B)*)*$",
+            "pattern": "^[^,]*$",
             "type": "string",
-            "description": "Immutable tags rule regex pattern. Must match format: [a-z0-9]\u002B((\\\\.|_|__|-\u002B)[a-z0-9]\u002B)*(\\\\/[a-z0-9]\u002B((\\\\.|_|__|-\u002B)[a-z0-9]\u002B)*)*",
+            "description": "Regular expression using Go regular expression syntax. Commas are not permitted.",
             "example": "v.*"
           }
         }
       },
       "ImmutableTagsVerifyResponse": {
+        "examples": [
+          {
+            "tags": [
+              "v1.0.0",
+              "v2.1.3",
+              "latest"
+            ]
+          }
+        ],
         "required": [
           "tags"
         ],
@@ -3512,9 +4082,11 @@
             "$ref": "#/components/schemas/RepositoryListEntryStatusDescription"
           },
           "description": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "Repository description",
-            "nullable": true,
             "example": "Hello World! (an example of minimal Dockerization)"
           },
           "is_private": {
@@ -3535,17 +4107,21 @@
             "example": 50000000
           },
           "last_updated": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "ISO 8601 timestamp of when the repository was last updated",
             "format": "date-time",
-            "nullable": true,
             "example": "2023-12-01T10:30:00Z"
           },
           "last_modified": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "ISO 8601 timestamp of when the repository was last modified",
             "format": "date-time",
-            "nullable": true,
             "example": "2023-12-01T10:30:00Z"
           },
           "date_registered": {
@@ -3619,14 +4195,18 @@
             "description": "total number of results available across all pages"
           },
           "next": {
-            "type": "string",
-            "description": "link to next page of results if any",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "link to next page of results if any"
           },
           "previous": {
-            "type": "string",
-            "description": "link to previous page of results  if any",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "link to previous page of results  if any"
           },
           "results": {
             "type": "array",
@@ -3637,6 +4217,12 @@
         }
       },
       "UsersLoginRequest": {
+        "examples": [
+          {
+            "username": "myusername",
+            "password": "p@ssw0rd"
+          }
+        ],
         "required": [
           "username",
           "password"
@@ -3657,6 +4243,11 @@
         "description": "User login details"
       },
       "AuthCreateTokenResponse": {
+        "examples": [
+          {
+            "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          }
+        ],
         "type": "object",
         "properties": {
           "access_token": {
@@ -3668,6 +4259,11 @@
         "description": "successful access token response"
       },
       "PostUsersLoginSuccessResponse": {
+        "examples": [
+          {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          }
+        ],
         "type": "object",
         "properties": {
           "token": {
@@ -3679,6 +4275,11 @@
         "description": "successful user login response"
       },
       "PostUsersLoginErrorResponse": {
+        "examples": [
+          {
+            "detail": "Incorrect authentication credentials"
+          }
+        ],
         "required": [
           "detail"
         ],
@@ -3690,15 +4291,23 @@
             "example": "Incorrect authentication credentials"
           },
           "login_2fa_token": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "Short time lived token to be used on \u0060/v2/users/2fa-login\u0060 to complete the authentication. This field is present only if 2FA is enabled.\n",
-            "nullable": true,
             "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
           }
         },
         "description": "failed user login response or second factor required"
       },
       "Users2FaLoginRequest": {
+        "examples": [
+          {
+            "login_2fa_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+            "code": "123456"
+          }
+        ],
         "required": [
           "login_2fa_token",
           "code"
@@ -3713,12 +4322,17 @@
           "code": {
             "type": "string",
             "description": "The Time-based One-Time Password of the Docker Hub account to authenticate with.\n",
-            "example": 123456
+            "example": "123456"
           }
         },
         "description": "Second factor user login details"
       },
       "PostUsers2FaLoginErrorResponse": {
+        "examples": [
+          {
+            "detail": "Incorrect authentication credentials"
+          }
+        ],
         "type": "object",
         "properties": {
           "detail": {
@@ -3728,36 +4342,6 @@
           }
         },
         "description": "failed second factor login response."
-      },
-      "ProtobufAny": {
-        "type": "object",
-        "properties": {
-          "type_url": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string",
-            "format": "byte"
-          }
-        }
-      },
-      "RpcStatus": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          },
-          "details": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProtobufAny"
-            }
-          }
-        }
       },
       "AuditLogAction": {
         "type": "object",
@@ -3843,32 +4427,6 @@
         },
         "description": "Audit log event."
       },
-      "ValueError": {
-        "type": "object",
-        "properties": {
-          "fields": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "text": {
-            "type": "string"
-          }
-        },
-        "description": "Used to error if input validation fails."
-      },
-      "Error": {
-        "type": "object",
-        "properties": {
-          "detail": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      },
       "AccessToken": {
         "type": "object",
         "properties": {
@@ -3893,8 +4451,10 @@
             "example": "2021-07-20T12:00:00.000000Z"
           },
           "last_used": {
-            "type": "string",
-            "nullable": true,
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "generated_by": {
@@ -3907,6 +4467,7 @@
           },
           "token": {
             "type": "string",
+            "description": "Token value returned on creation. Later responses redact the value as ***.",
             "example": "a7a5ef25-8889-43a0-8cc7-f2a94268e861"
           },
           "token_label": {
@@ -3920,13 +4481,24 @@
             }
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
             "example": "2021-10-28T18:30:19.520861Z"
           }
         }
       },
       "CreateAccessTokenRequest": {
+        "examples": [
+          {
+            "token_label": "My read only token",
+            "scopes": [
+              "repo:read"
+            ]
+          }
+        ],
         "required": [
           "token_label",
           "scopes"
@@ -3959,6 +4531,32 @@
         "$ref": "#/components/schemas/AccessToken"
       },
       "GetAccessTokensResponse": {
+        "examples": [
+          {
+            "count": 1,
+            "active_count": 1,
+            "next": null,
+            "previous": null,
+            "results": [
+              {
+                "uuid": "b30bbf97-506c-4ecd-aabc-842f3cb484fb",
+                "client_id": "HUB",
+                "creator_ip": "127.0.0.1",
+                "creator_ua": "some user agent",
+                "created_at": "2021-07-20T12:00:00.000000Z",
+                "last_used": null,
+                "generated_by": "manual",
+                "is_active": true,
+                "token": "***",
+                "token_label": "My read only token",
+                "scopes": [
+                  "repo:read"
+                ],
+                "expires_at": "2021-10-28T18:30:19.520861Z"
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "count": {
@@ -3966,11 +4564,17 @@
             "example": 1
           },
           "next": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "previous": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "active_count": {
@@ -3986,6 +4590,12 @@
         }
       },
       "PatchAccessTokenRequest": {
+        "examples": [
+          {
+            "token_label": "My read only token",
+            "is_active": false
+          }
+        ],
         "type": "object",
         "properties": {
           "token_label": {
@@ -4004,6 +4614,15 @@
         "$ref": "#/components/schemas/AccessToken"
       },
       "OrgSettings": {
+        "examples": [
+          {
+            "restricted_images": {
+              "enabled": true,
+              "allow_official_images": true,
+              "allow_verified_publishers": true
+            }
+          }
+        ],
         "type": "object",
         "properties": {
           "restricted_images": {
@@ -4035,9 +4654,11 @@
         "type": "object",
         "properties": {
           "digest": {
-            "type": "string",
-            "description": "image layer digest",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "image layer digest"
           },
           "size": {
             "type": "integer",
@@ -4057,17 +4678,25 @@
             "description": "CPU architecture"
           },
           "features": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "CPU features"
           },
           "variant": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "CPU variant"
           },
           "digest": {
-            "type": "string",
-            "description": "image digest",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "image digest"
           },
           "layers": {
             "type": "array",
@@ -4080,11 +4709,17 @@
             "description": "operating system"
           },
           "os_features": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "OS features"
           },
           "os_version": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "OS version"
           },
           "size": {
@@ -4095,20 +4730,54 @@
             "$ref": "#/components/schemas/ImageStatus"
           },
           "last_pulled": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "datetime of last pull",
-            "nullable": true,
             "example": "2021-01-05T21:06:53.506400Z"
           },
           "last_pushed": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "datetime of last push",
-            "nullable": true,
             "example": "2021-01-05T21:06:53.506400Z"
           }
         }
       },
       "Tag": {
+        "examples": [
+          {
+            "id": 12345,
+            "name": "latest",
+            "last_updated": "2021-01-05T21:06:53.506400Z",
+            "full_size": 123456,
+            "v2": true,
+            "images": [
+              {
+                "architecture": "amd64",
+                "features": null,
+                "variant": null,
+                "os": "linux",
+                "os_features": null,
+                "os_version": null,
+                "size": 123456,
+                "status": "active",
+                "last_pulled": null,
+                "last_pushed": "2021-01-05T21:06:53.506400Z"
+              }
+            ],
+            "creator": 1234,
+            "last_updater": 1234,
+            "last_updater_username": "dockeruser",
+            "repository": 5678,
+            "tag_status": "active",
+            "tag_last_pulled": null,
+            "tag_last_pushed": "2021-01-05T21:06:53.506400Z"
+          }
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -4116,16 +4785,24 @@
             "description": "tag ID"
           },
           "images": {
-            "$ref": "#/components/schemas/Image"
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/Image"
+            }
           },
           "creator": {
             "type": "integer",
             "description": "ID of the user that pushed the tag"
           },
           "last_updated": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "datetime of last update",
-            "nullable": true,
             "example": "2021-01-05T21:06:53.506400Z"
           },
           "last_updater": {
@@ -4149,27 +4826,68 @@
             "description": "compressed size (sum of all layers) of the tagged image"
           },
           "v2": {
-            "type": "string",
-            "description": "repository API version"
-          },
-          "status": {
-            "$ref": "#/components/schemas/TagStatus"
+            "type": "boolean",
+            "description": "Whether the tag uses the Registry V2 format."
           },
           "tag_last_pulled": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "datetime of last pull",
-            "nullable": true,
             "example": "2021-01-05T21:06:53.506400Z"
           },
           "tag_last_pushed": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "datetime of last push",
-            "nullable": true,
             "example": "2021-01-05T21:06:53.506400Z"
+          },
+          "tag_status": {
+            "$ref": "#/components/schemas/TagTagStatus"
           }
         }
       },
       "PaginatedTags": {
+        "examples": [
+          {
+            "count": 1,
+            "next": null,
+            "previous": null,
+            "results": [
+              {
+                "id": 12345,
+                "name": "latest",
+                "last_updated": "2021-01-05T21:06:53.506400Z",
+                "full_size": 123456,
+                "v2": true,
+                "images": [
+                  {
+                    "architecture": "amd64",
+                    "features": null,
+                    "variant": null,
+                    "os": "linux",
+                    "os_features": null,
+                    "os_version": null,
+                    "size": 123456,
+                    "status": "active",
+                    "last_pulled": null,
+                    "last_pushed": "2021-01-05T21:06:53.506400Z"
+                  }
+                ],
+                "creator": 1234,
+                "last_updater": 1234,
+                "last_updater_username": "dockeruser",
+                "repository": 5678,
+                "tag_status": "active",
+                "tag_last_pulled": null,
+                "tag_last_pushed": "2021-01-05T21:06:53.506400Z"
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "count": {
@@ -4177,14 +4895,18 @@
             "description": "total number of results available across all pages"
           },
           "next": {
-            "type": "string",
-            "description": "link to next page of results if any",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "link to next page of results if any"
           },
           "previous": {
-            "type": "string",
-            "description": "link to previous page of results  if any",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "link to previous page of results  if any"
           },
           "results": {
             "type": "array",
@@ -4202,14 +4924,18 @@
             "description": "total number of results available across all pages"
           },
           "next": {
-            "type": "string",
-            "description": "link to next page of results if any",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "link to next page of results if any"
           },
           "previous": {
-            "type": "string",
-            "description": "link to previous page of results  if any",
-            "nullable": true
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "link to previous page of results  if any"
           }
         }
       },
@@ -4368,14 +5094,11 @@
           ]
         }
       },
-      "Error2": {
+      "Error": {
         "type": "object",
         "properties": {
           "errinfo": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/components/schemas/ErrorErrinfoProperty"
           },
           "detail": {
             "type": "string"
@@ -4383,7 +5106,8 @@
           "message": {
             "type": "string"
           }
-        }
+        },
+        "description": "Error details vary by endpoint. The message describes the failure; errinfo can contain additional context."
       },
       "ScimError": {
         "type": "object",
@@ -4447,6 +5171,21 @@
         }
       },
       "OrgMember": {
+        "examples": [
+          {
+            "id": "0ab70deb065a43fcacd55d48caa945d8",
+            "username": "dockeruser",
+            "full_name": "Jon Snow",
+            "type": "User",
+            "date_joined": "2021-01-05T21:06:53.506400Z",
+            "email": "example@docker.com",
+            "role": "Owner",
+            "groups": [
+              "owners"
+            ],
+            "is_guest": false
+          }
+        ],
         "type": "object",
         "properties": {
           "email": {
@@ -4476,20 +5215,26 @@
             "deprecated": true
           },
           "last_logged_in_at": {
-            "type": "string",
-            "description": "Last time the user logged in. To access this field, you must have insights visible for your organization. See \n[Insights](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).\n",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Last time the user logged in. To access this field, you must have insights visible for your organization. See\n[Insights](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).\n",
             "format": "date-time",
             "example": "2021-01-05T21:06:53.506400Z"
           },
           "last_seen_at": {
-            "type": "string",
-            "description": "Last time the user was seen. To access this field, you must have insights visible for your organization. See \n[Insights](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).\n",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Last time the user was seen. To access this field, you must have insights visible for your organization. See\n[Insights](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).\n",
             "format": "date-time",
             "example": "2021-01-05T21:06:53.506400Z"
           },
           "last_desktop_version": {
             "type": "string",
-            "description": "Last desktop version the user used. To access this field, you must have insights visible for your organization. See \n[Insights](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).\n",
+            "description": "Last desktop version the user used. To access this field, you must have insights visible for your organization. See\n[Insights](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).\n",
             "example": "4.29.0"
           },
           "id": {
@@ -4531,6 +5276,28 @@
         }
       },
       "OrgMemberPaginated": {
+        "examples": [
+          {
+            "count": 1,
+            "next": null,
+            "previous": null,
+            "results": [
+              {
+                "id": "0ab70deb065a43fcacd55d48caa945d8",
+                "username": "dockeruser",
+                "full_name": "Jon Snow",
+                "type": "User",
+                "date_joined": "2021-01-05T21:06:53.506400Z",
+                "email": "example@docker.com",
+                "role": "Owner",
+                "groups": [
+                  "owners"
+                ],
+                "is_guest": false
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "count": {
@@ -4539,14 +5306,20 @@
             "example": 120
           },
           "previous": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "The URL or link for the previous page of items.",
-            "example": "https://hub.docker.com/v2/some/resources/items?page=1\u0026page_size=20"
+            "example": null
           },
           "next": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "The URL or link for the next page of items.",
-            "example": "https://hub.docker.com/v2/some/resources/items?page=3\u0026page_size=20"
+            "example": null
           },
           "results": {
             "type": "array",
@@ -4558,6 +5331,16 @@
         }
       },
       "OrgGroup": {
+        "examples": [
+          {
+            "id": 10,
+            "uuid": "e36eca69-4cc8-4f17-9845-ae8c2b832691",
+            "name": "developers",
+            "description": "Development team",
+            "member_count": 1,
+            "role": "member"
+          }
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -4585,7 +5368,10 @@
             "example": 10
           },
           "role": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "Role assigned to the team. A core role (\u0060owner\u0060, \u0060editor\u0060, or \u0060member\u0060)\nor the name of a custom role (not the label or UUID).\n"
           }
         }
@@ -4708,6 +5494,41 @@
         }
       },
       "ScimServiceProviderConfig": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
+            ],
+            "patch": {
+              "supported": true
+            },
+            "bulk": {
+              "supported": false,
+              "maxOperations": 0,
+              "maxPayloadSize": 0
+            },
+            "filter": {
+              "supported": true,
+              "maxResults": 200
+            },
+            "changePassword": {
+              "supported": false
+            },
+            "sort": {
+              "supported": true
+            },
+            "etag": {
+              "supported": false
+            },
+            "authenticationSchemes": [
+              {
+                "name": "OAuth 2.0 Bearer Token",
+                "specUri": "http://tools.ietf.org/html/rfc6750",
+                "type": "oauthbearertoken"
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "schemas": {
@@ -4738,11 +5559,26 @@
             "$ref": "#/components/schemas/ScimServiceProviderConfigEtag"
           },
           "authenticationSchemes": {
-            "$ref": "#/components/schemas/ScimServiceProviderConfigAuthenticationSchemes"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScimServiceProviderConfigAuthenticationSchemesItem"
+            }
           }
         }
       },
       "ScimResourceType": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:core:2.0:ResourceType"
+            ],
+            "id": "User",
+            "name": "User",
+            "description": "User",
+            "endpoint": "/Users",
+            "schema": "urn:ietf:params:scim:schemas:core:2.0:User"
+          }
+        ],
         "type": "object",
         "properties": {
           "schemas": {
@@ -4774,6 +5610,17 @@
         }
       },
       "ScimSchema": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:core:2.0:Schema"
+            ],
+            "id": "urn:ietf:params:scim:schemas:core:2.0:User",
+            "name": "User",
+            "description": "User Account",
+            "attributes": []
+          }
+        ],
         "type": "object",
         "properties": {
           "schemas": {
@@ -4834,8 +5681,22 @@
         }
       },
       "ScimUpdateUserRequestRequestScimJson": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:core:2.0:User"
+            ],
+            "userName": "jon.snow@docker.com",
+            "name": {
+              "givenName": "Jon",
+              "familyName": "Snow"
+            },
+            "active": true
+          }
+        ],
         "required": [
-          "schemas"
+          "schemas",
+          "userName"
         ],
         "type": "object",
         "properties": {
@@ -4848,11 +5709,15 @@
             }
           },
           "name": {
-            "$ref": "#/components/schemas/ScimUpdateUserRequestRequestScimJsonName"
+            "$ref": "#/components/schemas/ScimUserName"
           },
-          "enabled": {
+          "userName": {
+            "type": "string",
+            "description": "The user\u0027s email address. This must be reachable via email."
+          },
+          "active": {
             "type": "boolean",
-            "description": "If this is omitted from the request, it will default to false resulting in a deactivated user.",
+            "description": "Whether the user is active. Defaults to false when omitted.",
             "default": false
           }
         }
@@ -4871,6 +5736,18 @@
         }
       },
       "ScimCreateUserRequestRequestScimJson": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:core:2.0:User"
+            ],
+            "userName": "jon.snow@docker.com",
+            "name": {
+              "givenName": "Jon",
+              "familyName": "Snow"
+            }
+          }
+        ],
         "required": [
           "schemas",
           "userName"
@@ -4903,6 +5780,19 @@
         }
       },
       "BulkInviteRequestRequest": {
+        "examples": [
+          {
+            "org": "docker",
+            "team": "owners",
+            "role": "member",
+            "invitees": [
+              "invitee1DockerId",
+              "invitee2@docker.com",
+              "invitee3@docker.com"
+            ],
+            "dry_run": true
+          }
+        ],
         "required": [
           "org",
           "invitees"
@@ -4940,6 +5830,40 @@
         }
       },
       "ScimUser": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:core:2.0:User"
+            ],
+            "id": "d80f7c79-7730-49d8-9a41-7c42fb622d9c",
+            "userName": "jon.snow@docker.com",
+            "name": {
+              "givenName": "Jon",
+              "familyName": "Snow"
+            },
+            "displayName": "jonsnow",
+            "active": true,
+            "emails": [
+              {
+                "value": "jon.snow@docker.com",
+                "display": "jon.snow@docker.com",
+                "primary": true
+              }
+            ],
+            "groups": [
+              {
+                "value": "nightswatch",
+                "display": "nightswatch"
+              }
+            ],
+            "meta": {
+              "resourceType": "User",
+              "location": "https://hub.docker.com/v2/scim/2.0/Users/d80f7c79-7730-49d8-9a41-7c42fb622d9c",
+              "created": "2022-05-20T00:54:18Z",
+              "lastModified": "2022-05-20T00:54:18Z"
+            }
+          }
+        ],
         "type": "object",
         "properties": {
           "schemas": {
@@ -5011,20 +5935,29 @@
             "example": "2022-05-20T00:54:18Z"
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2023-05-20T00:54:18Z"
           },
           "last_used_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2022-06-15T12:30:45Z"
           }
         }
       },
       "OrgAccessTokenResource": {
+        "required": [
+          "type",
+          "path",
+          "scopes"
+        ],
         "type": "object",
         "properties": {
           "type": {
@@ -5046,6 +5979,24 @@
         }
       },
       "GetOrgAccessTokensResponse": {
+        "examples": [
+          {
+            "total": 1,
+            "next": null,
+            "previous": null,
+            "results": [
+              {
+                "id": "a7a5ef25-8889-43a0-8cc7-f2a94268e861",
+                "label": "My organization token",
+                "created_by": "johndoe",
+                "is_active": true,
+                "created_at": "2022-05-20T00:54:18Z",
+                "expires_at": "2023-05-20T00:54:18Z",
+                "last_used_at": "2022-06-15T12:30:45Z"
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "total": {
@@ -5053,12 +6004,18 @@
             "example": 10
           },
           "next": {
-            "type": "string",
-            "example": "https://hub.docker.com/v2/orgs/docker/access-tokens?page=2\u0026page_size=10"
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": null
           },
           "previous": {
-            "type": "string",
-            "example": "https://hub.docker.com/v2/orgs/docker/access-tokens?page=1\u0026page_size=10"
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": null
           },
           "results": {
             "type": "array",
@@ -5069,6 +6026,26 @@
         }
       },
       "GetOrgAccessTokenResponse": {
+        "examples": [
+          {
+            "id": "a7a5ef25-8889-43a0-8cc7-f2a94268e861",
+            "label": "My organization token",
+            "created_by": "johndoe",
+            "is_active": true,
+            "created_at": "2022-05-20T00:54:18Z",
+            "expires_at": "2023-05-20T00:54:18Z",
+            "last_used_at": "2022-06-15T12:30:45Z",
+            "resources": [
+              {
+                "type": "TYPE_REPO",
+                "path": "myorg/myrepo",
+                "scopes": [
+                  "scope-image-pull"
+                ]
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -5093,15 +6070,19 @@
             "example": "2022-05-20T00:54:18Z"
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2023-05-20T00:54:18Z"
           },
           "last_used_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2022-06-15T12:30:45Z"
           },
           "resources": {
@@ -5114,6 +6095,25 @@
         }
       },
       "CreateOrgAccessTokenRequest": {
+        "examples": [
+          {
+            "label": "My organization token",
+            "description": "Token for CI/CD pipeline",
+            "resources": [
+              {
+                "type": "TYPE_REPO",
+                "path": "myorg/myrepo",
+                "scopes": [
+                  "scope-image-pull"
+                ]
+              }
+            ]
+          }
+        ],
+        "required": [
+          "label",
+          "resources"
+        ],
         "type": "object",
         "properties": {
           "label": {
@@ -5127,6 +6127,7 @@
             "example": "Token for CI/CD pipeline"
           },
           "resources": {
+            "minItems": 1,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/OrgAccessTokenResource"
@@ -5134,15 +6135,37 @@
             "description": "Resources this token has access to"
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "Expiration date for the token",
             "format": "date-time",
-            "nullable": true,
             "example": "2023-05-20T00:54:18Z"
           }
         }
       },
       "CreateOrgAccessTokenResponse": {
+        "examples": [
+          {
+            "id": "a7a5ef25-8889-43a0-8cc7-f2a94268e861",
+            "label": "My organization token",
+            "is_active": true,
+            "created_at": "2022-05-20T00:54:18Z",
+            "expires_at": "2023-05-20T00:54:18Z",
+            "last_used_at": "2022-06-15T12:30:45Z",
+            "token": "dckr_oat_7awgM4jG5SQvxcvmNzhKj8PQjxo",
+            "resources": [
+              {
+                "type": "TYPE_REPO",
+                "path": "myorg/myrepo",
+                "scopes": [
+                  "scope-image-pull"
+                ]
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -5163,15 +6186,19 @@
             "example": "2022-05-20T00:54:18Z"
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2023-05-20T00:54:18Z"
           },
           "last_used_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2022-06-15T12:30:45Z"
           },
           "token": {
@@ -5188,6 +6215,22 @@
         }
       },
       "UpdateOrgAccessTokenRequest": {
+        "examples": [
+          {
+            "label": "My organization token",
+            "description": "Token for CI/CD pipeline",
+            "resources": [
+              {
+                "type": "TYPE_REPO",
+                "path": "myorg/myrepo",
+                "scopes": [
+                  "scope-image-pull"
+                ]
+              }
+            ],
+            "is_active": true
+          }
+        ],
         "type": "object",
         "properties": {
           "label": {
@@ -5215,6 +6258,26 @@
         }
       },
       "UpdateOrgAccessTokenResponse": {
+        "examples": [
+          {
+            "id": "a7a5ef25-8889-43a0-8cc7-f2a94268e861",
+            "label": "My organization token",
+            "created_by": "johndoe",
+            "is_active": true,
+            "created_at": "2022-05-20T00:54:18Z",
+            "expires_at": "2023-05-20T00:54:18Z",
+            "last_used_at": "2022-06-15T12:30:45Z",
+            "resources": [
+              {
+                "type": "TYPE_REPO",
+                "path": "myorg/myrepo",
+                "scopes": [
+                  "scope-image-pull"
+                ]
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -5239,15 +6302,19 @@
             "example": "2022-05-20T00:54:18Z"
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2023-05-20T00:54:18Z"
           },
           "last_used_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2022-06-15T12:30:45Z"
           },
           "resources": {
@@ -5259,19 +6326,12 @@
           }
         }
       },
-      "TeamRepo": {
-        "type": "object",
-        "properties": {
-          "group_name": {
-            "type": "string",
-            "description": "Name of the group"
-          },
-          "permission": {
-            "$ref": "#/components/schemas/TeamRepoPermission"
-          }
-        }
-      },
       "AddMemberToOrgGroupRequest": {
+        "examples": [
+          {
+            "member": "jonsnow"
+          }
+        ],
         "required": [
           "member"
         ],
@@ -5408,6 +6468,26 @@
         }
       },
       "ScimGetResourceTypesRespResponseScimJson": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+            ],
+            "totalResults": 1,
+            "Resources": [
+              {
+                "schemas": [
+                  "urn:ietf:params:scim:schemas:core:2.0:ResourceType"
+                ],
+                "id": "User",
+                "name": "User",
+                "description": "User",
+                "endpoint": "/Users",
+                "schema": "urn:ietf:params:scim:schemas:core:2.0:User"
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "schemas": {
@@ -5421,7 +6501,7 @@
             "type": "integer",
             "example": 1
           },
-          "resources": {
+          "Resources": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ScimResourceType"
@@ -5430,6 +6510,25 @@
         }
       },
       "ScimGetSchemasRespResponseScimJson": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+            ],
+            "totalResults": 1,
+            "Resources": [
+              {
+                "schemas": [
+                  "urn:ietf:params:scim:schemas:core:2.0:Schema"
+                ],
+                "id": "urn:ietf:params:scim:schemas:core:2.0:User",
+                "name": "User",
+                "description": "User Account",
+                "attributes": []
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "schemas": {
@@ -5443,7 +6542,7 @@
             "type": "integer",
             "example": 1
           },
-          "resources": {
+          "Resources": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ScimSchema"
@@ -5452,6 +6551,50 @@
         }
       },
       "ScimGetUsersRespResponseScimJson": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+            ],
+            "totalResults": 1,
+            "Resources": [
+              {
+                "schemas": [
+                  "urn:ietf:params:scim:schemas:core:2.0:User"
+                ],
+                "id": "d80f7c79-7730-49d8-9a41-7c42fb622d9c",
+                "userName": "jon.snow@docker.com",
+                "name": {
+                  "givenName": "Jon",
+                  "familyName": "Snow"
+                },
+                "displayName": "jonsnow",
+                "active": true,
+                "emails": [
+                  {
+                    "value": "jon.snow@docker.com",
+                    "display": "jon.snow@docker.com",
+                    "primary": true
+                  }
+                ],
+                "groups": [
+                  {
+                    "value": "nightswatch",
+                    "display": "nightswatch"
+                  }
+                ],
+                "meta": {
+                  "resourceType": "User",
+                  "location": "https://hub.docker.com/v2/scim/2.0/Users/d80f7c79-7730-49d8-9a41-7c42fb622d9c",
+                  "created": "2022-05-20T00:54:18Z",
+                  "lastModified": "2022-05-20T00:54:18Z"
+                }
+              }
+            ],
+            "startIndex": 1,
+            "itemsPerPage": 1
+          }
+        ],
         "type": "object",
         "properties": {
           "schemas": {
@@ -5472,7 +6615,7 @@
             "type": "integer",
             "example": 10
           },
-          "resources": {
+          "Resources": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ScimUser"
@@ -5515,8 +6658,10 @@
             "example": "2021-07-20T12:00:00.000000Z"
           },
           "last_used": {
-            "type": "string",
-            "nullable": true,
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "generated_by": {
@@ -5529,6 +6674,7 @@
           },
           "token": {
             "type": "string",
+            "description": "Token value returned on creation. Later responses redact the value as ***.",
             "example": "a7a5ef25-8889-43a0-8cc7-f2a94268e861"
           },
           "token_label": {
@@ -5542,7 +6688,10 @@
             }
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
             "example": "2021-10-28T18:30:19.520861Z"
           }
@@ -5588,20 +6737,6 @@
           }
         }
       },
-      "ScimUpdateUserRequestRequestScimJsonName": {
-        "type": "object",
-        "properties": {
-          "givenName": {
-            "type": "string",
-            "example": "Jon"
-          },
-          "familyName": {
-            "type": "string",
-            "example": "Snow"
-          }
-        },
-        "description": "If this is omitted from the request, the update will skip the update on it. We will only ever change the name, but not clear it."
-      },
       "GetOrgAccessTokenResponseAllOf2": {
         "type": "object",
         "properties": {
@@ -5635,15 +6770,19 @@
             "example": "2022-05-20T00:54:18Z"
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2023-05-20T00:54:18Z"
           },
           "last_used_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
-            "nullable": true,
             "example": "2022-06-15T12:30:45Z"
           }
         }
@@ -5732,7 +6871,8 @@
         "type": "object",
         "properties": {
           "token": {
-            "type": "string"
+            "type": "string",
+            "example": "***"
           }
         }
       },
@@ -5765,12 +6905,19 @@
           }
         }
       },
+      "ErrorErrinfo": {
+        "type": [
+          "null",
+          "object"
+        ],
+        "description": "Additional error context, when available."
+      },
       "ScimServiceProviderConfigPatch": {
         "type": "object",
         "properties": {
           "supported": {
             "type": "boolean",
-            "example": false
+            "example": true
           }
         }
       },
@@ -5798,7 +6945,7 @@
           },
           "maxResults": {
             "type": "integer",
-            "example": 99999
+            "example": 200
           }
         }
       },
@@ -5829,7 +6976,7 @@
           }
         }
       },
-      "ScimServiceProviderConfigAuthenticationSchemes": {
+      "ScimServiceProviderConfigAuthenticationSchemesItem": {
         "type": "object",
         "properties": {
           "name": {
@@ -5876,6 +7023,12 @@
         }
       },
       "AuthCreateAccessTokenRequest": {
+        "examples": [
+          {
+            "identifier": "myusername",
+            "secret": "dckr_pat_124509ugsdjga93"
+          }
+        ],
         "required": [
           "identifier",
           "secret"
@@ -5896,6 +7049,24 @@
         "description": "Request to create access token"
       },
       "GetV2AccessTokensByUuid200Response": {
+        "examples": [
+          {
+            "uuid": "b30bbf97-506c-4ecd-aabc-842f3cb484fb",
+            "client_id": "HUB",
+            "creator_ip": "127.0.0.1",
+            "creator_ua": "some user agent",
+            "created_at": "2021-07-20T12:00:00.000000Z",
+            "last_used": null,
+            "generated_by": "manual",
+            "is_active": true,
+            "token": "***",
+            "token_label": "My read only token",
+            "scopes": [
+              "repo:read"
+            ],
+            "expires_at": "2021-10-28T18:30:19.520861Z"
+          }
+        ],
         "type": "object",
         "properties": {
           "uuid": {
@@ -5919,8 +7090,10 @@
             "example": "2021-07-20T12:00:00.000000Z"
           },
           "last_used": {
-            "type": "string",
-            "nullable": true,
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "generated_by": {
@@ -5933,6 +7106,7 @@
           },
           "token": {
             "type": "string",
+            "description": "Token value returned on creation. Later responses redact the value as ***.",
             "example": "a7a5ef25-8889-43a0-8cc7-f2a94268e861"
           },
           "token_label": {
@@ -5946,7 +7120,10 @@
             }
           },
           "expires_at": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
             "example": "2021-10-28T18:30:19.520861Z"
           }
@@ -5955,16 +7132,19 @@
       "AuditLogsListAuditActions429Response": {
         "type": "object"
       },
-      "AuditLogsListAuditActions500Response": {
-        "type": "object"
-      },
       "AuditLogsListAuditLogs429Response": {
         "type": "object"
       },
-      "AuditLogsListAuditLogs500Response": {
-        "type": "object"
-      },
       "PutV2OrgsByNameSettingsRequest": {
+        "examples": [
+          {
+            "restricted_images": {
+              "enabled": true,
+              "allow_official_images": true,
+              "allow_verified_publishers": true
+            }
+          }
+        ],
         "required": [
           "restricted_images"
         ],
@@ -5975,19 +7155,16 @@
           }
         }
       },
-      "GetV2OrgsByOrgNameMembers200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrgMemberPaginated"
-        }
-      },
       "GetV2OrgsByOrgNameMembersExport200CsvResponse": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GetV2OrgsByOrgNameMembersExport200CsvResponseItem"
-        }
+        "type": "string",
+        "description": "CSV columns: Name, Username, Email, Type, Role, Teams, and Date Joined. The Role column contains the assigned role label. When administrative insights are available, the export also includes Last Logged-in Date, Docker Desktop Version, Last Seen Date, and Opted Out Analytics."
       },
       "PutV2OrgsByOrgNameMembersByUsernameRequest": {
+        "examples": [
+          {
+            "role": "owner"
+          }
+        ],
         "required": [
           "role"
         ],
@@ -5995,12 +7172,18 @@
         "properties": {
           "role": {
             "type": "string",
-            "description": "Role of the member. Valid values are the core roles\n\u0060owner\u0060, \u0060editor\u0060, and \u0060member\u0060, or the name of an\nexisting [custom role](https://docs.docker.com/enterprise/security/roles-and-permissions/custom-roles/manage/).\nUse the custom role\u0027s name identifier, not its label or UUID.\n",
+            "description": "Role of the member. Valid values are the core roles\n\u0060owner\u0060, \u0060editor\u0060, and \u0060member\u0060, or the name of an\nexisting [custom role](https://docs.docker.com/security/roles-and-permissions/custom-roles/manage/).\nUse the custom role\u0027s name identifier, not its label or UUID.\n",
             "example": "owner"
           }
         }
       },
       "PostV2OrgsByOrgNameGroupsRequest": {
+        "examples": [
+          {
+            "name": "developers",
+            "description": "Development team"
+          }
+        ],
         "required": [
           "name"
         ],
@@ -6015,6 +7198,12 @@
         }
       },
       "PutV2OrgsByOrgNameGroupsByGroupNameRequest": {
+        "examples": [
+          {
+            "name": "developers",
+            "description": "Development team"
+          }
+        ],
         "required": [
           "name"
         ],
@@ -6029,6 +7218,12 @@
         }
       },
       "PatchV2OrgsByOrgNameGroupsByGroupNameRequest": {
+        "examples": [
+          {
+            "description": "Development team",
+            "role": "member"
+          }
+        ],
         "type": "object",
         "properties": {
           "name": {
@@ -6039,7 +7234,7 @@
           },
           "role": {
             "type": "string",
-            "description": "Role assigned to the team. Valid values are the core roles\n\u0060owner\u0060, \u0060editor\u0060, and \u0060member\u0060, or the name of an\nexisting [custom role](https://docs.docker.com/enterprise/security/roles-and-permissions/custom-roles/manage/).\nUse the custom role\u0027s name identifier, not its label or UUID.\n"
+            "description": "Role assigned to the team. Valid values are the core roles\n\u0060owner\u0060, \u0060editor\u0060, and \u0060member\u0060, or the name of an\nexisting [custom role](https://docs.docker.com/security/roles-and-permissions/custom-roles/manage/).\nUse the custom role\u0027s name identifier, not its label or UUID.\n"
           }
         }
       },
@@ -6050,28 +7245,28 @@
       "AuditLogsListAuditActions429ResponseSchema": {
         "type": "object"
       },
-      "AuditLogsListAuditActions500ResponseSchema": {
-        "type": "object"
-      },
       "AuditLogsListAuditLogs429ResponseSchema": {
         "type": "object"
       },
-      "AuditLogsListAuditLogs500ResponseSchema": {
-        "type": "object"
-      },
-      "GetV2OrgsByOrgNameMembers200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrgMemberPaginated"
-        }
-      },
       "GetV2OrgsByOrgNameMembersExport200CsvResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GetV2OrgsByOrgNameMembersExport200CsvResponseSchemaItem"
-        }
+        "type": "string",
+        "description": "CSV columns: Name, Username, Email, Type, Role, Teams, and Date Joined. The Role column contains the assigned role label. When administrative insights are available, the export also includes Last Logged-in Date, Docker Desktop Version, Last Seen Date, and Opted Out Analytics."
       },
       "GetV2OrgsByOrgNameInvites200Response": {
+        "examples": [
+          {
+            "data": [
+              {
+                "id": "e36eca69-4cc8-4f17-9845-ae8c2b832691",
+                "inviter_username": "moby",
+                "invitee": "invitee@docker.com",
+                "org": "docker",
+                "team": "owners",
+                "created_at": "2021-10-28T18:30:19.520861Z"
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "data": {
@@ -6083,6 +7278,23 @@
         }
       },
       "GetV2OrgsByOrgNameGroups200Response": {
+        "examples": [
+          {
+            "count": 1,
+            "next": null,
+            "previous": null,
+            "results": [
+              {
+                "id": 10,
+                "uuid": "e36eca69-4cc8-4f17-9845-ae8c2b832691",
+                "name": "developers",
+                "description": "Development team",
+                "member_count": 1,
+                "role": "member"
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "count": {
@@ -6090,11 +7302,17 @@
             "example": 1
           },
           "next": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "previous": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "results": {
@@ -6106,6 +7324,23 @@
         }
       },
       "GetV2OrgsByOrgNameGroupsByGroupNameMembers200Response": {
+        "examples": [
+          {
+            "count": 1,
+            "next": null,
+            "previous": null,
+            "results": [
+              {
+                "id": "0ab70deb065a43fcacd55d48caa945d8",
+                "username": "dockeruser",
+                "full_name": "Jon Snow",
+                "type": "User",
+                "date_joined": "2021-01-05T21:06:53.506400Z",
+                "email": "example@docker.com"
+              }
+            ]
+          }
+        ],
         "type": "object",
         "properties": {
           "count": {
@@ -6113,11 +7348,17 @@
             "example": 1
           },
           "next": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "previous": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "example": null
           },
           "results": {
@@ -6125,14 +7366,6 @@
             "items": {
               "$ref": "#/components/schemas/GroupMember"
             }
-          }
-        }
-      },
-      "PostV2InvitesBulk202Response": {
-        "type": "object",
-        "properties": {
-          "invitees": {
-            "$ref": "#/components/schemas/BulkInvite"
           }
         }
       },
@@ -6148,6 +7381,10 @@
         "additionalProperties": {
           "type": "string"
         }
+      },
+      "ErrorErrinfoProperty": {
+        "type": "object",
+        "description": "Additional error context, when available."
       },
       "ScimBadRequestResponseScimJsonAllOf2Status": {
         "type": "object",
@@ -6195,88 +7432,6 @@
             "type": "boolean",
             "description": "Allow usage of verified publisher images if \u0022enabled\u0022 is \u0060true\u0060.",
             "example": true
-          }
-        }
-      },
-      "GetV2OrgsByOrgNameMembersExport200CsvResponseItem": {
-        "required": [
-          "Name",
-          "Username",
-          "Email",
-          "Type",
-          "Role",
-          "Date Joined"
-        ],
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "First and last name of the member"
-          },
-          "Username": {
-            "type": "string",
-            "description": "Username of the member"
-          },
-          "Email": {
-            "type": "string",
-            "description": "Email address of the member"
-          },
-          "Type": {
-            "$ref": "#/components/schemas/GetV2OrgsByOrgNameMembersExport200CsvResponseItemType"
-          },
-          "Permission": {
-            "$ref": "#/components/schemas/GetV2OrgsByOrgNameMembersExport200CsvResponseItemPermission"
-          },
-          "Teams": {
-            "type": "string",
-            "description": "Comma-separated list of teams the member is part of",
-            "example": "team-1, team-2"
-          },
-          "Date Joined": {
-            "type": "string",
-            "description": "Date the member joined the organization",
-            "example": "2020-01-01 15:00:51.193355 \u002B0000 UTC"
-          }
-        }
-      },
-      "GetV2OrgsByOrgNameMembersExport200CsvResponseSchemaItem": {
-        "required": [
-          "Name",
-          "Username",
-          "Email",
-          "Type",
-          "Role",
-          "Date Joined"
-        ],
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "First and last name of the member"
-          },
-          "Username": {
-            "type": "string",
-            "description": "Username of the member"
-          },
-          "Email": {
-            "type": "string",
-            "description": "Email address of the member"
-          },
-          "Type": {
-            "$ref": "#/components/schemas/GetV2OrgsByOrgNameMembersExport200CsvResponseItemType"
-          },
-          "Permission": {
-            "$ref": "#/components/schemas/GetV2OrgsByOrgNameMembersExport200CsvResponseItemPermission"
-          },
-          "Teams": {
-            "type": "string",
-            "description": "Comma-separated list of teams the member is part of",
-            "example": "team-1, team-2"
-          },
-          "Date Joined": {
-            "type": "string",
-            "description": "Date the member joined the organization",
-            "example": "2020-01-01 15:00:51.193355 \u002B0000 UTC"
           }
         }
       },
@@ -6344,10 +7499,12 @@
           "plugin",
           null
         ],
-        "type": "string",
+        "type": [
+          "null",
+          "string"
+        ],
         "additionalProperties": false,
         "description": "Type of repository",
-        "nullable": true,
         "example": "image",
         "x-ms-enum": {
           "name": "RepositoryListEntryRepositoryType",
@@ -6411,7 +7568,7 @@
           ]
         }
       },
-      "TagStatus": {
+      "TagTagStatus": {
         "enum": [
           "active",
           "inactive"
@@ -6420,7 +7577,7 @@
         "additionalProperties": false,
         "description": "whether a tag has been pushed to or pulled in the past month",
         "x-ms-enum": {
-          "name": "TagStatus",
+          "name": "TagTagStatus",
           "modelAsString": false,
           "values": [
             {
@@ -6515,52 +7672,6 @@
             }
           ]
         }
-      },
-      "TeamRepoPermission": {
-        "enum": [
-          "read",
-          "write",
-          "admin"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Repo access permission",
-        "x-ms-enum": {
-          "name": "TeamRepoPermission",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "read",
-              "name": "Read"
-            },
-            {
-              "value": "write",
-              "name": "Write"
-            },
-            {
-              "value": "admin",
-              "name": "Admin"
-            }
-          ]
-        }
-      },
-      "GetV2OrgsByOrgNameMembersExport200CsvResponseItemType": {
-        "enum": [
-          "Invitee",
-          "User"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Type of the member"
-      },
-      "GetV2OrgsByOrgNameMembersExport200CsvResponseItemPermission": {
-        "enum": [
-          "Owner",
-          "Member"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Permission of the member"
       },
       "TypeValue": {
         "enum": [
@@ -6687,7 +7798,16 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ValueError"
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "bad request",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6698,6 +7818,15 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "unauthorized",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6708,6 +7837,15 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "permission denied",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6718,6 +7856,15 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "not found",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6747,7 +7894,16 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error2"
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "bad request",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6757,7 +7913,16 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error2"
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "unauthorized",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6767,7 +7932,16 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error2"
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "permission denied",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6777,7 +7951,16 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error2"
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "not found",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6787,7 +7970,16 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error2"
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "conflict",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6797,7 +7989,16 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error2"
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error response",
+                "value": {
+                  "message": "internal error",
+                  "errinfo": null
+                }
+              }
             }
           }
         }
@@ -6808,6 +8009,17 @@
           "application/scim\u002Bjson": {
             "schema": {
               "$ref": "#/components/schemas/ScimBadRequestResponseScimJson"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error envelope",
+                "value": {
+                  "schemas": [
+                    "urn:ietf:params:scim:api:messages:2.0:Error"
+                  ],
+                  "status": "400"
+                }
+              }
             }
           }
         }
@@ -6818,6 +8030,17 @@
           "application/scim\u002Bjson": {
             "schema": {
               "$ref": "#/components/schemas/ScimUnauthorizedResponseScimJson"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error envelope",
+                "value": {
+                  "schemas": [
+                    "urn:ietf:params:scim:api:messages:2.0:Error"
+                  ],
+                  "status": "401"
+                }
+              }
             }
           }
         }
@@ -6828,6 +8051,17 @@
           "application/scim\u002Bjson": {
             "schema": {
               "$ref": "#/components/schemas/ScimForbiddenResponseScimJson"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error envelope",
+                "value": {
+                  "schemas": [
+                    "urn:ietf:params:scim:api:messages:2.0:Error"
+                  ],
+                  "status": "403"
+                }
+              }
             }
           }
         }
@@ -6838,6 +8072,17 @@
           "application/scim\u002Bjson": {
             "schema": {
               "$ref": "#/components/schemas/ScimNotFoundResponseScimJson"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error envelope",
+                "value": {
+                  "schemas": [
+                    "urn:ietf:params:scim:api:messages:2.0:Error"
+                  ],
+                  "status": "404"
+                }
+              }
             }
           }
         }
@@ -6848,6 +8093,17 @@
           "application/scim\u002Bjson": {
             "schema": {
               "$ref": "#/components/schemas/ScimConflictResponseScimJson"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error envelope",
+                "value": {
+                  "schemas": [
+                    "urn:ietf:params:scim:api:messages:2.0:Error"
+                  ],
+                  "status": "409"
+                }
+              }
             }
           }
         }
@@ -6858,6 +8114,17 @@
           "application/scim\u002Bjson": {
             "schema": {
               "$ref": "#/components/schemas/ScimErrorResponseScimJson"
+            },
+            "examples": {
+              "error": {
+                "summary": "Example error envelope",
+                "value": {
+                  "schemas": [
+                    "urn:ietf:params:scim:api:messages:2.0:Error"
+                  ],
+                  "status": "500"
+                }
+              }
             }
           }
         }
@@ -6977,6 +8244,7 @@
       "namespace": {
         "name": "namespace",
         "in": "path",
+        "description": "Namespace of the repository, such as a user or organization name.",
         "required": true,
         "schema": {
           "type": "string"
@@ -6985,6 +8253,7 @@
       "repository": {
         "name": "repository",
         "in": "path",
+        "description": "Name of the repository within the namespace.",
         "required": true,
         "schema": {
           "type": "string"
@@ -6993,6 +8262,7 @@
       "tag": {
         "name": "tag",
         "in": "path",
+        "description": "Name of the image tag.",
         "required": true,
         "schema": {
           "type": "string"
@@ -7082,6 +8352,7 @@
       "type": {
         "name": "type",
         "in": "query",
+        "description": "Filter members by membership type.",
         "schema": {
           "$ref": "#/components/schemas/TypeValue"
         },
@@ -7090,6 +8361,7 @@
       "role": {
         "name": "role",
         "in": "query",
+        "description": "Filter members by their organization role.",
         "schema": {
           "$ref": "#/components/schemas/Role"
         },
@@ -7175,83 +8447,102 @@
       "bearerSCIMAuth": {
         "type": "http",
         "scheme": "bearer"
+      },
+      "scimToken": {
+        "type": "http",
+        "description": "Use the SCIM provisioning token configured for the organization.",
+        "scheme": "bearer"
       }
     }
   },
   "tags": [
     {
       "name": "changelog",
-      "description": "See the [Changelog](/reference/api/hub/changelog) for a summary of changes across Docker Hub API versions.\n",
-      "x-displayName": "Changelog"
+      "description": "See the [Changelog](https://docs.docker.com/reference/api/hub/changelog) for a summary of changes across Docker Hub API versions.\n",
+      "summary": "Changelog",
+      "kind": "info"
     },
     {
       "name": "resources",
       "description": "The following resources are available to interact with the documented API:\n- [Docker Hub CLI tool](https://github.com/docker/hub-tool#readme) (currently experimental)\n",
-      "x-displayName": "Resources"
+      "summary": "Resources",
+      "kind": "info"
     },
     {
       "name": "rate-limiting",
       "description": "The Docker Hub API is limited on the amount of requests you can perform per minute against it.\n\nIf you haven\u0027t hit the limit, each request to the API will return the following headers in the response.\n\n- \u0060X-RateLimit-Limit\u0060 - The limit of requests per minute.\n- \u0060X-RateLimit-Remaining\u0060 - The remaining amount of calls within the limit period.\n- \u0060X-RateLimit-Reset\u0060 - The unix timestamp of when the remaining resets.\n\nIf you have hit the limit, you will receive a response status of \u0060429\u0060 and the \u0060Retry-After\u0060 header in the response.\n\nThe [\u0060Retry-After\u0060 header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Retry-After) specifies the number of seconds to wait until you can call the API again.\n\n**Note**: These rate limits are separate from anti-abuse and Docker Hub download, or pull rate limiting.\nTo learn more about Docker Hub pull rate limiting, see [Usage and limits](https://docs.docker.com/docker-hub/usage/).\n",
-      "x-displayName": "Rate Limiting"
+      "summary": "Rate Limiting",
+      "kind": "info"
     },
     {
       "name": "authentication",
-      "description": "Most Docker Hub API endpoints require you to authenticate using your Docker credentials before using them.\n\nAdditionally, similar to the Docker Hub UI features, API endpoint responses may vary depending on your subscription (Personal, Pro, or Team) and your account\u0027s permissions.\n\nTo learn more about the features available in each subscription and to upgrade your existing subscription, see [Docker Pricing](https://www.docker.com/pricing?ref=Docs\u0026refAction=DocsApiHub).\n\n# Types\n\nThe Docker Hub API supports the following authentication types.\n\nYou must use each authentication type with the [Create access token](#tag/authentication-api/operation/AuthCreateAccessToken) route to obtain a bearer token.\n\n## Password\nUsing a username and password is the most powerful, yet least secure way \nto authenticate with Docker as a user. It allows access to resources \nfor the user without scopes. \n\n_In general, it is recommended to use a personal access token (PAT) instead._\n\n_**The password authentication type is not available if your organization has SSO enforced.**_\n\n## Personal Access Token (PAT)\nUsing a username and PAT is the most secure way to authenticate with \nDocker as a user. PATs are scoped to specific resources and scopes.\n\nCurrently, a PAT is a more secure password due to limited functionality. \nIn the future, we may add fine-grained access like organization \naccess tokens for enhanced usage and security.\n\n## Organization Access Token (OAT)\nOrganization access tokens are scoped to specific resources and scopes \nin an organization. They are managed by organization owners. \n\nThese tokens are meant for automation and are not meant to be used by \nusers.\n\n# Labels\n\nThese labels will show up on routes in this reference that allow for use of bearer \ntokens issued from them.\n\n\u003Cspan class=\u0022pat\u0022\u003E\u003C/span\u003E\n\u003Cspan class=\u0022oat\u0022\u003E\u003C/span\u003E\n",
-      "x-displayName": "Authentication"
+      "description": "Most Docker Hub API endpoints require you to authenticate using your Docker credentials before using them.\n\nAdditionally, similar to the Docker Hub UI features, API endpoint responses may vary depending on your subscription (Personal, Pro, or Team) and your account\u0027s permissions.\n\nTo learn more about the features available in each subscription and to upgrade your existing subscription, see [Docker Pricing](https://www.docker.com/pricing?ref=Docs\u0026refAction=DocsApiHub).\n\n# Types\n\nThe Docker Hub API supports the following authentication types.\n\nYou must use each authentication type with the [Create access token](#tag/authentication-api/operation/AuthCreateAccessToken) route to obtain a bearer token.\n\n## Password\nUsing a username and password is the most powerful, yet least secure way \nto authenticate with Docker as a user. It allows access to resources \nfor the user without scopes. \n\n_In general, it is recommended to use a personal access token (PAT) instead._\n\n_**The password authentication type is not available if your organization has SSO enforced.**_\n\n## Personal Access Token (PAT)\nUsing a username and PAT is the most secure way to authenticate with \nDocker as a user. PATs are scoped to specific resources and scopes.\n\nCurrently, a PAT is a more secure password due to limited functionality. \nIn the future, we may add fine-grained access like organization \naccess tokens for enhanced usage and security.\n\n## Organization Access Token (OAT)\nOrganization access tokens are scoped to specific resources and scopes \nin an organization. They are managed by organization owners. \n\nThese tokens are meant for automation and are not meant to be used by \nusers.\n\nOperations that support bearer tokens issued from OATs state this in their descriptions.\n\n",
+      "summary": "Authentication",
+      "kind": "info"
     },
     {
       "name": "authentication-api",
       "description": "The authentication endpoints allow you to authenticate with Docker Hub APIs.\n\nFor more information, see [Authentication](#tag/authentication).\n",
-      "x-displayName": "Authentication"
+      "summary": "Authentication",
+      "kind": "nav"
     },
     {
       "name": "access-tokens",
-      "description": "The Personal Access Token endpoints lets you manage personal access tokens. For more information, see [Access Tokens](https://docs.docker.com/security/access-tokens/personal-access-tokens/).\n\nYou can use a personal access token instead of a password in the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) or in the [Create an authentication token](#operation/PostUsersLogin) route to obtain a bearer token.\n\n### Scopes\n\nFor each scope grouping (in this case \u0022repo\u0022), you only need to define 1 scope as any lower scopes are assumed.\nFor example: If you define \u0060repo:write\u0060, the API assumes the scope of both \u0060repo:read\u0060 *and* \u0060repo:public_read\u0060 as well.\nIf you were to define both \u0060repo:write\u0060 *and* \u0060repo:read\u0060, then \u0060repo:read\u0060 is assumed by \u0060repo:write\u0060 and ignored.\n\n***Treat your personal access token like your password and keep it secret. You cannot retrieve your token after it is generated.***\n",
-      "x-displayName": "Personal Access Tokens"
+      "description": "The Personal Access Token endpoints lets you manage personal access tokens. For more information, see [Access Tokens](https://docs.docker.com/security/access-tokens/personal-access-tokens/).\n\nYou can use a personal access token instead of a password in the [Docker CLI](https://docs.docker.com/reference/cli/docker/) or in the [Create an authentication token](#operation/PostUsersLogin) route to obtain a bearer token.\n\n### Scopes\n\nFor each scope grouping (in this case \u0022repo\u0022), you only need to define 1 scope as any lower scopes are assumed.\nFor example: If you define \u0060repo:write\u0060, the API assumes the scope of both \u0060repo:read\u0060 *and* \u0060repo:public_read\u0060 as well.\nIf you were to define both \u0060repo:write\u0060 *and* \u0060repo:read\u0060, then \u0060repo:read\u0060 is assumed by \u0060repo:write\u0060 and ignored.\n\n***Treat your personal access token like your password and keep it secret. You cannot retrieve your token after it is generated.***\n",
+      "summary": "Personal Access Tokens",
+      "kind": "nav"
     },
     {
       "name": "audit-logs",
       "description": "The Audit Logs API endpoints allow you to query audit log events across a namespace.\n\nFor more information, see [Audit Logs](https://docs.docker.com/admin/activity-logs/).\n",
-      "x-displayName": "Audit Logs"
+      "summary": "Audit Logs",
+      "kind": "nav"
     },
     {
       "name": "org-settings",
       "description": "The Org Settings API endpoints allow you to manage your organization\u0027s settings.\n",
-      "x-displayName": "Org Settings"
+      "summary": "Org Settings",
+      "kind": "nav"
     },
     {
       "name": "repositories",
       "description": "The repository endpoints allow you to access your repository\u0027s tags.\n",
-      "x-displayName": "Repositories"
+      "summary": "Repositories",
+      "kind": "nav"
     },
     {
       "name": "orgs",
       "description": "The organization endpoints allow you to interact with and manage your organizations.\n\nFor more information, see [Organization administration overview](https://docs.docker.com/admin/organization/).\n",
-      "x-displayName": "Organizations",
+      "summary": "Organizations",
+      "kind": "nav",
       "x-audience": "public"
     },
     {
       "name": "groups",
       "description": "The groups endpoints allow you to manage your organization\u0027s teams and their members.\n\nFor more information, see [Create and manage a team](https://docs.docker.com/admin/organization/manage/manage-a-team/).\n",
-      "x-displayName": "Groups (Teams)",
+      "summary": "Groups (Teams)",
+      "kind": "nav",
       "x-audience": "public"
     },
     {
       "name": "invites",
-      "description": "The invites endpoints allow you to manage invites for users to join your Docker organization.\n\nFor more information, see [Invite members](https://docs.docker.com/admin/organization/manage/members/#invite-members).\n",
-      "x-displayName": "Invites",
+      "description": "The invites endpoints allow you to manage invites for users to join your Docker organization.\n\nFor more information, see [Invite members](https://docs.docker.com/accounts/organization/manage/members/#invite-members).\n",
+      "summary": "Invites",
+      "kind": "nav",
       "x-audience": "public"
     },
     {
       "name": "scim",
       "description": "SCIM is a provisioning system that lets you manage users within your identity provider (IdP).\n\nFor more information, see [System for Cross-domain Identity management](https://docs.docker.com/security/for-admins/provisioning/scim/).\n",
-      "x-displayName": "SCIM",
+      "summary": "SCIM",
+      "kind": "nav",
       "x-audience": "public"
     },
     {
       "name": "org-access-tokens",
       "description": "The organization access token endpoints allow you to manage organization access tokens (OATs). See [Organization access tokens](https://docs.docker.com/security/for-admins/access-tokens/) for more information.\n\nOATs only authenticate requests to the modern namespace-scoped routes under \u0060/v2/namespaces/{namespace}/repositories/\u0060. Legacy repository paths are OAT unsupported, regardless of the token\u0027s scopes, and reject every OAT with \u0060403 token issued from organization access token is not allowed\u0060:\n\n- \u0060GET /v2/repositories/{namespace}/{repository}\u0060 \u2014 use [Get repository](#tag/repositories/operation/GetRepository) instead.\n- \u0060GET /v2/repositories/{namespace}\u0060 \u2014 use [List repositories](#tag/repositories/operation/listNamespaceRepositories) instead.\n- \u0060GET /v2/users/{username}/repositories\u0060 \u2014 use [List repositories](#tag/repositories/operation/listNamespaceRepositories) instead.\n",
-      "x-displayName": "Organization Access Tokens",
+      "summary": "Organization Access Tokens",
+      "kind": "nav",
       "x-audience": "public"
     }
   ]

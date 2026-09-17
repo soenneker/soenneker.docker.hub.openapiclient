@@ -16,7 +16,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The itemsPerPage property</summary>
         public int? ItemsPerPage { get; set; }
-        /// <summary>The resources property</summary>
+        /// <summary>The Resources property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUser>? Resources { get; set; }
@@ -62,7 +62,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "itemsPerPage", n => { ItemsPerPage = n.GetIntValue(); } },
-                { "resources", n => { Resources = n.GetCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUser>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUser.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Resources", n => { Resources = n.GetCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUser>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUser.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "schemas", n => { Schemas = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "startIndex", n => { StartIndex = n.GetIntValue(); } },
                 { "totalResults", n => { TotalResults = n.GetIntValue(); } },
@@ -76,7 +76,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("itemsPerPage", ItemsPerPage);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUser>("resources", Resources);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUser>("Resources", Resources);
             writer.WriteCollectionOfPrimitiveValues<string>("schemas", Schemas);
             writer.WriteIntValue("startIndex", StartIndex);
             writer.WriteIntValue("totalResults", TotalResults);

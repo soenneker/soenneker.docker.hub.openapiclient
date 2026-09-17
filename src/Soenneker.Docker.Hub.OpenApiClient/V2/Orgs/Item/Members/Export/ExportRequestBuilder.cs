@@ -34,15 +34,15 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Export
         {
         }
         /// <summary>
-        /// Export members of an organization as a CSV&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Export members of an organization as a CSVThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -55,15 +55,15 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Export
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Export members of an organization as a CSV&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Export members of an organization as a CSVThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

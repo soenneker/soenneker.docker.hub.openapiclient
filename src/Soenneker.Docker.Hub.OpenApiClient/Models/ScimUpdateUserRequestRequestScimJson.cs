@@ -12,17 +12,17 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
     public partial class ScimUpdateUserRequestRequestScimJson : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Whether the user is active. Defaults to false when omitted.</summary>
+        public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>If this is omitted from the request, it will default to false resulting in a deactivated user.</summary>
-        public bool? Enabled { get; set; }
-        /// <summary>If this is omitted from the request, the update will skip the update on it. We will only ever change the name, but not clear it.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUpdateUserRequestRequestScimJsonName? Name { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUserName? Name { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUpdateUserRequestRequestScimJsonName Name { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUserName Name { get; set; }
 #endif
         /// <summary>The schemas property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,13 +32,21 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public List<string> Schemas { get; set; }
 #endif
+        /// <summary>The user&apos;s email address. This must be reachable via email.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserName { get; set; }
+#nullable restore
+#else
+        public string UserName { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUpdateUserRequestRequestScimJson"/> and sets the default values.
         /// </summary>
         public ScimUpdateUserRequestRequestScimJson()
         {
             AdditionalData = new Dictionary<string, object>();
-            Enabled = false;
+            Active = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -58,9 +66,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "name", n => { Name = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUpdateUserRequestRequestScimJsonName>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUpdateUserRequestRequestScimJsonName.CreateFromDiscriminatorValue); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "name", n => { Name = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUserName>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUserName.CreateFromDiscriminatorValue); } },
                 { "schemas", n => { Schemas = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "userName", n => { UserName = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -70,9 +79,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUpdateUserRequestRequestScimJsonName>("name", Name);
+            writer.WriteBoolValue("active", Active);
+            writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUserName>("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("schemas", Schemas);
+            writer.WriteStringValue("userName", UserName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

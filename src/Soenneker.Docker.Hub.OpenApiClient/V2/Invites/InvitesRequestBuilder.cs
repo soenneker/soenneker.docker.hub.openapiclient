@@ -22,7 +22,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Invites
             get => new global::Soenneker.Docker.Hub.OpenApiClient.V2.Invites.Bulk.BulkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.invites.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">ID of the invitation.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Invites.Item.InvitesItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Invites.Item.InvitesItemRequestBuilder this[string position]
         {

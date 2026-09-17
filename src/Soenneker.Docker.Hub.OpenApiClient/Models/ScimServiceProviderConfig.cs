@@ -17,10 +17,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <summary>The authenticationSchemes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemes? AuthenticationSchemes { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem>? AuthenticationSchemes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemes AuthenticationSchemes { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem> AuthenticationSchemes { get; set; }
 #endif
         /// <summary>The bulk property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -111,7 +111,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "authenticationSchemes", n => { AuthenticationSchemes = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemes>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemes.CreateFromDiscriminatorValue); } },
+                { "authenticationSchemes", n => { AuthenticationSchemes = n.GetCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bulk", n => { Bulk = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk.CreateFromDiscriminatorValue); } },
                 { "changePassword", n => { ChangePassword = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword.CreateFromDiscriminatorValue); } },
                 { "documentationUri", n => { DocumentationUri = n.GetStringValue(); } },
@@ -129,7 +129,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemes>("authenticationSchemes", AuthenticationSchemes);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem>("authenticationSchemes", AuthenticationSchemes);
             writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk>("bulk", Bulk);
             writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword>("changePassword", ChangePassword);
             writer.WriteStringValue("documentationUri", DocumentationUri);

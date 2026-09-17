@@ -5,7 +5,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 {
     /// <summary>whether a tag has been pushed to or pulled in the past month</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum TagStatus
+    public enum TagTagStatus
     {
         [EnumMember(Value = "active")]
         #pragma warning disable CS1591

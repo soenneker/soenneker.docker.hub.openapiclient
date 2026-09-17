@@ -14,7 +14,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The resources property</summary>
+        /// <summary>The Resources property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimResourceType>? Resources { get; set; }
@@ -57,7 +57,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "resources", n => { Resources = n.GetCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimResourceType>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimResourceType.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Resources", n => { Resources = n.GetCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimResourceType>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimResourceType.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "schemas", n => { Schemas = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "totalResults", n => { TotalResults = n.GetIntValue(); } },
             };
@@ -69,7 +69,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimResourceType>("resources", Resources);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimResourceType>("Resources", Resources);
             writer.WriteCollectionOfPrimitiveValues<string>("schemas", Schemas);
             writer.WriteIntValue("totalResults", TotalResults);
             writer.WriteAdditionalData(AdditionalData);

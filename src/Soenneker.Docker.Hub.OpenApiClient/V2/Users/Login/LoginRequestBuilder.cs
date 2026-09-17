@@ -34,7 +34,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Users.Login
         {
         }
         /// <summary>
-        /// Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.The returned token is used in the HTTP Authorization header like `Authorization: Bearer {TOKEN}`._**As of September 16, 2024, this route requires a personal access token (PAT) instead of a password if your organization has SSO enforced.**_&lt;div style=&quot;background-color:rgb(255, 165, 0, .25); padding:5px; border-radius:4px&quot;&gt;  &lt;strong&gt;Deprecated&lt;/strong&gt;: Use [&lt;a href=&quot;#tag/authentication-api/operation/AuthCreateAccessToken&quot;&gt;Create access token&lt;/a&gt;] instead.&lt;/div&gt;
+        /// Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.The returned token is used in the HTTP Authorization header like `Authorization: Bearer {TOKEN}`._**As of September 16, 2024, this route requires a personal access token (PAT) instead of a password if your organization has SSO enforced.**_  Deprecated: Use [Create access token](#tag/authentication-api/operation/AuthCreateAccessToken) instead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsersLoginSuccessResponse"/></returns>
         /// <param name="body">User login details</param>
@@ -60,7 +60,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Users.Login
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsersLoginSuccessResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsersLoginSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.The returned token is used in the HTTP Authorization header like `Authorization: Bearer {TOKEN}`._**As of September 16, 2024, this route requires a personal access token (PAT) instead of a password if your organization has SSO enforced.**_&lt;div style=&quot;background-color:rgb(255, 165, 0, .25); padding:5px; border-radius:4px&quot;&gt;  &lt;strong&gt;Deprecated&lt;/strong&gt;: Use [&lt;a href=&quot;#tag/authentication-api/operation/AuthCreateAccessToken&quot;&gt;Create access token&lt;/a&gt;] instead.&lt;/div&gt;
+        /// Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.The returned token is used in the HTTP Authorization header like `Authorization: Bearer {TOKEN}`._**As of September 16, 2024, this route requires a personal access token (PAT) instead of a password if your organization has SSO enforced.**_  Deprecated: Use [Create access token](#tag/authentication-api/operation/AuthCreateAccessToken) instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">User login details</param>

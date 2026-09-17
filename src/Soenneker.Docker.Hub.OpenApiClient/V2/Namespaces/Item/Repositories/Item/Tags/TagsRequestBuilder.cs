@@ -19,7 +19,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
     public partial class TagsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.namespaces.item.repositories.item.tags.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">Name of the image tag.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Item.Tags.Item.WithTagItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Item.Tags.Item.WithTagItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
         {
         }
         /// <summary>
-        /// Returns the list of tags for the specified repository.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Returns the list of tags for the specified repository.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.PaginatedTags"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -72,7 +72,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.PaginatedTags>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.PaginatedTags.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Checks whether the repository has any tags.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Checks whether the repository has any tags.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -97,7 +97,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns the list of tags for the specified repository.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Returns the list of tags for the specified repository.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -116,7 +116,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return requestInfo;
         }
         /// <summary>
-        /// Checks whether the repository has any tags.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Checks whether the repository has any tags.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -144,7 +144,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             return new global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Item.Tags.TagsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns the list of tags for the specified repository.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Returns the list of tags for the specified repository.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TagsRequestBuilderGetQueryParameters 

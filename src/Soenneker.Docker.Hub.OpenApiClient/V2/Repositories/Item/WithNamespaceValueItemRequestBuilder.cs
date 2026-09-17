@@ -16,7 +16,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Repositories.Item
     public partial class WithNamespaceValueItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.repositories.item.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">Name of the repository within the namespace.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Repositories.Item.Item.WithRepositoryItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Repositories.Item.Item.WithRepositoryItemRequestBuilder this[string position]
         {

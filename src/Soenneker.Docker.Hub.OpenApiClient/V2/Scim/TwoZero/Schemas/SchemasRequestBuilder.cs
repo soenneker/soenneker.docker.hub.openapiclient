@@ -19,7 +19,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.Schemas
     public partial class SchemasRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.scim.TwoZero.Schemas.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">URN identifying the SCIM schema.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.Schemas.Item.SchemasItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.Schemas.Item.SchemasItemRequestBuilder this[string position]
         {

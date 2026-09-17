@@ -23,10 +23,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <summary>The images property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.Image? Images { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image>? Images { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.Image Images { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image> Images { get; set; }
 #endif
         /// <summary>datetime of last update</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,8 +56,6 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #endif
         /// <summary>repository ID</summary>
         public int? Repository { get; set; }
-        /// <summary>whether a tag has been pushed to or pulled in the past month</summary>
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.TagStatus? Status { get; set; }
         /// <summary>datetime of last pull</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,14 +72,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public string TagLastPushed { get; set; }
 #endif
-        /// <summary>repository API version</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? V2 { get; set; }
-#nullable restore
-#else
-        public string V2 { get; set; }
-#endif
+        /// <summary>whether a tag has been pushed to or pulled in the past month</summary>
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.TagTagStatus? TagStatus { get; set; }
+        /// <summary>Whether the tag uses the Registry V2 format.</summary>
+        public bool? V2 { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Tag"/> and sets the default values.
         /// </summary>
@@ -110,16 +104,16 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
                 { "creator", n => { Creator = n.GetIntValue(); } },
                 { "full_size", n => { FullSize = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "images", n => { Images = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image>(global::Soenneker.Docker.Hub.OpenApiClient.Models.Image.CreateFromDiscriminatorValue); } },
+                { "images", n => { Images = n.GetCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image>(global::Soenneker.Docker.Hub.OpenApiClient.Models.Image.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "last_updated", n => { LastUpdated = n.GetStringValue(); } },
                 { "last_updater", n => { LastUpdater = n.GetIntValue(); } },
                 { "last_updater_username", n => { LastUpdaterUsername = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.TagStatus>(); } },
                 { "tag_last_pulled", n => { TagLastPulled = n.GetStringValue(); } },
                 { "tag_last_pushed", n => { TagLastPushed = n.GetStringValue(); } },
-                { "v2", n => { V2 = n.GetStringValue(); } },
+                { "tag_status", n => { TagStatus = n.GetEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.TagTagStatus>(); } },
+                { "v2", n => { V2 = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -132,16 +126,16 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             writer.WriteIntValue("creator", Creator);
             writer.WriteIntValue("full_size", FullSize);
             writer.WriteIntValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image>("images", Images);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image>("images", Images);
             writer.WriteStringValue("last_updated", LastUpdated);
             writer.WriteIntValue("last_updater", LastUpdater);
             writer.WriteStringValue("last_updater_username", LastUpdaterUsername);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("repository", Repository);
-            writer.WriteEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.TagStatus>("status", Status);
             writer.WriteStringValue("tag_last_pulled", TagLastPulled);
             writer.WriteStringValue("tag_last_pushed", TagLastPushed);
-            writer.WriteStringValue("v2", V2);
+            writer.WriteEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.TagTagStatus>("tag_status", TagStatus);
+            writer.WriteBoolValue("v2", V2);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

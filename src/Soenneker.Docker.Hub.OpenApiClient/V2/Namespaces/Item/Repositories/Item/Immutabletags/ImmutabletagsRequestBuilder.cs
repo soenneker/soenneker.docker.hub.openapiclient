@@ -40,16 +40,16 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
         {
         }
         /// <summary>
-        /// Updates the immutable tags configuration for this repository.**Only users with administrative privileges for the repository can modify these settings.**&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Updates the immutable tags configuration for this repository.**Only users with administrative privileges for the repository can modify these settings.**This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo?> PatchAsync(global::Soenneker.Docker.Hub.OpenApiClient.Models.UpdateRepositoryImmutableTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -63,15 +63,15 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates the immutable tags configuration for this repository.**Only users with administrative privileges for the repository can modify these settings.**&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Updates the immutable tags configuration for this repository.**Only users with administrative privileges for the repository can modify these settings.**This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -19,7 +19,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.ResourceTypes
     public partial class ResourceTypesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.scim.TwoZero.ResourceTypes.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">Name of the SCIM resource type.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.ResourceTypes.Item.WithNameItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.ResourceTypes.Item.WithNameItemRequestBuilder this[string position]
         {

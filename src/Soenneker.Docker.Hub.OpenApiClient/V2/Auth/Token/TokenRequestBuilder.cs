@@ -40,7 +40,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auth.Token
         /// <param name="body">Request to create access token</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Docker.Hub.OpenApiClient.Models.AuthCreateTokenResponse?> PostAsync(global::Soenneker.Docker.Hub.OpenApiClient.Models.AuthCreateAccessTokenRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,7 +54,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auth.Token
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.AuthCreateTokenResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.AuthCreateTokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

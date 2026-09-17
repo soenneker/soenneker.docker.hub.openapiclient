@@ -19,7 +19,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
     public partial class RepositoriesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.namespaces.item.repositories.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">Name of the repository within the namespace.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Item.WithRepositoryItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Item.WithRepositoryItemRequestBuilder this[string position]
         {
@@ -47,15 +47,15 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
         {
         }
         /// <summary>
-        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.
+        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ListRepositoriesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Docker.Hub.OpenApiClient.Models.ListRepositoriesResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.RepositoriesRequestBuilder.RepositoriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -68,25 +68,25 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.ListRepositoriesResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.ListRepositoriesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a new repository within the specified namespace. The repository will be createdwith the provided metadata including name, description, and privacy settings.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Creates a new repository within the specified namespace. The repository will be createdwith the provided metadata including name, description, and privacy settings.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo?> PostAsync(global::Soenneker.Docker.Hub.OpenApiClient.Models.RepoCreationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -100,16 +100,16 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.
+        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -128,7 +128,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             return requestInfo;
         }
         /// <summary>
-        /// Creates a new repository within the specified namespace. The repository will be createdwith the provided metadata including name, description, and privacy settings.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Creates a new repository within the specified namespace. The repository will be createdwith the provided metadata including name, description, and privacy settings.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -159,7 +159,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             return new global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.RepositoriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.
+        /// Returns a list of repositories within the specified namespace (organization or user).Public repositories are accessible to everyone, while private repositories require appropriate authentication and permissions.**OAT listing behavior**: an OAT with the `scope-repository-list` scope sees all repositories including private ones. An OAT without that scope only sees public repositories. This filtering is silent: the response is a normal `200` with no indication that private repositories were withheld.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RepositoriesRequestBuilderGetQueryParameters 

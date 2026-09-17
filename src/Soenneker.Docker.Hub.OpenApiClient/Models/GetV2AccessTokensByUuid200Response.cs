@@ -74,7 +74,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public List<string> Scopes { get; set; }
 #endif
-        /// <summary>The token property</summary>
+        /// <summary>Token value returned on creation. Later responses redact the value as ***.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

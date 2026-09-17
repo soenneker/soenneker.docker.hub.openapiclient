@@ -34,14 +34,14 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Item
         {
         }
         /// <summary>
-        /// Removes the member from the org, ie. all groups in the org, unless they&apos;re the last owner&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Removes the member from the org, ie. all groups in the org, unless they&apos;re the last ownerThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,24 +54,24 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Item
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates the role of a member in the organization.***Only users in the &quot;owners&quot; group of the organization can use this endpoint.***&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Updates the role of a member in the organization.***Only users in the &quot;owners&quot; group of the organization can use this endpoint.***This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMember"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMember?> PutAsync(global::Soenneker.Docker.Hub.OpenApiClient.Models.PutV2OrgsByOrgNameMembersByUsernameRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -85,15 +85,15 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Item
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMember>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMember.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Removes the member from the org, ie. all groups in the org, unless they&apos;re the last owner&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Removes the member from the org, ie. all groups in the org, unless they&apos;re the last ownerThis operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -112,7 +112,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Item
             return requestInfo;
         }
         /// <summary>
-        /// Updates the role of a member in the organization.***Only users in the &quot;owners&quot; group of the organization can use this endpoint.***&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Updates the role of a member in the organization.***Only users in the &quot;owners&quot; group of the organization can use this endpoint.***This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

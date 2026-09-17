@@ -2,54 +2,66 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
 using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.Models
 {
-    /// <summary>
-    /// Used to error if input validation fails.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ValueError : ApiException, IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class ScimServiceProviderConfigAuthenticationSchemesItem : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The fields property</summary>
+        /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Fields { get; set; }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public List<string> Fields { get; set; }
+        public string Description { get; set; }
 #endif
-        /// <summary>The primary error message.</summary>
-        public override string Message { get => base.Message; }
-        /// <summary>The text property</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Text { get; set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Text { get; set; }
+        public string Name { get; set; }
+#endif
+        /// <summary>The specUri property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SpecUri { get; set; }
+#nullable restore
+#else
+        public string SpecUri { get; set; }
+#endif
+        /// <summary>The type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem"/> and sets the default values.
         /// </summary>
-        public ValueError()
+        public ScimServiceProviderConfigAuthenticationSchemesItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError();
+            return new global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,8 +71,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "fields", n => { Fields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "text", n => { Text = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "specUri", n => { SpecUri = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -70,8 +84,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("fields", Fields);
-            writer.WriteStringValue("text", Text);
+            writer.WriteStringValue("description", Description);
+            writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("specUri", SpecUri);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

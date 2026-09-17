@@ -80,7 +80,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #endif
         /// <summary>If the organization has verified domains, members that have email addresses outside of those domains will be flagged as guests.</summary>
         public bool? IsGuest { get; set; }
-        /// <summary>Last desktop version the user used. To access this field, you must have insights visible for your organization. See [Insights](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).</summary>
+        /// <summary>Last desktop version the user used. To access this field, you must have insights visible for your organization. See[Insights](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastDesktopVersion { get; set; }
@@ -88,9 +88,9 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public string LastDesktopVersion { get; set; }
 #endif
-        /// <summary>Last time the user logged in. To access this field, you must have insights visible for your organization. See [Insights](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).</summary>
+        /// <summary>Last time the user logged in. To access this field, you must have insights visible for your organization. See[Insights](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).</summary>
         public DateTimeOffset? LastLoggedInAt { get; set; }
-        /// <summary>Last time the user was seen. To access this field, you must have insights visible for your organization. See [Insights](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).</summary>
+        /// <summary>Last time the user was seen. To access this field, you must have insights visible for your organization. See[Insights](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).</summary>
         public DateTimeOffset? LastSeenAt { get; set; }
         /// <summary>The location property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

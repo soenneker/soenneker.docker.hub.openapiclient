@@ -53,37 +53,36 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members
         {
         }
         /// <summary>
-        /// Returns a list of members for an organization._The following fields are only visible to orgs with insights enabled._- `last_logged_in_at`- `last_seen_at`- `last_desktop_version`To make visible, please see [View Insights for organization users](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Returns a list of members for an organization._The following fields are only visible to orgs with insights enabled._- `last_logged_in_at`- `last_seen_at`- `last_desktop_version`To make visible, please see [View Insights for organization users](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
-        /// <returns>A List&lt;global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated&gt;</returns>
+        /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated>?> GetAsync(Action<RequestConfiguration<global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.MembersRequestBuilder.MembersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated?> GetAsync(Action<RequestConfiguration<global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.MembersRequestBuilder.MembersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated>> GetAsync(Action<RequestConfiguration<global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.MembersRequestBuilder.MembersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated> GetAsync(Action<RequestConfiguration<global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.MembersRequestBuilder.MembersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error2.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
-            return collectionResult?.AsList();
+            return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.OrgMemberPaginated.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a list of members for an organization._The following fields are only visible to orgs with insights enabled._- `last_logged_in_at`- `last_seen_at`- `last_desktop_version`To make visible, please see [View Insights for organization users](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Returns a list of members for an organization._The following fields are only visible to orgs with insights enabled._- `last_logged_in_at`- `last_seen_at`- `last_desktop_version`To make visible, please see [View Insights for organization users](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -111,7 +110,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members
             return new global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.MembersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns a list of members for an organization._The following fields are only visible to orgs with insights enabled._- `last_logged_in_at`- `last_seen_at`- `last_desktop_version`To make visible, please see [View Insights for organization users](https://docs.docker.com/admin/insights/#view-insights-for-organization-users).&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// Returns a list of members for an organization._The following fields are only visible to orgs with insights enabled._- `last_logged_in_at`- `last_seen_at`- `last_desktop_version`To make visible, please see [View Insights for organization users](https://docs.docker.com/accounts/organization/insights/#view-insights-for-organization-users).This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MembersRequestBuilderGetQueryParameters 
@@ -125,17 +124,15 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members
             /// <summary>Number of items (rows) per page.</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
-            #pragma warning disable CS1591
+            /// <summary>Filter members by their organization role.</summary>
             [QueryParameter("role")]
             public global::Soenneker.Docker.Hub.OpenApiClient.Models.Role? Role { get; set; }
-            #pragma warning restore CS1591
             /// <summary>Search term.</summary>
             [QueryParameter("search")]
             public int? Search { get; set; }
-            #pragma warning disable CS1591
+            /// <summary>Filter members by membership type.</summary>
             [QueryParameter("type")]
             public global::Soenneker.Docker.Hub.OpenApiClient.Models.TypeValue? Type { get; set; }
-            #pragma warning restore CS1591
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens
     public partial class AccessTokensRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.accessTokens.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">UUID of the personal access token.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens.Item.WithUuItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens.Item.WithUuItemRequestBuilder this[string position]
         {
@@ -52,7 +52,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.GetAccessTokensResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,7 +66,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.GetAccessTokensResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.GetAccessTokensResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -78,7 +78,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,7 +93,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.CreateAccessTokensResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.CreateAccessTokensResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -154,14 +154,12 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccessTokensRequestBuilderGetQueryParameters 
         {
-            #pragma warning disable CS1591
+            /// <summary>Page number to return.</summary>
             [QueryParameter("page")]
             public double? Page { get; set; }
-            #pragma warning restore CS1591
-            #pragma warning disable CS1591
+            /// <summary>Number of results per page.</summary>
             [QueryParameter("page_size")]
             public double? PageSize { get; set; }
-            #pragma warning restore CS1591
         }
     }
 }

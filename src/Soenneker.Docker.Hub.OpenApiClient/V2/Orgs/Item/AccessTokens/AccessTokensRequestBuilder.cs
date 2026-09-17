@@ -80,7 +80,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
@@ -97,7 +97,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.ValueError.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
@@ -160,14 +160,12 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccessTokensRequestBuilderGetQueryParameters 
         {
-            #pragma warning disable CS1591
+            /// <summary>Page number to return.</summary>
             [QueryParameter("page")]
             public double? Page { get; set; }
-            #pragma warning restore CS1591
-            #pragma warning disable CS1591
+            /// <summary>Number of results per page.</summary>
             [QueryParameter("page_size")]
             public double? PageSize { get; set; }
-            #pragma warning restore CS1591
         }
     }
 }

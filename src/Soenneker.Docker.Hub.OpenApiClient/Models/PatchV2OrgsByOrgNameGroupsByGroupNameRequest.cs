@@ -30,7 +30,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Role assigned to the team. Valid values are the core roles`owner`, `editor`, and `member`, or the name of anexisting [custom role](https://docs.docker.com/enterprise/security/roles-and-permissions/custom-roles/manage/).Use the custom role&apos;s name identifier, not its label or UUID.</summary>
+        /// <summary>Role assigned to the team. Valid values are the core roles`owner`, `editor`, and `member`, or the name of anexisting [custom role](https://docs.docker.com/security/roles-and-permissions/custom-roles/manage/).Use the custom role&apos;s name identifier, not its label or UUID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Role { get; set; }

@@ -40,14 +40,14 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item
         {
         }
         /// <summary>
-        /// List audit log events for a given namespace.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// List audit log events for a given namespace.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.GetAuditLogsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.AuditLogsListAuditLogs429ResponseSchema">When receiving a 429 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.AuditLogsListAuditLogs500ResponseSchema">When receiving a 500 status code</exception>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RpcStatus">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Docker.Hub.OpenApiClient.Models.GetAuditLogsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item.WithAccountItemRequestBuilder.WithAccountItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -61,13 +61,13 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "429", global::Soenneker.Docker.Hub.OpenApiClient.Models.AuditLogsListAuditLogs429ResponseSchema.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Docker.Hub.OpenApiClient.Models.AuditLogsListAuditLogs500ResponseSchema.CreateFromDiscriminatorValue },
-                { "XXX", global::Soenneker.Docker.Hub.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "XXX", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.GetAuditLogsResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.GetAuditLogsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List audit log events for a given namespace.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// List audit log events for a given namespace.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -95,7 +95,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item
             return new global::Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item.WithAccountItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List audit log events for a given namespace.&lt;span class=&quot;oat&quot;&gt;&lt;/span&gt;
+        /// List audit log events for a given namespace.This operation accepts bearer tokens issued from organization access tokens (OATs). The token must have the required resource access and scopes.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithAccountItemRequestBuilderGetQueryParameters 
