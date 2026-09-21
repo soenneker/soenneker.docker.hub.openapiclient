@@ -89,7 +89,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <summary>Human-readable repository status</summary>
         public global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription? StatusDescription { get; set; }
         /// <summary>Storage size in bytes used by this repository</summary>
-        public int? StorageSize { get; set; }
+        public long? StorageSize { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntry"/> and sets the default values.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
                 { "star_count", n => { StarCount = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetIntValue(); } },
                 { "status_description", n => { StatusDescription = n.GetEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription>(); } },
-                { "storage_size", n => { StorageSize = n.GetIntValue(); } },
+                { "storage_size", n => { StorageSize = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -157,7 +157,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             writer.WriteIntValue("star_count", StarCount);
             writer.WriteIntValue("status", Status);
             writer.WriteEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription>("status_description", StatusDescription);
-            writer.WriteIntValue("storage_size", StorageSize);
+            writer.WriteLongValue("storage_size", StorageSize);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

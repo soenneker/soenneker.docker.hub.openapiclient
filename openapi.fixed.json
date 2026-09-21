@@ -13,7 +13,8 @@
   "servers": [
     {
       "url": "https://hub.docker.com",
-      "description": "Docker HUB API"
+      "description": "Docker HUB API",
+      "x-audience": "public"
     }
   ],
   "paths": {
@@ -2515,7 +2516,8 @@
         {
           "$ref": "#/components/parameters/username"
         }
-      ]
+      ],
+      "x-audience": "public"
     },
     "/v2/orgs/{orgName}/invites": {
       "get": {
@@ -2565,7 +2567,8 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "x-audience": "public"
     },
     "/v2/orgs/{orgName}/groups": {
       "get": {
@@ -2695,7 +2698,8 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "x-audience": "public"
     },
     "/v2/orgs/{orgName}/groups/{groupName}": {
       "get": {
@@ -2929,7 +2933,8 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "x-audience": "public"
     },
     "/v2/orgs/{orgName}/groups/{groupName}/members": {
       "get": {
@@ -3057,7 +3062,8 @@
             "bearerAuth": []
           }
         ]
-      }
+      },
+      "x-audience": "public"
     },
     "/v2/orgs/{orgName}/groups/{groupName}/members/{username}": {
       "delete": {
@@ -3112,7 +3118,8 @@
         {
           "$ref": "#/components/parameters/username"
         }
-      ]
+      ],
+      "x-audience": "public"
     },
     "/v2/invites/{id}": {
       "delete": {
@@ -3155,7 +3162,8 @@
             "type": "string"
           }
         }
-      ]
+      ],
+      "x-audience": "public"
     },
     "/v2/invites/{id}/resend": {
       "patch": {
@@ -3198,7 +3206,8 @@
             "type": "string"
           }
         }
-      ]
+      ],
+      "x-audience": "public"
     },
     "/v2/invites/bulk": {
       "post": {
@@ -3241,7 +3250,8 @@
         {
           "$ref": "#/components/parameters/bulk_invite"
         }
-      ]
+      ],
+      "x-audience": "public"
     },
     "/v2/scim/2.0/ServiceProviderConfig": {
       "get": {
@@ -3270,7 +3280,8 @@
             "scimToken": []
           }
         ]
-      }
+      },
+      "x-audience": "public"
     },
     "/v2/scim/2.0/ResourceTypes": {
       "get": {
@@ -3299,7 +3310,8 @@
             "scimToken": []
           }
         ]
-      }
+      },
+      "x-audience": "public"
     },
     "/v2/scim/2.0/ResourceTypes/{name}": {
       "get": {
@@ -3344,7 +3356,8 @@
             "scimToken": []
           }
         ]
-      }
+      },
+      "x-audience": "public"
     },
     "/v2/scim/2.0/Schemas": {
       "get": {
@@ -3373,7 +3386,8 @@
             "scimToken": []
           }
         ]
-      }
+      },
+      "x-audience": "public"
     },
     "/v2/scim/2.0/Schemas/{id}": {
       "get": {
@@ -3418,7 +3432,8 @@
             "scimToken": []
           }
         ]
-      }
+      },
+      "x-audience": "public"
     },
     "/v2/scim/2.0/Users": {
       "get": {
@@ -3558,7 +3573,8 @@
             "scimToken": []
           }
         ]
-      }
+      },
+      "x-audience": "public"
     },
     "/v2/scim/2.0/Users/{id}": {
       "get": {
@@ -3650,7 +3666,8 @@
         {
           "$ref": "#/components/parameters/scim_user_id"
         }
-      ]
+      ],
+      "x-audience": "public"
     }
   },
   "components": {
@@ -4160,6 +4177,7 @@
             "minimum": 0,
             "type": "integer",
             "description": "Storage size in bytes used by this repository",
+            "format": "int64",
             "example": 232719127
           }
         }
@@ -8544,6 +8562,33 @@
       "summary": "Organization Access Tokens",
       "kind": "nav",
       "x-audience": "public"
+    }
+  ],
+  "x-tagGroups": [
+    {
+      "name": "General",
+      "tags": [
+        "changelog",
+        "resources",
+        "rate-limiting",
+        "authentication"
+      ]
+    },
+    {
+      "name": "API",
+      "tags": [
+        "authentication-api",
+        "access-tokens",
+        "images",
+        "audit-logs",
+        "org-settings",
+        "repositories",
+        "scim",
+        "orgs",
+        "org-access-tokens",
+        "groups",
+        "invites"
+      ]
     }
   ]
 }
