@@ -5698,47 +5698,10 @@
           }
         }
       },
-      "ScimUpdateUserRequestRequestScimJson": {
-        "examples": [
-          {
-            "schemas": [
-              "urn:ietf:params:scim:schemas:core:2.0:User"
-            ],
-            "userName": "jon.snow@docker.com",
-            "name": {
-              "givenName": "Jon",
-              "familyName": "Snow"
-            },
-            "active": true
-          }
-        ],
-        "required": [
-          "schemas",
-          "userName"
-        ],
-        "type": "object",
-        "properties": {
-          "schemas": {
-            "type": "array",
-            "items": {
-              "minItems": 1,
-              "type": "string",
-              "example": "urn:ietf:params:scim:schemas:core:2.0:User"
-            }
-          },
-          "name": {
-            "$ref": "#/components/schemas/ScimUserName"
-          },
-          "userName": {
-            "type": "string",
-            "description": "The user\u0027s email address. This must be reachable via email."
-          },
-          "active": {
-            "type": "boolean",
-            "description": "Whether the user is active. Defaults to false when omitted.",
-            "default": false
-          }
-        }
+      "ScimUserUsername": {
+        "type": "string",
+        "description": "The user\u0027s email address. This must be reachable via email.",
+        "example": "jon.snow@docker.com"
       },
       "ScimUserName": {
         "type": "object",
@@ -5753,41 +5716,10 @@
           }
         }
       },
-      "ScimCreateUserRequestRequestScimJson": {
-        "examples": [
-          {
-            "schemas": [
-              "urn:ietf:params:scim:schemas:core:2.0:User"
-            ],
-            "userName": "jon.snow@docker.com",
-            "name": {
-              "givenName": "Jon",
-              "familyName": "Snow"
-            }
-          }
-        ],
-        "required": [
-          "schemas",
-          "userName"
-        ],
-        "type": "object",
-        "properties": {
-          "schemas": {
-            "type": "array",
-            "items": {
-              "minItems": 1,
-              "type": "string",
-              "example": "urn:ietf:params:scim:schemas:core:2.0:User"
-            }
-          },
-          "userName": {
-            "type": "string",
-            "description": "The user\u0027s email address. This must be reachable via email."
-          },
-          "name": {
-            "$ref": "#/components/schemas/ScimUserName"
-          }
-        }
+      "ScimUserDisplayName": {
+        "type": "string",
+        "description": "The username in Docker. Also known as the \u0022Docker ID\u0022.",
+        "example": "jonsnow"
       },
       "ScimUserSchemas": {
         "type": "array",
@@ -5797,55 +5729,10 @@
           "example": "urn:ietf:params:scim:schemas:core:2.0:User"
         }
       },
-      "BulkInviteRequestRequest": {
-        "examples": [
-          {
-            "org": "docker",
-            "team": "owners",
-            "role": "member",
-            "invitees": [
-              "invitee1DockerId",
-              "invitee2@docker.com",
-              "invitee3@docker.com"
-            ],
-            "dry_run": true
-          }
-        ],
-        "required": [
-          "org",
-          "invitees"
-        ],
-        "type": "object",
-        "properties": {
-          "org": {
-            "type": "string",
-            "description": "organization name",
-            "example": "docker"
-          },
-          "team": {
-            "type": "string",
-            "description": "team name",
-            "example": "owners"
-          },
-          "role": {
-            "type": "string",
-            "description": "role for invitees",
-            "example": "member"
-          },
-          "invitees": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "description": "invitee email or Docker ID"
-            },
-            "description": "list of invitees emails or Docker Ids"
-          },
-          "dry_run": {
-            "type": "boolean",
-            "description": "Optional, run through validation but don\u0027t actually change data.",
-            "example": true
-          }
-        }
+      "ScimUserId": {
+        "type": "string",
+        "description": "The unique identifier for the user. A v4 UUID.",
+        "example": "d80f7c79-7730-49d8-9a41-7c42fb622d9c"
       },
       "ScimUser": {
         "examples": [
@@ -6341,6 +6228,134 @@
               "$ref": "#/components/schemas/OrgAccessTokenResource"
             },
             "description": "Resources this token has access to"
+          }
+        }
+      },
+      "BulkInviteRequestRequest": {
+        "examples": [
+          {
+            "org": "docker",
+            "team": "owners",
+            "role": "member",
+            "invitees": [
+              "invitee1DockerId",
+              "invitee2@docker.com",
+              "invitee3@docker.com"
+            ],
+            "dry_run": true
+          }
+        ],
+        "required": [
+          "org",
+          "invitees"
+        ],
+        "type": "object",
+        "properties": {
+          "org": {
+            "type": "string",
+            "description": "organization name",
+            "example": "docker"
+          },
+          "team": {
+            "type": "string",
+            "description": "team name",
+            "example": "owners"
+          },
+          "role": {
+            "type": "string",
+            "description": "role for invitees",
+            "example": "member"
+          },
+          "invitees": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "invitee email or Docker ID"
+            },
+            "description": "list of invitees emails or Docker Ids"
+          },
+          "dry_run": {
+            "type": "boolean",
+            "description": "Optional, run through validation but don\u0027t actually change data.",
+            "example": true
+          }
+        }
+      },
+      "ScimCreateUserRequestRequestScimJson": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:core:2.0:User"
+            ],
+            "userName": "jon.snow@docker.com",
+            "name": {
+              "givenName": "Jon",
+              "familyName": "Snow"
+            }
+          }
+        ],
+        "required": [
+          "schemas",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "items": {
+              "minItems": 1,
+              "type": "string",
+              "example": "urn:ietf:params:scim:schemas:core:2.0:User"
+            }
+          },
+          "userName": {
+            "type": "string",
+            "description": "The user\u0027s email address. This must be reachable via email."
+          },
+          "name": {
+            "$ref": "#/components/schemas/ScimUserName"
+          }
+        }
+      },
+      "ScimUpdateUserRequestRequestScimJson": {
+        "examples": [
+          {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:core:2.0:User"
+            ],
+            "userName": "jon.snow@docker.com",
+            "name": {
+              "givenName": "Jon",
+              "familyName": "Snow"
+            },
+            "active": true
+          }
+        ],
+        "required": [
+          "schemas",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "items": {
+              "minItems": 1,
+              "type": "string",
+              "example": "urn:ietf:params:scim:schemas:core:2.0:User"
+            }
+          },
+          "name": {
+            "$ref": "#/components/schemas/ScimUserName"
+          },
+          "userName": {
+            "type": "string",
+            "description": "The user\u0027s email address. This must be reachable via email."
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the user is active. Defaults to false when omitted.",
+            "default": false
           }
         }
       },
