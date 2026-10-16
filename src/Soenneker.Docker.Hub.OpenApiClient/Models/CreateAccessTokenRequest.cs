@@ -16,7 +16,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional expiration date for the token.If omitted, the token will remain valid indefinitely.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
-        /// <summary>Valid scopes: &quot;repo:admin&quot;, &quot;repo:write&quot;, &quot;repo:read&quot;, &quot;repo:public_read&quot;</summary>
+        /// <summary>Valid scopes: &quot;repo:admin&quot;, &quot;repo:write&quot;, &quot;repo:read&quot;, &quot;repo:public_read&quot;, &quot;sandbox:use&quot;. Include one repository scope, &quot;sandbox:use&quot;, or both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Scopes { get; set; }

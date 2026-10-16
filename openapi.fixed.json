@@ -4535,7 +4535,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Valid scopes: \u0022repo:admin\u0022, \u0022repo:write\u0022, \u0022repo:read\u0022, \u0022repo:public_read\u0022\n"
+            "description": "Valid scopes: \u0022repo:admin\u0022, \u0022repo:write\u0022, \u0022repo:read\u0022, \u0022repo:public_read\u0022, \u0022sandbox:use\u0022. Include one repository scope, \u0022sandbox:use\u0022, or both.\n"
           },
           "expires_at": {
             "type": "string",
@@ -8521,7 +8521,7 @@
     },
     {
       "name": "access-tokens",
-      "description": "The Personal Access Token endpoints lets you manage personal access tokens. For more information, see [Access Tokens](https://docs.docker.com/security/access-tokens/personal-access-tokens/).\n\nYou can use a personal access token instead of a password in the [Docker CLI](https://docs.docker.com/reference/cli/docker/) or in the [Create an authentication token](#operation/PostUsersLogin) route to obtain a bearer token.\n\n### Scopes\n\nFor each scope grouping (in this case \u0022repo\u0022), you only need to define 1 scope as any lower scopes are assumed.\nFor example: If you define \u0060repo:write\u0060, the API assumes the scope of both \u0060repo:read\u0060 *and* \u0060repo:public_read\u0060 as well.\nIf you were to define both \u0060repo:write\u0060 *and* \u0060repo:read\u0060, then \u0060repo:read\u0060 is assumed by \u0060repo:write\u0060 and ignored.\n\n***Treat your personal access token like your password and keep it secret. You cannot retrieve your token after it is generated.***\n",
+      "description": "The Personal Access Token endpoints lets you manage personal access tokens. For more information, see [Access Tokens](https://docs.docker.com/security/access-tokens/personal-access-tokens/).\n\nYou can use a personal access token instead of a password in the [Docker CLI](https://docs.docker.com/reference/cli/docker/) or in the [Create an authentication token](#operation/PostUsersLogin) route to obtain a bearer token.\n\n### Scopes\n\nFor each scope grouping (in this case \u0022repo\u0022), you only need to define 1 scope as any lower scopes are assumed.\nFor example: If you define \u0060repo:write\u0060, the API assumes the scope of both \u0060repo:read\u0060 *and* \u0060repo:public_read\u0060 as well.\nIf you were to define both \u0060repo:write\u0060 *and* \u0060repo:read\u0060, then \u0060repo:read\u0060 is assumed by \u0060repo:write\u0060 and ignored.\n\n\u0060sandbox:use\u0060 is a separate grouping for Cloud Sandboxes. A repository scope does not include it, and it does not include a repository scope. A request can include \u0060sandbox:use\u0060 on its own or with one repository scope.\n\n***Treat your personal access token like your password and keep it secret. You cannot retrieve your token after it is generated.***\n",
       "summary": "Personal Access Tokens",
       "kind": "nav"
     },
