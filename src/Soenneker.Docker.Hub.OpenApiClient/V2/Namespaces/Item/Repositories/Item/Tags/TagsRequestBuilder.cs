@@ -148,10 +148,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories.Ite
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TagsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Page number to get. Defaults to 1.</summary>
+            /// <summary>Page number (starts on 1).</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
-            /// <summary>Number of items to get per page. Defaults to 10. Max of 100.</summary>
+            /// <summary>Number of items (rows) per page.</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
         }

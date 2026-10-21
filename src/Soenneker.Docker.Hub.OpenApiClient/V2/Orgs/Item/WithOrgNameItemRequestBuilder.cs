@@ -14,10 +14,10 @@ using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\orgs\{name-id}
+    /// Builds and executes requests for operations under \v2\orgs\{orgName}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class NameItemRequestBuilder : BaseRequestBuilder
+    public partial class WithOrgNameItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The accessTokens property</summary>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens.AccessTokensRequestBuilder AccessTokens
@@ -45,19 +45,19 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item
             get => new global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.NameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.WithOrgNameItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}", pathParameters)
+        public WithOrgNameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.NameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.WithOrgNameItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}", rawUrl)
+        public WithOrgNameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}", rawUrl)
         {
         }
     }

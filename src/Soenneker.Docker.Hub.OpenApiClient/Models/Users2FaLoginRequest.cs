@@ -23,7 +23,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 #else
         public string Code { get; set; }
 #endif
-        /// <summary>The intermediate 2FA token returned from `/v2/users/login` API.</summary>
+        /// <summary>The intermediate 2FA token returned from `/v2/auth/token` API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Login2faToken { get; set; }

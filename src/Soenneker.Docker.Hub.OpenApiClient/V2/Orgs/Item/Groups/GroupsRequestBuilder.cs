@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\orgs\{name-id}\groups
+    /// Builds and executes requests for operations under \v2\orgs\{orgName}\groups
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GroupsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GroupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/groups{?page*,page_size*,search*,username*}", pathParameters)
+        public GroupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/groups{?page*,page_size*,search*,username*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GroupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/groups{?page*,page_size*,search*,username*}", rawUrl)
+        public GroupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/groups{?page*,page_size*,search*,username*}", rawUrl)
         {
         }
         /// <summary>

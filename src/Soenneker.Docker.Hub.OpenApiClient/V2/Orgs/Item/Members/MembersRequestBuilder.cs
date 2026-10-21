@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\orgs\{name-id}\members
+    /// Builds and executes requests for operations under \v2\orgs\{orgName}\members
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MembersRequestBuilder : BaseRequestBuilder
@@ -41,7 +41,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MembersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/members{?invites*,page*,page_size*,role*,search*,type*}", pathParameters)
+        public MembersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/members{?invites*,page*,page_size*,role*,search*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MembersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/members{?invites*,page*,page_size*,role*,search*,type*}", rawUrl)
+        public MembersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/members{?invites*,page*,page_size*,role*,search*,type*}", rawUrl)
         {
         }
         /// <summary>
@@ -127,9 +127,16 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members
             /// <summary>Filter members by their organization role.</summary>
             [QueryParameter("role")]
             public global::Soenneker.Docker.Hub.OpenApiClient.Models.Role? Role { get; set; }
-            /// <summary>Search term.</summary>
+            /// <summary>Search members by username, full_name or email</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("search")]
-            public int? Search { get; set; }
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
             /// <summary>Filter members by membership type.</summary>
             [QueryParameter("type")]
             public global::Soenneker.Docker.Hub.OpenApiClient.Models.TypeValue? Type { get; set; }

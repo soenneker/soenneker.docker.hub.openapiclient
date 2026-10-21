@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\orgs\{name-id}\access-tokens\{accessTokenId}
+    /// Builds and executes requests for operations under \v2\orgs\{orgName}\access-tokens\{accessTokenId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithAccessTokenItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithAccessTokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/access-tokens/{accessTokenId}", pathParameters)
+        public WithAccessTokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/access-tokens/{accessTokenId}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithAccessTokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/access-tokens/{accessTokenId}", rawUrl)
+        public WithAccessTokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/access-tokens/{accessTokenId}", rawUrl)
         {
         }
         /// <summary>

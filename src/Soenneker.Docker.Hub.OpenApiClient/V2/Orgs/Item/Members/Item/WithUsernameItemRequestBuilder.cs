@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\orgs\{name-id}\members\{username}
+    /// Builds and executes requests for operations under \v2\orgs\{orgName}\members\{username}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithUsernameItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithUsernameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/members/{username}", pathParameters)
+        public WithUsernameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/members/{username}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Members.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithUsernameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/members/{username}", rawUrl)
+        public WithUsernameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/members/{username}", rawUrl)
         {
         }
         /// <summary>

@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups.Item.Members.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\orgs\{name-id}\groups\{groupName}\members\{username}
+    /// Builds and executes requests for operations under \v2\orgs\{orgName}\groups\{groupName}\members\{username}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithUsernameItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups.Item.Members.It
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithUsernameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/groups/{groupName}/members/{username}", pathParameters)
+        public WithUsernameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/groups/{groupName}/members/{username}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups.Item.Members.It
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithUsernameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/groups/{groupName}/members/{username}", rawUrl)
+        public WithUsernameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/groups/{groupName}/members/{username}", rawUrl)
         {
         }
         /// <summary>

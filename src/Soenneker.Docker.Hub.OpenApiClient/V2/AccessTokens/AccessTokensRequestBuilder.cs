@@ -154,12 +154,12 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.AccessTokens
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccessTokensRequestBuilderGetQueryParameters 
         {
-            /// <summary>Page number to return.</summary>
+            /// <summary>Page number (starts on 1).</summary>
             [QueryParameter("page")]
-            public double? Page { get; set; }
-            /// <summary>Number of results per page.</summary>
+            public int? Page { get; set; }
+            /// <summary>Number of items (rows) per page.</summary>
             [QueryParameter("page_size")]
-            public double? PageSize { get; set; }
+            public int? PageSize { get; set; }
         }
     }
 }

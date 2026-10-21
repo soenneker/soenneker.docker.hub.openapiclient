@@ -69,7 +69,7 @@
           "authentication-api"
         ],
         "summary": "Second factor authentication",
-        "description": "When a user has two-factor authentication (2FA) enabled, this is the second call to perform after \u0060/v2/users/login\u0060 call.\n\nCreates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.\n\nThe returned token is used in the HTTP Authorization header like \u0060Authorization: Bearer {TOKEN}\u0060.\n\nMost Docker Hub APIs require this token either to consume or to get detailed information. For example, to list images in a private repository.\n",
+        "description": "When a user has two-factor authentication (2FA) enabled, this is the second call to perform after \u0060/v2/auth/token\u0060 call.\n\nCreates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.\n\nThe returned token is used in the HTTP Authorization header like \u0060Authorization: Bearer {TOKEN}\u0060.\n\nMost Docker Hub APIs require this token either to consume or to get detailed information. For example, to list images in a private repository.\n",
         "operationId": "PostUsers2FaLogin",
         "requestBody": {
           "description": "Login details.",
@@ -196,22 +196,12 @@
         "operationId": "GetV2AccessTokens",
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number to return.",
-            "schema": {
-              "type": "number",
-              "default": 1
-            }
+            "description": "Page number (starts on 1).",
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of results per page.",
-            "schema": {
-              "type": "number",
-              "default": 10
-            }
+            "description": "Number of items (rows) per page.",
+            "$ref": "#/components/parameters/page_size"
           }
         ],
         "responses": {
@@ -924,24 +914,12 @@
             }
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "page - specify page number. Page number to get.",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
+            "description": "Page number (starts on 1).",
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page_size",
-            "in": "query",
-            "description": "page_size - specify page size. Number of events to return per page.",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 25
-            }
+            "description": "Number of items (rows) per page.",
+            "$ref": "#/components/parameters/page_size"
           }
         ],
         "responses": {
@@ -1055,7 +1033,7 @@
         ]
       }
     },
-    "/v2/orgs/{name}/settings": {
+    "/v2/orgs/{orgName}/settings": {
       "get": {
         "tags": [
           "org-settings"
@@ -1090,6 +1068,16 @@
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       },
@@ -1138,21 +1126,21 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
-      "parameters": [
-        {
-          "name": "name",
-          "in": "path",
-          "description": "Name of the organization.",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ]
+      "parameters": []
     },
-    "/v2/orgs/{name}/access-tokens": {
+    "/v2/orgs/{orgName}/access-tokens": {
       "post": {
         "tags": [
           "org-access-tokens"
@@ -1160,16 +1148,6 @@
         "summary": "Create access token",
         "description": "Create an access token for an organization.\n",
         "operationId": "PostV2OrgsByNameAccessTokens",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1212,6 +1190,16 @@
           {
             "bearerAuth": []
           }
+        ],
+        "parameters": [
+          {
+            "name": "orgName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "get": {
@@ -1223,25 +1211,15 @@
         "operationId": "GetV2OrgsByNameAccessTokens",
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number to return.",
-            "schema": {
-              "type": "number",
-              "default": 1
-            }
+            "description": "Page number (starts on 1).",
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of results per page.",
-            "schema": {
-              "type": "number",
-              "default": 10
-            }
+            "description": "Number of items (rows) per page.",
+            "$ref": "#/components/parameters/page_size"
           },
           {
-            "name": "name",
+            "name": "orgName",
             "in": "path",
             "required": true,
             "schema": {
@@ -1278,7 +1256,8 @@
             "bearerAuth": []
           }
         ]
-      }
+      },
+      "parameters": []
     },
     "/v2/orgs/{orgName}/access-tokens/{accessTokenId}": {
       "get": {
@@ -1448,20 +1427,12 @@
         "operationId": "ListRepositoryTags",
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number to get. Defaults to 1.",
-            "schema": {
-              "type": "integer"
-            }
+            "description": "Page number (starts on 1).",
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items to get per page. Defaults to 10. Max of 100.",
-            "schema": {
-              "type": "integer"
-            }
+            "description": "Number of items (rows) per page.",
+            "$ref": "#/components/parameters/page_size"
           },
           {
             "name": "namespaceValue",
@@ -1829,25 +1800,12 @@
         "operationId": "ListNamespaceRepositories",
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number to get. Defaults to 1.",
-            "schema": {
-              "minimum": 1,
-              "type": "integer",
-              "default": 1
-            }
+            "description": "Page number (starts on 1).",
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of repositories to get per page. Defaults to 10. Max of 100.",
-            "schema": {
-              "maximum": 100,
-              "minimum": 1,
-              "type": "integer",
-              "default": 10
-            }
+            "description": "Number of items (rows) per page.",
+            "$ref": "#/components/parameters/page_size"
           },
           {
             "name": "name",
@@ -2954,12 +2912,8 @@
             "$ref": "#/components/parameters/page_size"
           },
           {
-            "name": "search",
-            "in": "query",
-            "description": "Search members by username, full_name or email.",
-            "schema": {
-              "type": "string"
-            }
+            "description": "Search members by username, full_name or email",
+            "$ref": "#/components/parameters/search"
           },
           {
             "name": "orgName",
@@ -4334,7 +4288,7 @@
         "properties": {
           "login_2fa_token": {
             "type": "string",
-            "description": "The intermediate 2FA token returned from \u0060/v2/users/login\u0060 API.",
+            "description": "The intermediate 2FA token returned from \u0060/v2/auth/token\u0060 API.",
             "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
           },
           "code": {
@@ -8336,7 +8290,8 @@
         "in": "query",
         "description": "Page number (starts on 1).",
         "schema": {
-          "type": "integer"
+          "type": "integer",
+          "default": 1
         }
       },
       "page_size": {
@@ -8344,7 +8299,8 @@
         "in": "query",
         "description": "Number of items (rows) per page.",
         "schema": {
-          "type": "integer"
+          "type": "integer",
+          "default": 10
         }
       },
       "invites": {
@@ -8358,9 +8314,9 @@
       "search": {
         "name": "search",
         "in": "query",
-        "description": "Search term.",
+        "description": "Search members by username, full_name or email",
         "schema": {
-          "type": "integer"
+          "type": "string"
         }
       },
       "scim_attributes": {

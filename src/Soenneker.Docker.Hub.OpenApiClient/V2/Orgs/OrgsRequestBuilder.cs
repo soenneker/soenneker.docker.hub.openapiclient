@@ -16,15 +16,15 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs
     public partial class OrgsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.orgs.item collection</summary>
-        /// <param name="position">Name of the organization.</param>
-        /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.NameItemRequestBuilder"/></returns>
-        public global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.NameItemRequestBuilder this[string position]
+        /// <param name="position">Unique identifier of the item</param>
+        /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.WithOrgNameItemRequestBuilder"/></returns>
+        public global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.WithOrgNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("name%2Did", position);
-                return new global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.NameItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("orgName", position);
+                return new global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.WithOrgNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

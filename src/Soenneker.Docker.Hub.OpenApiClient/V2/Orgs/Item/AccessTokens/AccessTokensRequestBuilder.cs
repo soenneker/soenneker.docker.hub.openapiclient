@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\orgs\{name-id}\access-tokens
+    /// Builds and executes requests for operations under \v2\orgs\{orgName}\access-tokens
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccessTokensRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccessTokensRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/access-tokens{?page*,page_size*}", pathParameters)
+        public AccessTokensRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/access-tokens{?page*,page_size*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccessTokensRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{name%2Did}/access-tokens{?page*,page_size*}", rawUrl)
+        public AccessTokensRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/orgs/{orgName}/access-tokens{?page*,page_size*}", rawUrl)
         {
         }
         /// <summary>
@@ -160,12 +160,12 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.AccessTokens
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccessTokensRequestBuilderGetQueryParameters 
         {
-            /// <summary>Page number to return.</summary>
+            /// <summary>Page number (starts on 1).</summary>
             [QueryParameter("page")]
-            public double? Page { get; set; }
-            /// <summary>Number of results per page.</summary>
+            public int? Page { get; set; }
+            /// <summary>Number of items (rows) per page.</summary>
             [QueryParameter("page_size")]
-            public double? PageSize { get; set; }
+            public int? PageSize { get; set; }
         }
     }
 }

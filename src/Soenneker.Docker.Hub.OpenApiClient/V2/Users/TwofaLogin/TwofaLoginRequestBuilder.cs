@@ -34,7 +34,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Users.TwofaLogin
         {
         }
         /// <summary>
-        /// When a user has two-factor authentication (2FA) enabled, this is the second call to perform after `/v2/users/login` call.Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.The returned token is used in the HTTP Authorization header like `Authorization: Bearer {TOKEN}`.Most Docker Hub APIs require this token either to consume or to get detailed information. For example, to list images in a private repository.
+        /// When a user has two-factor authentication (2FA) enabled, this is the second call to perform after `/v2/auth/token` call.Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.The returned token is used in the HTTP Authorization header like `Authorization: Bearer {TOKEN}`.Most Docker Hub APIs require this token either to consume or to get detailed information. For example, to list images in a private repository.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsersLoginSuccessResponse"/></returns>
         /// <param name="body">Second factor user login details</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Users.TwofaLogin
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsersLoginSuccessResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsersLoginSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// When a user has two-factor authentication (2FA) enabled, this is the second call to perform after `/v2/users/login` call.Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.The returned token is used in the HTTP Authorization header like `Authorization: Bearer {TOKEN}`.Most Docker Hub APIs require this token either to consume or to get detailed information. For example, to list images in a private repository.
+        /// When a user has two-factor authentication (2FA) enabled, this is the second call to perform after `/v2/auth/token` call.Creates and returns a bearer token in JWT format that you can use to authenticate with Docker Hub APIs.The returned token is used in the HTTP Authorization header like `Authorization: Bearer {TOKEN}`.Most Docker Hub APIs require this token either to consume or to get detailed information. For example, to list images in a private repository.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Second factor user login details</param>

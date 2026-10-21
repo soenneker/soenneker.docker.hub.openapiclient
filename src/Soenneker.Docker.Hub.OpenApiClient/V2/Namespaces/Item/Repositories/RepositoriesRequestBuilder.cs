@@ -177,10 +177,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.Repositories
             /// <summary>Order repositories by the specified field. Prefix with &apos;-&apos; for descending order.Available options:- `name` / `-name`: Repository name (ascending/descending)- `last_updated` / `-last_updated`: Last update time (ascending/descending)- `pull_count` / `-pull_count`: Number of pulls (ascending/descending)</summary>
             [QueryParameter("ordering")]
             public global::Soenneker.Docker.Hub.OpenApiClient.Models.ListNamespaceRepositoriesOrderingParameter? Ordering { get; set; }
-            /// <summary>Page number to get. Defaults to 1.</summary>
+            /// <summary>Page number (starts on 1).</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
-            /// <summary>Number of repositories to get per page. Defaults to 10. Max of 100.</summary>
+            /// <summary>Number of items (rows) per page.</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
         }

@@ -133,10 +133,10 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item
             [QueryParameter("name")]
             public string Name { get; set; }
 #endif
-            /// <summary>page - specify page number. Page number to get.</summary>
+            /// <summary>Page number (starts on 1).</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
-            /// <summary>page_size - specify page size. Number of events to return per page.</summary>
+            /// <summary>Number of items (rows) per page.</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
             /// <summary>End of the time window you wish to query audit events for.</summary>
