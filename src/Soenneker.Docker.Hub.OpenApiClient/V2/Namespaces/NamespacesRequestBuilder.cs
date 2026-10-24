@@ -16,7 +16,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces
     public partial class NamespacesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.namespaces.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">Namespace of the repository, such as a user or organization name.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.WithNamespaceValueItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Namespaces.Item.WithNamespaceValueItemRequestBuilder this[string position]
         {

@@ -45,7 +45,6 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.GetAuditLogsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.AuditLogsListAuditLogs429ResponseSchema">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 500 status code</exception>
         /// <exception cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Error">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -60,7 +59,6 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "429", global::Soenneker.Docker.Hub.OpenApiClient.Models.AuditLogsListAuditLogs429ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "XXX", global::Soenneker.Docker.Hub.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };

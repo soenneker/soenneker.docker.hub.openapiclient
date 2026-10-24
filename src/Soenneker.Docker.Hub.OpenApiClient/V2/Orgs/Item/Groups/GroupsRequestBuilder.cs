@@ -19,7 +19,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups
     public partial class GroupsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Docker.Hub.OpenApiClient.v2.orgs.item.groups.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">Name of the group (team) in the organization.</param>
         /// <returns>A <see cref="global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups.Item.WithGroupNameItemRequestBuilder"/></returns>
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Orgs.Item.Groups.Item.WithGroupNameItemRequestBuilder this[string position]
         {

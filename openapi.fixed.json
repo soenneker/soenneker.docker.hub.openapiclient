@@ -1069,16 +1069,6 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "put": {
@@ -1126,19 +1116,20 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
-      "parameters": []
+      "parameters": [
+        {
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        }
+      ]
     },
     "/v2/orgs/{orgName}/access-tokens": {
       "post": {
@@ -1190,16 +1181,6 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "get": {
@@ -1217,14 +1198,6 @@
           {
             "description": "Number of items (rows) per page.",
             "$ref": "#/components/parameters/page_size"
-          },
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1257,7 +1230,18 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [
+        {
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        }
+      ]
     },
     "/v2/orgs/{orgName}/access-tokens/{accessTokenId}": {
       "get": {
@@ -1294,16 +1278,6 @@
         "security": [
           {
             "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ]
       },
@@ -1352,16 +1326,6 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "delete": {
@@ -1392,19 +1356,19 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
+        {
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        },
         {
           "name": "accessTokenId",
           "in": "path",
@@ -1433,14 +1397,6 @@
           {
             "description": "Number of items (rows) per page.",
             "$ref": "#/components/parameters/page_size"
-          },
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1487,21 +1443,26 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/repository"
+          "name": "namespaceValue",
+          "in": "path",
+          "description": "Namespace of the repository, such as a user or organization name.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "repository",
+          "in": "path",
+          "description": "Name of the repository within the namespace.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ]
     },
@@ -1531,16 +1492,6 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "head": {
@@ -1567,24 +1518,35 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/repository"
+          "name": "namespaceValue",
+          "in": "path",
+          "description": "Namespace of the repository, such as a user or organization name.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         },
         {
-          "$ref": "#/components/parameters/tag"
+          "name": "repository",
+          "in": "path",
+          "description": "Name of the repository within the namespace.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "tag",
+          "in": "path",
+          "description": "Name of the image tag.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ]
     },
@@ -1625,21 +1587,26 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/repository"
+          "name": "namespaceValue",
+          "in": "path",
+          "description": "Namespace of the repository, such as a user or organization name.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "repository",
+          "in": "path",
+          "description": "Name of the repository within the namespace.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ]
     },
@@ -1680,21 +1647,26 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/repository"
+          "name": "namespaceValue",
+          "in": "path",
+          "description": "Namespace of the repository, such as a user or organization name.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "repository",
+          "in": "path",
+          "description": "Name of the repository within the namespace.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ]
     },
@@ -1772,21 +1744,26 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/repository"
+          "name": "namespaceValue",
+          "in": "path",
+          "description": "Namespace of the repository, such as a user or organization name.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "repository",
+          "in": "path",
+          "description": "Name of the repository within the namespace.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ]
     },
@@ -1821,14 +1798,6 @@
             "description": "Order repositories by the specified field. Prefix with \u0027-\u0027 for descending order.\nAvailable options:\n- \u0060name\u0060 / \u0060-name\u0060: Repository name (ascending/descending)\n- \u0060last_updated\u0060 / \u0060-last_updated\u0060: Last update time (ascending/descending)\n- \u0060pull_count\u0060 / \u0060-pull_count\u0060: Number of pulls (ascending/descending)\n",
             "schema": {
               "$ref": "#/components/schemas/ListNamespaceRepositoriesOrderingParameter"
-            }
-          },
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -2077,19 +2046,19 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
-      "parameters": []
+      "parameters": [
+        {
+          "name": "namespaceValue",
+          "in": "path",
+          "description": "Namespace of the repository, such as a user or organization name.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
     },
     "/v2/namespaces/{namespaceValue}/repositories/{repository}": {
       "get": {
@@ -2165,16 +2134,6 @@
             "bearerAuth": []
           },
           {}
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "head": {
@@ -2210,21 +2169,26 @@
             "bearerAuth": []
           },
           {}
-        ],
-        "parameters": [
-          {
-            "name": "namespaceValue",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/repository"
+          "name": "namespaceValue",
+          "in": "path",
+          "description": "Namespace of the repository, such as a user or organization name.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "repository",
+          "in": "path",
+          "description": "Name of the repository within the namespace.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
         }
       ]
     },
@@ -2268,19 +2232,19 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
+        {
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        },
         {
           "$ref": "#/components/parameters/search"
         },
@@ -2350,19 +2314,20 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
-      "parameters": []
+      "parameters": [
+        {
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        }
+      ]
     },
     "/v2/orgs/{orgName}/members/{username}": {
       "put": {
@@ -2414,16 +2379,6 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "delete": {
@@ -2458,21 +2413,28 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/username"
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        },
+        {
+          "name": "username",
+          "in": "path",
+          "description": "Username, identifier for the user (namespace, DockerID).",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "jonsnow"
+          }
         }
       ],
       "x-audience": "public"
@@ -2513,19 +2475,20 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        }
+      ],
       "x-audience": "public"
     },
     "/v2/orgs/{orgName}/groups": {
@@ -2557,14 +2520,6 @@
             "name": "search",
             "in": "query",
             "description": "Get groups for the specified group in the organization.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -2644,19 +2599,20 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        }
+      ],
       "x-audience": "public"
     },
     "/v2/orgs/{orgName}/groups/{groupName}": {
@@ -2694,24 +2650,6 @@
         "security": [
           {
             "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "groupName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ]
       },
@@ -2759,24 +2697,6 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "groupName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "patch": {
@@ -2823,24 +2743,6 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "groupName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "delete": {
@@ -2871,27 +2773,30 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "groupName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        },
+        {
+          "name": "groupName",
+          "in": "path",
+          "description": "Name of the group (team) in the organization.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "developers"
+          }
+        }
+      ],
       "x-audience": "public"
     },
     "/v2/orgs/{orgName}/groups/{groupName}/members": {
@@ -2904,6 +2809,26 @@
         "operationId": "GetV2OrgsByOrgNameGroupsByGroupNameMembers",
         "parameters": [
           {
+            "name": "orgName",
+            "in": "path",
+            "description": "Name of the organization (namespace).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "myorganization"
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "description": "Name of the group (team) in the organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "developers"
+            }
+          },
+          {
             "description": "Page number (starts on 1).",
             "$ref": "#/components/parameters/page"
           },
@@ -2914,22 +2839,6 @@
           {
             "description": "Search members by username, full_name or email",
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "groupName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -2973,17 +2882,21 @@
           {
             "name": "orgName",
             "in": "path",
+            "description": "Name of the organization (namespace).",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "myorganization"
           },
           {
             "name": "groupName",
             "in": "path",
+            "description": "Name of the group (team) in the organization.",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "developers"
             }
           }
         ],
@@ -3048,29 +2961,38 @@
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "orgName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "groupName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/username"
+          "name": "orgName",
+          "in": "path",
+          "description": "Name of the organization (namespace).",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "myorganization"
+        },
+        {
+          "name": "groupName",
+          "in": "path",
+          "description": "Name of the group (team) in the organization.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "developers"
+          }
+        },
+        {
+          "name": "username",
+          "in": "path",
+          "description": "Username, identifier for the user (namespace, DockerID).",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "jonsnow"
+          }
         }
       ],
       "x-audience": "public"
@@ -3618,7 +3540,14 @@
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/scim_user_id"
+          "name": "id",
+          "in": "path",
+          "description": "The user ID.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "d80f7c79-7730-49d8-9a41-7c42fb622d9c"
         }
       ],
       "x-audience": "public"
@@ -3651,7 +3580,11 @@
             "items": {
               "type": "string"
             },
-            "description": "List of immutable tag rules"
+            "description": "List of immutable tag rules",
+            "example": [
+              "v.*",
+              ".*-RELEASE"
+            ]
           }
         }
       },
@@ -4024,7 +3957,12 @@
             "items": {
               "type": "string"
             },
-            "description": "List of tags that match the provided regex pattern"
+            "description": "List of tags that match the provided regex pattern",
+            "example": [
+              "v1.0.0",
+              "v2.1.3",
+              "latest"
+            ]
           }
         }
       },
@@ -4103,21 +4041,28 @@
           },
           "affiliation": {
             "type": "string",
-            "description": "User\u0027s affiliation with the repository (empty string if no affiliation)"
+            "description": "User\u0027s affiliation with the repository (empty string if no affiliation)",
+            "example": ""
           },
           "media_types": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Media types supported by this repository"
+            "description": "Media types supported by this repository",
+            "example": [
+              "application/vnd.docker.plugin.v1\u002Bjson"
+            ]
           },
           "content_types": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Content types supported by this repository"
+            "description": "Content types supported by this repository",
+            "example": [
+              "plugin"
+            ]
           },
           "categories": {
             "type": "array",
@@ -4450,7 +4395,10 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "repo:read"
+            ]
           },
           "expires_at": {
             "type": [
@@ -4489,7 +4437,10 @@
             "items": {
               "type": "string"
             },
-            "description": "Valid scopes: \u0022repo:admin\u0022, \u0022repo:write\u0022, \u0022repo:read\u0022, \u0022repo:public_read\u0022, \u0022sandbox:use\u0022. Include one repository scope, \u0022sandbox:use\u0022, or both.\n"
+            "description": "Valid scopes: \u0022repo:admin\u0022, \u0022repo:write\u0022, \u0022repo:read\u0022, \u0022repo:public_read\u0022, \u0022sandbox:use\u0022. Include one repository scope, \u0022sandbox:use\u0022, or both.\n",
+            "example": [
+              "repo:read"
+            ]
           },
           "expires_at": {
             "type": "string",
@@ -5173,7 +5124,11 @@
             "items": {
               "type": "string"
             },
-            "description": "Groups (Teams) that the user is member of"
+            "description": "Groups (Teams) that the user is member of",
+            "example": [
+              "developers",
+              "owners"
+            ]
           },
           "is_guest": {
             "type": "boolean",
@@ -5507,10 +5462,14 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
+            ]
           },
           "documentationUri": {
-            "type": "string"
+            "type": "string",
+            "example": ""
           },
           "patch": {
             "$ref": "#/components/schemas/ScimServiceProviderConfigPatch"
@@ -5557,7 +5516,10 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:ResourceType"
+            ]
           },
           "id": {
             "type": "string",
@@ -5599,7 +5561,10 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:Schema"
+            ]
           },
           "id": {
             "type": "string",
@@ -5735,18 +5700,21 @@
           },
           "id": {
             "type": "string",
-            "description": "The unique identifier for the user. A v4 UUID."
+            "description": "The unique identifier for the user. A v4 UUID.",
+            "example": "d80f7c79-7730-49d8-9a41-7c42fb622d9c"
           },
           "userName": {
             "type": "string",
-            "description": "The user\u0027s email address. This must be reachable via email."
+            "description": "The user\u0027s email address. This must be reachable via email.",
+            "example": "jon.snow@docker.com"
           },
           "name": {
             "$ref": "#/components/schemas/ScimUserName"
           },
           "displayName": {
             "type": "string",
-            "description": "The username in Docker. Also known as the \u0022Docker ID\u0022."
+            "description": "The username in Docker. Also known as the \u0022Docker ID\u0022.",
+            "example": "jonsnow"
           },
           "active": {
             "type": "boolean",
@@ -6226,7 +6194,12 @@
               "type": "string",
               "description": "invitee email or Docker ID"
             },
-            "description": "list of invitees emails or Docker Ids"
+            "description": "list of invitees emails or Docker Ids",
+            "example": [
+              "invitee1DockerId",
+              "invitee2@docker.com",
+              "invitee3@docker.com"
+            ]
           },
           "dry_run": {
             "type": "boolean",
@@ -6264,7 +6237,8 @@
           },
           "userName": {
             "type": "string",
-            "description": "The user\u0027s email address. This must be reachable via email."
+            "description": "The user\u0027s email address. This must be reachable via email.",
+            "example": "jon.snow@docker.com"
           },
           "name": {
             "$ref": "#/components/schemas/ScimUserName"
@@ -6304,7 +6278,8 @@
           },
           "userName": {
             "type": "string",
-            "description": "The user\u0027s email address. This must be reachable via email."
+            "description": "The user\u0027s email address. This must be reachable via email.",
+            "example": "jon.snow@docker.com"
           },
           "active": {
             "type": "boolean",
@@ -6335,7 +6310,8 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "The status code for the response in string format."
+            "description": "The status code for the response in string format.",
+            "example": "400"
           },
           "schemas": {
             "type": "array",
@@ -6359,7 +6335,8 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "The status code for the response in string format."
+            "description": "The status code for the response in string format.",
+            "example": "401"
           },
           "schemas": {
             "type": "array",
@@ -6379,7 +6356,8 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "The status code for the response in string format."
+            "description": "The status code for the response in string format.",
+            "example": "403"
           },
           "schemas": {
             "type": "array",
@@ -6399,7 +6377,8 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "The status code for the response in string format."
+            "description": "The status code for the response in string format.",
+            "example": "404"
           },
           "schemas": {
             "type": "array",
@@ -6419,7 +6398,8 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "The status code for the response in string format."
+            "description": "The status code for the response in string format.",
+            "example": "409"
           },
           "schemas": {
             "type": "array",
@@ -6439,7 +6419,8 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "The status code for the response in string format."
+            "description": "The status code for the response in string format.",
+            "example": "500"
           },
           "schemas": {
             "type": "array",
@@ -6588,7 +6569,10 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+            ]
           },
           "totalResults": {
             "type": "integer",
@@ -6672,7 +6656,10 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "repo:read"
+            ]
           },
           "expires_at": {
             "type": [
@@ -6806,7 +6793,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/ScimBadRequestResponseScimJsonAllOf2Status"
+            "example": "400"
           },
           "scimType": {
             "type": "string",
@@ -6818,7 +6805,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/ScimUnauthorizedResponseScimJsonAllOf2Status"
+            "example": "401"
           }
         }
       },
@@ -6826,7 +6813,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/ScimForbiddenResponseScimJsonAllOf2Status"
+            "example": "403"
           }
         }
       },
@@ -6834,7 +6821,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/ScimNotFoundResponseScimJsonAllOf2Status"
+            "example": "404"
           }
         }
       },
@@ -6842,7 +6829,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/ScimConflictResponseScimJsonAllOf2Status"
+            "example": "409"
           }
         }
       },
@@ -6850,7 +6837,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/ScimErrorResponseScimJsonAllOf2Status"
+            "example": "500"
           }
         }
       },
@@ -7104,7 +7091,10 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "repo:read"
+            ]
           },
           "expires_at": {
             "type": [
@@ -7116,12 +7106,8 @@
           }
         }
       },
-      "AuditLogsListAuditActions429Response": {
-        "type": "object"
-      },
-      "AuditLogsListAuditLogs429Response": {
-        "type": "object"
-      },
+      "AuditLogsListAuditActions429Response": {},
+      "AuditLogsListAuditLogs429Response": {},
       "PutV2OrgsByNameSettingsRequest": {
         "examples": [
           {
@@ -7229,12 +7215,8 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
-      "AuditLogsListAuditActions429ResponseSchema": {
-        "type": "object"
-      },
-      "AuditLogsListAuditLogs429ResponseSchema": {
-        "type": "object"
-      },
+      "AuditLogsListAuditActions429ResponseSchema": {},
+      "AuditLogsListAuditLogs429ResponseSchema": {},
       "GetV2OrgsByOrgNameMembersExport200CsvResponseSchema": {
         "type": "string",
         "description": "CSV columns: Name, Username, Email, Type, Role, Teams, and Date Joined. The Role column contains the assigned role label. When administrative insights are available, the export also includes Last Logged-in Date, Docker Desktop Version, Last Seen Date, and Opted Out Analytics."
@@ -7370,32 +7352,11 @@
         }
       },
       "ErrorErrinfoProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "Additional error context, when available."
-      },
-      "ScimBadRequestResponseScimJsonAllOf2Status": {
-        "type": "object",
-        "example": "400"
-      },
-      "ScimUnauthorizedResponseScimJsonAllOf2Status": {
-        "type": "object",
-        "example": "401"
-      },
-      "ScimForbiddenResponseScimJsonAllOf2Status": {
-        "type": "object",
-        "example": "403"
-      },
-      "ScimNotFoundResponseScimJsonAllOf2Status": {
-        "type": "object",
-        "example": "404"
-      },
-      "ScimConflictResponseScimJsonAllOf2Status": {
-        "type": "object",
-        "example": "409"
-      },
-      "ScimErrorResponseScimJsonAllOf2Status": {
-        "type": "object",
-        "example": "500"
       },
       "PutV2OrgsByNameSettingsRequestRestrictedImages": {
         "required": [
@@ -7429,7 +7390,6 @@
           "admin"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The permission level to grant to the group:\n- read: Can view and pull from the repository\n- write: Can view, pull, and push to the repository\n- admin: Can view, pull, push, and manage repository settings\n",
         "example": "write",
         "x-ms-enum": {
@@ -7458,7 +7418,6 @@
           "admin"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The permission level granted to the group",
         "example": "write",
         "x-ms-enum": {
@@ -7490,7 +7449,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "Type of repository",
         "example": "image",
         "x-ms-enum": {
@@ -7514,7 +7472,6 @@
           "inactive"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Human-readable repository status",
         "example": "active",
         "x-ms-enum": {
@@ -7538,7 +7495,6 @@
           "inactive"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Status of the image",
         "x-ms-enum": {
           "name": "ImageStatus",
@@ -7561,7 +7517,6 @@
           "inactive"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "whether a tag has been pushed to or pulled in the past month",
         "x-ms-enum": {
           "name": "TagTagStatus",
@@ -7585,7 +7540,6 @@
           "complex"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "string",
         "x-ms-enum": {
           "name": "ScimSchemaAttributeType",
@@ -7612,7 +7566,6 @@
           "Org"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "User"
       },
       "OrgMemberRole": {
@@ -7623,7 +7576,6 @@
           "Invitee"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The member\u0027s role in the organization (\u0060Owner\u0060, \u0060Editor\u0060,\n\u0060Member\u0060, or \u0060Invitee\u0060 for pending invites).\n",
         "example": "Owner"
       },
@@ -7633,7 +7585,6 @@
           "Org"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "User"
       },
       "OrgAccessTokenResourceType": {
@@ -7642,7 +7593,6 @@
           "TYPE_ORG"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of resource",
         "example": "TYPE_REPO",
         "x-ms-enum": {
@@ -7667,7 +7617,6 @@
           "member"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TypeValue",
           "modelAsString": false,
@@ -7694,7 +7643,6 @@
           "member"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Role",
           "modelAsString": false,
@@ -7724,7 +7672,6 @@
           "-pull_count"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ListNamespaceRepositoriesOrderingParameter",
           "modelAsString": false,
@@ -7762,7 +7709,6 @@
           "descending"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "GetV2Scim20UsersSortOrderParameter",
           "modelAsString": false,
