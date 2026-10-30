@@ -78,7 +78,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Docker.Hub.OpenApiClient.V2.Auditlogs.Item.WithAccountItemRequestBuilder.WithAccountItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://hub.docker.com", "/v2/auditlogs/{account}", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

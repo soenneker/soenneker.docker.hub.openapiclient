@@ -17,7 +17,8 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("invitees") is { } nullNodeInvitees && nullNodeInvitees.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Invitees = null;
+            if (parseNode.GetChildNode("invitees") is null) { _explicitNullValueInvitees = default!; _explicitNullProperties?.Remove("invitees"); }
+            else if (parseNode.GetChildNode("invitees") is { } nullNodeInvitees && nullNodeInvitees.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Invitees = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <summary>A list of invitees</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.BulkInviteInviteesItem>? Invitees { get => _explicitNullValueInvitees; set { _explicitNullValueInvitees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invitees"); else _explicitNullProperties?.Remove("invitees"); } }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.BulkInviteInviteesItem>? Invitees { get => _explicitNullValueInvitees; set { _explicitNullValueInvitees = value; AdditionalData?.Remove("invitees"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invitees"); else _explicitNullProperties?.Remove("invitees"); } }
         private List<global::Soenneker.Docker.Hub.OpenApiClient.Models.BulkInviteInviteesItem>? _explicitNullValueInvitees = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.BulkInviteInviteesItem> Invitees { get => _explicitNullValueInvitees; set { _explicitNullValueInvitees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invitees"); else _explicitNullProperties?.Remove("invitees"); } }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.BulkInviteInviteesItem> Invitees { get => _explicitNullValueInvitees; set { _explicitNullValueInvitees = value; AdditionalData?.Remove("invitees"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invitees"); else _explicitNullProperties?.Remove("invitees"); } }
         private List<global::Soenneker.Docker.Hub.OpenApiClient.Models.BulkInviteInviteesItem> _explicitNullValueInvitees = default!;
 #endif
         /// <summary>

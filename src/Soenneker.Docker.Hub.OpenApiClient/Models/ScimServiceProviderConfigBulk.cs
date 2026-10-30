@@ -17,21 +17,24 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("maxOperations") is { } nullNodeMaxOperations && nullNodeMaxOperations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxOperations = null;
-            if (parseNode.GetChildNode("maxPayloadSize") is { } nullNodeMaxPayloadSize && nullNodeMaxPayloadSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPayloadSize = null;
-            if (parseNode.GetChildNode("supported") is { } nullNodeSupported && nullNodeSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Supported = null;
+            if (parseNode.GetChildNode("maxOperations") is null) { _explicitNullValueMaxOperations = default!; _explicitNullProperties?.Remove("maxOperations"); }
+            else if (parseNode.GetChildNode("maxOperations") is { } nullNodeMaxOperations && nullNodeMaxOperations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxOperations = null;
+            if (parseNode.GetChildNode("maxPayloadSize") is null) { _explicitNullValueMaxPayloadSize = default!; _explicitNullProperties?.Remove("maxPayloadSize"); }
+            else if (parseNode.GetChildNode("maxPayloadSize") is { } nullNodeMaxPayloadSize && nullNodeMaxPayloadSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPayloadSize = null;
+            if (parseNode.GetChildNode("supported") is null) { _explicitNullValueSupported = default!; _explicitNullProperties?.Remove("supported"); }
+            else if (parseNode.GetChildNode("supported") is { } nullNodeSupported && nullNodeSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Supported = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The maxOperations property</summary>
-        public int? MaxOperations { get => _explicitNullValueMaxOperations; set { _explicitNullValueMaxOperations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxOperations"); else _explicitNullProperties?.Remove("maxOperations"); } }
+        public int? MaxOperations { get => _explicitNullValueMaxOperations; set { _explicitNullValueMaxOperations = value; AdditionalData?.Remove("maxOperations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxOperations"); else _explicitNullProperties?.Remove("maxOperations"); } }
         private int? _explicitNullValueMaxOperations = default!;
         /// <summary>The maxPayloadSize property</summary>
-        public int? MaxPayloadSize { get => _explicitNullValueMaxPayloadSize; set { _explicitNullValueMaxPayloadSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxPayloadSize"); else _explicitNullProperties?.Remove("maxPayloadSize"); } }
+        public int? MaxPayloadSize { get => _explicitNullValueMaxPayloadSize; set { _explicitNullValueMaxPayloadSize = value; AdditionalData?.Remove("maxPayloadSize"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxPayloadSize"); else _explicitNullProperties?.Remove("maxPayloadSize"); } }
         private int? _explicitNullValueMaxPayloadSize = default!;
         /// <summary>The supported property</summary>
-        public bool? Supported { get => _explicitNullValueSupported; set { _explicitNullValueSupported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported"); else _explicitNullProperties?.Remove("supported"); } }
+        public bool? Supported { get => _explicitNullValueSupported; set { _explicitNullValueSupported = value; AdditionalData?.Remove("supported"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported"); else _explicitNullProperties?.Remove("supported"); } }
         private bool? _explicitNullValueSupported = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk"/> and sets the default values.

@@ -17,23 +17,25 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("immutable_tags") is { } nullNodeImmutableTags && nullNodeImmutableTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImmutableTags = null;
-            if (parseNode.GetChildNode("immutable_tags_rules") is { } nullNodeImmutableTagsRules && nullNodeImmutableTagsRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImmutableTagsRules = null;
+            if (parseNode.GetChildNode("immutable_tags") is null) { _explicitNullValueImmutableTags = default!; _explicitNullProperties?.Remove("immutable_tags"); }
+            else if (parseNode.GetChildNode("immutable_tags") is { } nullNodeImmutableTags && nullNodeImmutableTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImmutableTags = null;
+            if (parseNode.GetChildNode("immutable_tags_rules") is null) { _explicitNullValueImmutableTagsRules = default!; _explicitNullProperties?.Remove("immutable_tags_rules"); }
+            else if (parseNode.GetChildNode("immutable_tags_rules") is { } nullNodeImmutableTagsRules && nullNodeImmutableTagsRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImmutableTagsRules = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether immutable tags are enabled</summary>
-        public bool? ImmutableTags { get => _explicitNullValueImmutableTags; set { _explicitNullValueImmutableTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags"); else _explicitNullProperties?.Remove("immutable_tags"); } }
+        public bool? ImmutableTags { get => _explicitNullValueImmutableTags; set { _explicitNullValueImmutableTags = value; AdditionalData?.Remove("immutable_tags"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags"); else _explicitNullProperties?.Remove("immutable_tags"); } }
         private bool? _explicitNullValueImmutableTags = default!;
         /// <summary>List of immutable tag rules</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ImmutableTagsRules { get => _explicitNullValueImmutableTagsRules; set { _explicitNullValueImmutableTagsRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags_rules"); else _explicitNullProperties?.Remove("immutable_tags_rules"); } }
+        public List<string>? ImmutableTagsRules { get => _explicitNullValueImmutableTagsRules; set { _explicitNullValueImmutableTagsRules = value; AdditionalData?.Remove("immutable_tags_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags_rules"); else _explicitNullProperties?.Remove("immutable_tags_rules"); } }
         private List<string>? _explicitNullValueImmutableTagsRules = default!;
 #nullable restore
 #else
-        public List<string> ImmutableTagsRules { get => _explicitNullValueImmutableTagsRules; set { _explicitNullValueImmutableTagsRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags_rules"); else _explicitNullProperties?.Remove("immutable_tags_rules"); } }
+        public List<string> ImmutableTagsRules { get => _explicitNullValueImmutableTagsRules; set { _explicitNullValueImmutableTagsRules = value; AdditionalData?.Remove("immutable_tags_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags_rules"); else _explicitNullProperties?.Remove("immutable_tags_rules"); } }
         private List<string> _explicitNullValueImmutableTagsRules = default!;
 #endif
         /// <summary>

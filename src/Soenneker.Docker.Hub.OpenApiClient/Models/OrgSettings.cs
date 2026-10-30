@@ -17,7 +17,8 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("restricted_images") is { } nullNodeRestrictedImages && nullNodeRestrictedImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RestrictedImages = null;
+            if (parseNode.GetChildNode("restricted_images") is null) { _explicitNullValueRestrictedImages = default!; _explicitNullProperties?.Remove("restricted_images"); }
+            else if (parseNode.GetChildNode("restricted_images") is { } nullNodeRestrictedImages && nullNodeRestrictedImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RestrictedImages = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <summary>The restricted_images property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RestrictedImages? RestrictedImages { get => _explicitNullValueRestrictedImages; set { _explicitNullValueRestrictedImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restricted_images"); else _explicitNullProperties?.Remove("restricted_images"); } }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RestrictedImages? RestrictedImages { get => _explicitNullValueRestrictedImages; set { _explicitNullValueRestrictedImages = value; AdditionalData?.Remove("restricted_images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restricted_images"); else _explicitNullProperties?.Remove("restricted_images"); } }
         private global::Soenneker.Docker.Hub.OpenApiClient.Models.RestrictedImages? _explicitNullValueRestrictedImages = default!;
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RestrictedImages RestrictedImages { get => _explicitNullValueRestrictedImages; set { _explicitNullValueRestrictedImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restricted_images"); else _explicitNullProperties?.Remove("restricted_images"); } }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RestrictedImages RestrictedImages { get => _explicitNullValueRestrictedImages; set { _explicitNullValueRestrictedImages = value; AdditionalData?.Remove("restricted_images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restricted_images"); else _explicitNullProperties?.Remove("restricted_images"); } }
         private global::Soenneker.Docker.Hub.OpenApiClient.Models.RestrictedImages _explicitNullValueRestrictedImages = default!;
 #endif
         /// <summary>
