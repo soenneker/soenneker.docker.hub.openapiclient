@@ -17,6 +17,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Users
     public partial class UsersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The login property</summary>
+        [Obsolete("")]
         public global::Soenneker.Docker.Hub.OpenApiClient.V2.Users.Login.LoginRequestBuilder Login
         {
             get => new global::Soenneker.Docker.Hub.OpenApiClient.V2.Users.Login.LoginRequestBuilder(PathParameters, RequestAdapter);

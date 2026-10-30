@@ -11,80 +11,114 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ScimServiceProviderConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("authenticationSchemes") is { } nullNodeAuthenticationSchemes && nullNodeAuthenticationSchemes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationSchemes = null;
+            if (parseNode.GetChildNode("bulk") is { } nullNodeBulk && nullNodeBulk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bulk = null;
+            if (parseNode.GetChildNode("changePassword") is { } nullNodeChangePassword && nullNodeChangePassword.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangePassword = null;
+            if (parseNode.GetChildNode("documentationUri") is { } nullNodeDocumentationUri && nullNodeDocumentationUri.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentationUri = null;
+            if (parseNode.GetChildNode("etag") is { } nullNodeEtag && nullNodeEtag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Etag = null;
+            if (parseNode.GetChildNode("filter") is { } nullNodeFilter && nullNodeFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filter = null;
+            if (parseNode.GetChildNode("patch") is { } nullNodePatch && nullNodePatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Patch = null;
+            if (parseNode.GetChildNode("schemas") is { } nullNodeSchemas && nullNodeSchemas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Schemas = null;
+            if (parseNode.GetChildNode("sort") is { } nullNodeSort && nullNodeSort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sort = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The authenticationSchemes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem>? AuthenticationSchemes { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem>? AuthenticationSchemes { get => _explicitNullValueAuthenticationSchemes; set { _explicitNullValueAuthenticationSchemes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authenticationSchemes"); else _explicitNullProperties?.Remove("authenticationSchemes"); } }
+        private List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem>? _explicitNullValueAuthenticationSchemes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem> AuthenticationSchemes { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem> AuthenticationSchemes { get => _explicitNullValueAuthenticationSchemes; set { _explicitNullValueAuthenticationSchemes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authenticationSchemes"); else _explicitNullProperties?.Remove("authenticationSchemes"); } }
+        private List<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigAuthenticationSchemesItem> _explicitNullValueAuthenticationSchemes = default!;
 #endif
         /// <summary>The bulk property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk? Bulk { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk? Bulk { get => _explicitNullValueBulk; set { _explicitNullValueBulk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bulk"); else _explicitNullProperties?.Remove("bulk"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk? _explicitNullValueBulk = default!;
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk Bulk { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk Bulk { get => _explicitNullValueBulk; set { _explicitNullValueBulk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bulk"); else _explicitNullProperties?.Remove("bulk"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigBulk _explicitNullValueBulk = default!;
 #endif
         /// <summary>The changePassword property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword? ChangePassword { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword? ChangePassword { get => _explicitNullValueChangePassword; set { _explicitNullValueChangePassword = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changePassword"); else _explicitNullProperties?.Remove("changePassword"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword? _explicitNullValueChangePassword = default!;
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword ChangePassword { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword ChangePassword { get => _explicitNullValueChangePassword; set { _explicitNullValueChangePassword = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changePassword"); else _explicitNullProperties?.Remove("changePassword"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigChangePassword _explicitNullValueChangePassword = default!;
 #endif
         /// <summary>The documentationUri property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocumentationUri { get; set; }
+        public string? DocumentationUri { get => _explicitNullValueDocumentationUri; set { _explicitNullValueDocumentationUri = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documentationUri"); else _explicitNullProperties?.Remove("documentationUri"); } }
+        private string? _explicitNullValueDocumentationUri = default!;
 #nullable restore
 #else
-        public string DocumentationUri { get; set; }
+        public string DocumentationUri { get => _explicitNullValueDocumentationUri; set { _explicitNullValueDocumentationUri = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documentationUri"); else _explicitNullProperties?.Remove("documentationUri"); } }
+        private string _explicitNullValueDocumentationUri = default!;
 #endif
         /// <summary>The etag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigEtag? Etag { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigEtag? Etag { get => _explicitNullValueEtag; set { _explicitNullValueEtag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("etag"); else _explicitNullProperties?.Remove("etag"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigEtag? _explicitNullValueEtag = default!;
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigEtag Etag { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigEtag Etag { get => _explicitNullValueEtag; set { _explicitNullValueEtag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("etag"); else _explicitNullProperties?.Remove("etag"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigEtag _explicitNullValueEtag = default!;
 #endif
         /// <summary>The filter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigFilter? Filter { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigFilter? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigFilter? _explicitNullValueFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigFilter Filter { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigFilter Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigFilter _explicitNullValueFilter = default!;
 #endif
         /// <summary>The patch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigPatch? Patch { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigPatch? Patch { get => _explicitNullValuePatch; set { _explicitNullValuePatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("patch"); else _explicitNullProperties?.Remove("patch"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigPatch? _explicitNullValuePatch = default!;
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigPatch Patch { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigPatch Patch { get => _explicitNullValuePatch; set { _explicitNullValuePatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("patch"); else _explicitNullProperties?.Remove("patch"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigPatch _explicitNullValuePatch = default!;
 #endif
         /// <summary>The schemas property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Schemas { get; set; }
+        public List<string>? Schemas { get => _explicitNullValueSchemas; set { _explicitNullValueSchemas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemas"); else _explicitNullProperties?.Remove("schemas"); } }
+        private List<string>? _explicitNullValueSchemas = default!;
 #nullable restore
 #else
-        public List<string> Schemas { get; set; }
+        public List<string> Schemas { get => _explicitNullValueSchemas; set { _explicitNullValueSchemas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemas"); else _explicitNullProperties?.Remove("schemas"); } }
+        private List<string> _explicitNullValueSchemas = default!;
 #endif
         /// <summary>The sort property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigSort? Sort { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigSort? Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigSort? _explicitNullValueSort = default!;
 #nullable restore
 #else
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigSort Sort { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigSort Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigSort _explicitNullValueSort = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfig"/> and sets the default values.
@@ -101,7 +135,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public static global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -138,6 +172,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigPatch>("patch", Patch);
             writer.WriteCollectionOfPrimitiveValues<string>("schemas", Schemas);
             writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimServiceProviderConfigSort>("sort", Sort);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,71 +11,110 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Tag : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("creator") is { } nullNodeCreator && nullNodeCreator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Creator = null;
+            if (parseNode.GetChildNode("full_size") is { } nullNodeFullSize && nullNodeFullSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FullSize = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("images") is { } nullNodeImages && nullNodeImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Images = null;
+            if (parseNode.GetChildNode("last_updated") is { } nullNodeLastUpdated && nullNodeLastUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastUpdated = null;
+            if (parseNode.GetChildNode("last_updater") is { } nullNodeLastUpdater && nullNodeLastUpdater.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastUpdater = null;
+            if (parseNode.GetChildNode("last_updater_username") is { } nullNodeLastUpdaterUsername && nullNodeLastUpdaterUsername.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastUpdaterUsername = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("tag_last_pulled") is { } nullNodeTagLastPulled && nullNodeTagLastPulled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagLastPulled = null;
+            if (parseNode.GetChildNode("tag_last_pushed") is { } nullNodeTagLastPushed && nullNodeTagLastPushed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagLastPushed = null;
+            if (parseNode.GetChildNode("tag_status") is { } nullNodeTagStatus && nullNodeTagStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagStatus = null;
+            if (parseNode.GetChildNode("v2") is { } nullNodeV2 && nullNodeV2.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) V2 = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>ID of the user that pushed the tag</summary>
-        public int? Creator { get; set; }
+        public int? Creator { get => _explicitNullValueCreator; set { _explicitNullValueCreator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creator"); else _explicitNullProperties?.Remove("creator"); } }
+        private int? _explicitNullValueCreator = default!;
         /// <summary>compressed size (sum of all layers) of the tagged image</summary>
-        public int? FullSize { get; set; }
+        public int? FullSize { get => _explicitNullValueFullSize; set { _explicitNullValueFullSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full_size"); else _explicitNullProperties?.Remove("full_size"); } }
+        private int? _explicitNullValueFullSize = default!;
         /// <summary>tag ID</summary>
-        public int? Id { get; set; }
+        public int? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private int? _explicitNullValueId = default!;
         /// <summary>The images property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image>? Images { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image>? Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
+        private List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image>? _explicitNullValueImages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image> Images { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image> Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
+        private List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Image> _explicitNullValueImages = default!;
 #endif
         /// <summary>datetime of last update</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastUpdated { get; set; }
+        public string? LastUpdated { get => _explicitNullValueLastUpdated; set { _explicitNullValueLastUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_updated"); else _explicitNullProperties?.Remove("last_updated"); } }
+        private string? _explicitNullValueLastUpdated = default!;
 #nullable restore
 #else
-        public string LastUpdated { get; set; }
+        public string LastUpdated { get => _explicitNullValueLastUpdated; set { _explicitNullValueLastUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_updated"); else _explicitNullProperties?.Remove("last_updated"); } }
+        private string _explicitNullValueLastUpdated = default!;
 #endif
         /// <summary>ID of the last user that updated the tag</summary>
-        public int? LastUpdater { get; set; }
+        public int? LastUpdater { get => _explicitNullValueLastUpdater; set { _explicitNullValueLastUpdater = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_updater"); else _explicitNullProperties?.Remove("last_updater"); } }
+        private int? _explicitNullValueLastUpdater = default!;
         /// <summary>Hub username of the user that updated the tag</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastUpdaterUsername { get; set; }
+        public string? LastUpdaterUsername { get => _explicitNullValueLastUpdaterUsername; set { _explicitNullValueLastUpdaterUsername = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_updater_username"); else _explicitNullProperties?.Remove("last_updater_username"); } }
+        private string? _explicitNullValueLastUpdaterUsername = default!;
 #nullable restore
 #else
-        public string LastUpdaterUsername { get; set; }
+        public string LastUpdaterUsername { get => _explicitNullValueLastUpdaterUsername; set { _explicitNullValueLastUpdaterUsername = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_updater_username"); else _explicitNullProperties?.Remove("last_updater_username"); } }
+        private string _explicitNullValueLastUpdaterUsername = default!;
 #endif
         /// <summary>name of the tag</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>repository ID</summary>
-        public int? Repository { get; set; }
+        public int? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private int? _explicitNullValueRepository = default!;
         /// <summary>datetime of last pull</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TagLastPulled { get; set; }
+        public string? TagLastPulled { get => _explicitNullValueTagLastPulled; set { _explicitNullValueTagLastPulled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_last_pulled"); else _explicitNullProperties?.Remove("tag_last_pulled"); } }
+        private string? _explicitNullValueTagLastPulled = default!;
 #nullable restore
 #else
-        public string TagLastPulled { get; set; }
+        public string TagLastPulled { get => _explicitNullValueTagLastPulled; set { _explicitNullValueTagLastPulled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_last_pulled"); else _explicitNullProperties?.Remove("tag_last_pulled"); } }
+        private string _explicitNullValueTagLastPulled = default!;
 #endif
         /// <summary>datetime of last push</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TagLastPushed { get; set; }
+        public string? TagLastPushed { get => _explicitNullValueTagLastPushed; set { _explicitNullValueTagLastPushed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_last_pushed"); else _explicitNullProperties?.Remove("tag_last_pushed"); } }
+        private string? _explicitNullValueTagLastPushed = default!;
 #nullable restore
 #else
-        public string TagLastPushed { get; set; }
+        public string TagLastPushed { get => _explicitNullValueTagLastPushed; set { _explicitNullValueTagLastPushed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_last_pushed"); else _explicitNullProperties?.Remove("tag_last_pushed"); } }
+        private string _explicitNullValueTagLastPushed = default!;
 #endif
         /// <summary>whether a tag has been pushed to or pulled in the past month</summary>
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.TagTagStatus? TagStatus { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.TagTagStatus? TagStatus { get => _explicitNullValueTagStatus; set { _explicitNullValueTagStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_status"); else _explicitNullProperties?.Remove("tag_status"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.TagTagStatus? _explicitNullValueTagStatus = default!;
         /// <summary>Whether the tag uses the Registry V2 format.</summary>
-        public bool? V2 { get; set; }
+        public bool? V2 { get => _explicitNullValueV2; set { _explicitNullValueV2 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("v2"); else _explicitNullProperties?.Remove("v2"); } }
+        private bool? _explicitNullValueV2 = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.Tag"/> and sets the default values.
         /// </summary>
@@ -91,7 +130,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public static global::Soenneker.Docker.Hub.OpenApiClient.Models.Tag CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Docker.Hub.OpenApiClient.Models.Tag();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Docker.Hub.OpenApiClient.Models.Tag(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -136,6 +175,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             writer.WriteStringValue("tag_last_pushed", TagLastPushed);
             writer.WriteEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.TagTagStatus>("tag_status", TagStatus);
             writer.WriteBoolValue("v2", V2);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

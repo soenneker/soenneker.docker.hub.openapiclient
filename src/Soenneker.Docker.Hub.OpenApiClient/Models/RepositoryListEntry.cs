@@ -11,85 +11,133 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RepositoryListEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("affiliation") is { } nullNodeAffiliation && nullNodeAffiliation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Affiliation = null;
+            if (parseNode.GetChildNode("categories") is { } nullNodeCategories && nullNodeCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Categories = null;
+            if (parseNode.GetChildNode("content_types") is { } nullNodeContentTypes && nullNodeContentTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentTypes = null;
+            if (parseNode.GetChildNode("date_registered") is { } nullNodeDateRegistered && nullNodeDateRegistered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateRegistered = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("is_private") is { } nullNodeIsPrivate && nullNodeIsPrivate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPrivate = null;
+            if (parseNode.GetChildNode("last_modified") is { } nullNodeLastModified && nullNodeLastModified.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastModified = null;
+            if (parseNode.GetChildNode("last_updated") is { } nullNodeLastUpdated && nullNodeLastUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastUpdated = null;
+            if (parseNode.GetChildNode("media_types") is { } nullNodeMediaTypes && nullNodeMediaTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MediaTypes = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("namespace") is { } nullNodeNamespace && nullNodeNamespace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Namespace = null;
+            if (parseNode.GetChildNode("pull_count") is { } nullNodePullCount && nullNodePullCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PullCount = null;
+            if (parseNode.GetChildNode("repository_type") is { } nullNodeRepositoryType && nullNodeRepositoryType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepositoryType = null;
+            if (parseNode.GetChildNode("star_count") is { } nullNodeStarCount && nullNodeStarCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StarCount = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("status_description") is { } nullNodeStatusDescription && nullNodeStatusDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusDescription = null;
+            if (parseNode.GetChildNode("storage_size") is { } nullNodeStorageSize && nullNodeStorageSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StorageSize = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>User&apos;s affiliation with the repository (empty string if no affiliation)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Affiliation { get; set; }
+        public string? Affiliation { get => _explicitNullValueAffiliation; set { _explicitNullValueAffiliation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("affiliation"); else _explicitNullProperties?.Remove("affiliation"); } }
+        private string? _explicitNullValueAffiliation = default!;
 #nullable restore
 #else
-        public string Affiliation { get; set; }
+        public string Affiliation { get => _explicitNullValueAffiliation; set { _explicitNullValueAffiliation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("affiliation"); else _explicitNullProperties?.Remove("affiliation"); } }
+        private string _explicitNullValueAffiliation = default!;
 #endif
         /// <summary>Categories associated with this repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Category>? Categories { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Category>? Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
+        private List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Category>? _explicitNullValueCategories = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Category> Categories { get; set; }
+        public List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Category> Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
+        private List<global::Soenneker.Docker.Hub.OpenApiClient.Models.Category> _explicitNullValueCategories = default!;
 #endif
         /// <summary>Content types supported by this repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ContentTypes { get; set; }
+        public List<string>? ContentTypes { get => _explicitNullValueContentTypes; set { _explicitNullValueContentTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_types"); else _explicitNullProperties?.Remove("content_types"); } }
+        private List<string>? _explicitNullValueContentTypes = default!;
 #nullable restore
 #else
-        public List<string> ContentTypes { get; set; }
+        public List<string> ContentTypes { get => _explicitNullValueContentTypes; set { _explicitNullValueContentTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_types"); else _explicitNullProperties?.Remove("content_types"); } }
+        private List<string> _explicitNullValueContentTypes = default!;
 #endif
         /// <summary>ISO 8601 timestamp of when the repository was created</summary>
-        public DateTimeOffset? DateRegistered { get; set; }
+        public DateTimeOffset? DateRegistered { get => _explicitNullValueDateRegistered; set { _explicitNullValueDateRegistered = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_registered"); else _explicitNullProperties?.Remove("date_registered"); } }
+        private DateTimeOffset? _explicitNullValueDateRegistered = default!;
         /// <summary>Repository description</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Whether the repository is private</summary>
-        public bool? IsPrivate { get; set; }
+        public bool? IsPrivate { get => _explicitNullValueIsPrivate; set { _explicitNullValueIsPrivate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_private"); else _explicitNullProperties?.Remove("is_private"); } }
+        private bool? _explicitNullValueIsPrivate = default!;
         /// <summary>ISO 8601 timestamp of when the repository was last modified</summary>
-        public DateTimeOffset? LastModified { get; set; }
+        public DateTimeOffset? LastModified { get => _explicitNullValueLastModified; set { _explicitNullValueLastModified = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_modified"); else _explicitNullProperties?.Remove("last_modified"); } }
+        private DateTimeOffset? _explicitNullValueLastModified = default!;
         /// <summary>ISO 8601 timestamp of when the repository was last updated</summary>
-        public DateTimeOffset? LastUpdated { get; set; }
+        public DateTimeOffset? LastUpdated { get => _explicitNullValueLastUpdated; set { _explicitNullValueLastUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_updated"); else _explicitNullProperties?.Remove("last_updated"); } }
+        private DateTimeOffset? _explicitNullValueLastUpdated = default!;
         /// <summary>Media types supported by this repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MediaTypes { get; set; }
+        public List<string>? MediaTypes { get => _explicitNullValueMediaTypes; set { _explicitNullValueMediaTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("media_types"); else _explicitNullProperties?.Remove("media_types"); } }
+        private List<string>? _explicitNullValueMediaTypes = default!;
 #nullable restore
 #else
-        public List<string> MediaTypes { get; set; }
+        public List<string> MediaTypes { get => _explicitNullValueMediaTypes; set { _explicitNullValueMediaTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("media_types"); else _explicitNullProperties?.Remove("media_types"); } }
+        private List<string> _explicitNullValueMediaTypes = default!;
 #endif
         /// <summary>Name of the repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Namespace (organization or username) that owns the repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Namespace { get; set; }
+        public string? Namespace { get => _explicitNullValueNamespace; set { _explicitNullValueNamespace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("namespace"); else _explicitNullProperties?.Remove("namespace"); } }
+        private string? _explicitNullValueNamespace = default!;
 #nullable restore
 #else
-        public string Namespace { get; set; }
+        public string Namespace { get => _explicitNullValueNamespace; set { _explicitNullValueNamespace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("namespace"); else _explicitNullProperties?.Remove("namespace"); } }
+        private string _explicitNullValueNamespace = default!;
 #endif
         /// <summary>Total number of pulls for this repository</summary>
-        public int? PullCount { get; set; }
+        public int? PullCount { get => _explicitNullValuePullCount; set { _explicitNullValuePullCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_count"); else _explicitNullProperties?.Remove("pull_count"); } }
+        private int? _explicitNullValuePullCount = default!;
         /// <summary>Type of repository</summary>
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType? RepositoryType { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType? RepositoryType { get => _explicitNullValueRepositoryType; set { _explicitNullValueRepositoryType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_type"); else _explicitNullProperties?.Remove("repository_type"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType? _explicitNullValueRepositoryType = default!;
         /// <summary>Number of users who starred this repository</summary>
-        public int? StarCount { get; set; }
+        public int? StarCount { get => _explicitNullValueStarCount; set { _explicitNullValueStarCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("star_count"); else _explicitNullProperties?.Remove("star_count"); } }
+        private int? _explicitNullValueStarCount = default!;
         /// <summary>Repository status code</summary>
-        public int? Status { get; set; }
+        public int? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private int? _explicitNullValueStatus = default!;
         /// <summary>Human-readable repository status</summary>
-        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription? StatusDescription { get; set; }
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription? StatusDescription { get => _explicitNullValueStatusDescription; set { _explicitNullValueStatusDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_description"); else _explicitNullProperties?.Remove("status_description"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription? _explicitNullValueStatusDescription = default!;
         /// <summary>Storage size in bytes used by this repository</summary>
-        public long? StorageSize { get; set; }
+        public long? StorageSize { get => _explicitNullValueStorageSize; set { _explicitNullValueStorageSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("storage_size"); else _explicitNullProperties?.Remove("storage_size"); } }
+        private long? _explicitNullValueStorageSize = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntry"/> and sets the default values.
         /// </summary>
@@ -105,7 +153,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public static global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -158,6 +206,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             writer.WriteIntValue("status", Status);
             writer.WriteEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription>("status_description", StatusDescription);
             writer.WriteLongValue("storage_size", StorageSize);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

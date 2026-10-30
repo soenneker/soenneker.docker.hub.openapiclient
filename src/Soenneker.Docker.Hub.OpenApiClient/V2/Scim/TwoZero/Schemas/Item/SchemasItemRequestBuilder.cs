@@ -57,6 +57,8 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.Schemas.Item
                 { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimUnauthorizedResponseScimJson.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimNotFoundResponseScimJson.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimErrorResponseScimJson.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimSchema>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

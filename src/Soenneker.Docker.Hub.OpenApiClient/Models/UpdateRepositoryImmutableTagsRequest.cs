@@ -11,18 +11,30 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UpdateRepositoryImmutableTagsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("immutable_tags") is { } nullNodeImmutableTags && nullNodeImmutableTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImmutableTags = null;
+            if (parseNode.GetChildNode("immutable_tags_rules") is { } nullNodeImmutableTagsRules && nullNodeImmutableTagsRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImmutableTagsRules = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether immutable tags are enabled</summary>
-        public bool? ImmutableTags { get; set; }
+        public bool? ImmutableTags { get => _explicitNullValueImmutableTags; set { _explicitNullValueImmutableTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags"); else _explicitNullProperties?.Remove("immutable_tags"); } }
+        private bool? _explicitNullValueImmutableTags = default!;
         /// <summary>List of immutable tag rules</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ImmutableTagsRules { get; set; }
+        public List<string>? ImmutableTagsRules { get => _explicitNullValueImmutableTagsRules; set { _explicitNullValueImmutableTagsRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags_rules"); else _explicitNullProperties?.Remove("immutable_tags_rules"); } }
+        private List<string>? _explicitNullValueImmutableTagsRules = default!;
 #nullable restore
 #else
-        public List<string> ImmutableTagsRules { get; set; }
+        public List<string> ImmutableTagsRules { get => _explicitNullValueImmutableTagsRules; set { _explicitNullValueImmutableTagsRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("immutable_tags_rules"); else _explicitNullProperties?.Remove("immutable_tags_rules"); } }
+        private List<string> _explicitNullValueImmutableTagsRules = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Docker.Hub.OpenApiClient.Models.UpdateRepositoryImmutableTagsRequest"/> and sets the default values.
@@ -39,7 +51,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public static global::Soenneker.Docker.Hub.OpenApiClient.Models.UpdateRepositoryImmutableTagsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Docker.Hub.OpenApiClient.Models.UpdateRepositoryImmutableTagsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Docker.Hub.OpenApiClient.Models.UpdateRepositoryImmutableTagsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("immutable_tags", ImmutableTags);
             writer.WriteCollectionOfPrimitiveValues<string>("immutable_tags_rules", ImmutableTagsRules);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

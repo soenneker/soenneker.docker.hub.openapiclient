@@ -55,6 +55,8 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Users.TwofaLogin
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "401", global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsers2FaLoginErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsersLoginSuccessResponse>(requestInfo, global::Soenneker.Docker.Hub.OpenApiClient.Models.PostUsersLoginSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
