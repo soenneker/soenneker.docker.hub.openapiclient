@@ -117,7 +117,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.Users.Item
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://hub.docker.com", "/v2/scim/2.0/Users/{id}", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/scim+json");
             return requestInfo;
@@ -138,7 +138,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.V2.Scim.TwoZero.Users.Item
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PUT, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://hub.docker.com", "/v2/scim/2.0/Users/{id}", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/scim+json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/scim+json", body);
