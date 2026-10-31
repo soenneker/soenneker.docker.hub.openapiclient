@@ -179,6 +179,17 @@
           "401": {
             "description": "Unauthorized",
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAccessTokensResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -1175,6 +1186,17 @@
           "404": {
             "description": "Not Found",
             "$ref": "#/components/responses/NotFound"
+          },
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateOrgAccessTokenResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -2040,6 +2062,50 @@
           "500": {
             "description": "Internal",
             "$ref": "#/components/responses/internal_error"
+          },
+          "200": {
+            "description": "Repository created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RepositoryInfo"
+                },
+                "example": {
+                  "name": "my-app",
+                  "namespace": "myorganization",
+                  "repository_type": "image",
+                  "status": 1,
+                  "status_description": "Active",
+                  "description": "A sample application repository",
+                  "is_private": false,
+                  "is_automated": false,
+                  "star_count": 0,
+                  "pull_count": 0,
+                  "last_updated": "2025-01-20T10:30:00Z",
+                  "date_registered": "2025-01-20T10:30:00Z",
+                  "collaborator_count": 0,
+                  "hub_user": "myorganization",
+                  "has_starred": false,
+                  "full_description": "This is a comprehensive description of my application repository that contains additional details about the project.",
+                  "media_types": [],
+                  "content_types": [],
+                  "categories": [],
+                  "immutable_tags_settings": {
+                    "enabled": false,
+                    "rules": []
+                  },
+                  "storage_size": null,
+                  "source": null,
+                  "user": "myorganization",
+                  "permissions": {
+                    "read": true,
+                    "write": true,
+                    "admin": true
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -2593,6 +2659,17 @@
           "403": {
             "description": "Forbidden",
             "$ref": "#/components/responses/forbidden"
+          },
+          "200": {
+            "description": "Group created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgGroup"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -3114,6 +3191,17 @@
           "409": {
             "description": "Conflict",
             "$ref": "#/components/responses/conflict"
+          },
+          "200": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkInvite"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -3442,6 +3530,17 @@
           "500": {
             "description": "Internal Error",
             "$ref": "#/components/responses/scim_error"
+          },
+          "200": {
+            "description": "Response",
+            "content": {
+              "application/scim\u002Bjson": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScimUser"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
