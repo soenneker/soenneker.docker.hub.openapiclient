@@ -141,8 +141,15 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         public int? PullCount { get => _explicitNullValuePullCount; set { _explicitNullValuePullCount = value; AdditionalData?.Remove("pull_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_count"); else _explicitNullProperties?.Remove("pull_count"); } }
         private int? _explicitNullValuePullCount = default!;
         /// <summary>Type of repository</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType? RepositoryType { get => _explicitNullValueRepositoryType; set { _explicitNullValueRepositoryType = value; AdditionalData?.Remove("repository_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_type"); else _explicitNullProperties?.Remove("repository_type"); } }
         private global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType? _explicitNullValueRepositoryType = default!;
+#nullable restore
+#else
+        public global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType RepositoryType { get => _explicitNullValueRepositoryType; set { _explicitNullValueRepositoryType = value; AdditionalData?.Remove("repository_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_type"); else _explicitNullProperties?.Remove("repository_type"); } }
+        private global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType _explicitNullValueRepositoryType = default!;
+#endif
         /// <summary>Number of users who starred this repository</summary>
         public int? StarCount { get => _explicitNullValueStarCount; set { _explicitNullValueStarCount = value; AdditionalData?.Remove("star_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("star_count"); else _explicitNullProperties?.Remove("star_count"); } }
         private int? _explicitNullValueStarCount = default!;
@@ -192,7 +199,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "namespace", n => { Namespace = n.GetStringValue(); } },
                 { "pull_count", n => { PullCount = n.GetIntValue(); } },
-                { "repository_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRepositoryType = default; _explicitNullProperties?.Remove("repository_type"); AdditionalData["repository_type"] = unknown; } else { RepositoryType = parsed; AdditionalData.Remove("repository_type"); } } },
+                { "repository_type", n => { RepositoryType = n.GetObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType>(global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType.CreateFromDiscriminatorValue); } },
                 { "star_count", n => { StarCount = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetIntValue(); } },
                 { "status_description", n => { var parsed = n.GetEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatusDescription = default; _explicitNullProperties?.Remove("status_description"); AdditionalData["status_description"] = unknown; } else { StatusDescription = parsed; AdditionalData.Remove("status_description"); } } },
@@ -218,7 +225,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("namespace", Namespace);
             writer.WriteIntValue("pull_count", PullCount);
-            writer.WriteEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType>("repository_type", RepositoryType);
+            writer.WriteObjectValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryRepositoryType>("repository_type", RepositoryType);
             writer.WriteIntValue("star_count", StarCount);
             writer.WriteIntValue("status", Status);
             writer.WriteEnumValue<global::Soenneker.Docker.Hub.OpenApiClient.Models.RepositoryListEntryStatusDescription>("status_description", StatusDescription);

@@ -805,7 +805,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuditLogsListAuditActions429ResponseSchema"
+                  "$ref": "#/components/schemas/AuditLogsListAuditActions429ResponseSchemaError"
                 },
                 "examples": {
                   "response": {
@@ -985,7 +985,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuditLogsListAuditLogs429ResponseSchema"
+                  "$ref": "#/components/schemas/AuditLogsListAuditLogs429ResponseSchemaError"
                 },
                 "examples": {
                   "response": {
@@ -4938,29 +4938,6 @@
           }
         }
       },
-      "Page": {
-        "type": "object",
-        "properties": {
-          "count": {
-            "type": "integer",
-            "description": "total number of results available across all pages"
-          },
-          "next": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "link to next page of results if any"
-          },
-          "previous": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "link to previous page of results  if any"
-          }
-        }
-      },
       "ScimSchemaAttribute": {
         "type": "object",
         "properties": {
@@ -5130,67 +5107,6 @@
           }
         },
         "description": "Error details vary by endpoint. The message describes the failure; errinfo can contain additional context."
-      },
-      "ScimError": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string",
-            "description": "The status code for the response in string format."
-          },
-          "schemas": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "default": "urn:ietf:params:scim:api:messages:2.0:Error"
-            }
-          },
-          "detail": {
-            "type": "string",
-            "description": "Details about why the request failed."
-          }
-        }
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The UUID trimmed",
-            "example": "0ab70deb065a43fcacd55d48caa945d8"
-          },
-          "company": {
-            "type": "string",
-            "example": "Docker Inc"
-          },
-          "date_joined": {
-            "type": "string",
-            "example": "2021-01-05T21:06:53.506400Z"
-          },
-          "full_name": {
-            "type": "string",
-            "example": "Jon Snow"
-          },
-          "gravatar_email": {
-            "type": "string"
-          },
-          "gravatar_url": {
-            "type": "string"
-          },
-          "location": {
-            "type": "string"
-          },
-          "profile_url": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/UserType"
-          },
-          "username": {
-            "type": "string",
-            "example": "dockeruser"
-          }
-        }
       },
       "OrgMember": {
         "examples": [
@@ -5448,77 +5364,6 @@
           }
         }
       },
-      "EmailAddress": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "user_id": {
-            "type": "number"
-          },
-          "email": {
-            "type": "string",
-            "example": "dockeruser@docker.com"
-          },
-          "verified": {
-            "type": "boolean"
-          },
-          "primary": {
-            "type": "boolean"
-          }
-        }
-      },
-      "LegacyEmailAddress": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "user_id": {
-            "type": "number"
-          },
-          "email": {
-            "type": "string",
-            "example": "dockeruser@docker.com"
-          },
-          "verified": {
-            "type": "boolean"
-          },
-          "primary": {
-            "type": "boolean"
-          },
-          "user": {
-            "type": "string",
-            "example": "dockeruser"
-          }
-        }
-      },
-      "EmailWithUsername": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "user_id": {
-            "type": "number"
-          },
-          "email": {
-            "type": "string",
-            "example": "dockeruser@docker.com"
-          },
-          "verified": {
-            "type": "boolean"
-          },
-          "primary": {
-            "type": "boolean"
-          },
-          "username": {
-            "type": "string",
-            "example": "dockeruser"
-          }
-        }
-      },
       "ScimServiceProviderConfig": {
         "examples": [
           {
@@ -5716,11 +5561,6 @@
           }
         }
       },
-      "ScimUserUsername": {
-        "type": "string",
-        "description": "The user\u0027s email address. This must be reachable via email.",
-        "example": "jon.snow@docker.com"
-      },
       "ScimUserName": {
         "type": "object",
         "properties": {
@@ -5733,24 +5573,6 @@
             "example": "Snow"
           }
         }
-      },
-      "ScimUserDisplayName": {
-        "type": "string",
-        "description": "The username in Docker. Also known as the \u0022Docker ID\u0022.",
-        "example": "jonsnow"
-      },
-      "ScimUserSchemas": {
-        "type": "array",
-        "items": {
-          "minItems": 1,
-          "type": "string",
-          "example": "urn:ietf:params:scim:schemas:core:2.0:User"
-        }
-      },
-      "ScimUserId": {
-        "type": "string",
-        "description": "The unique identifier for the user. A v4 UUID.",
-        "example": "d80f7c79-7730-49d8-9a41-7c42fb622d9c"
       },
       "ScimUser": {
         "examples": [
@@ -6693,17 +6515,6 @@
           }
         }
       },
-      "ListRepositoriesResponseAllOf2": {
-        "type": "object",
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RepositoryListEntry"
-            }
-          }
-        }
-      },
       "GetAccessTokensResponseResultsItem": {
         "type": "object",
         "properties": {
@@ -6770,198 +6581,6 @@
           }
         }
       },
-      "PaginatedTagsAllOf2": {
-        "type": "object",
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Tag"
-            }
-          }
-        }
-      },
-      "ScimSchemaParentAttributeAllOf2": {
-        "type": "object",
-        "properties": {
-          "subAttributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ScimSchemaAttribute"
-            }
-          }
-        }
-      },
-      "LegacyEmailAddressAllOf2": {
-        "type": "object",
-        "properties": {
-          "user": {
-            "type": "string",
-            "example": "dockeruser"
-          }
-        }
-      },
-      "EmailWithUsernameAllOf2": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "example": "dockeruser"
-          }
-        }
-      },
-      "GetOrgAccessTokenResponseAllOf2": {
-        "type": "object",
-        "properties": {
-          "resources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrgAccessTokenResource"
-            },
-            "description": "Resources this token has access to"
-          }
-        }
-      },
-      "CreateOrgAccessTokenResponseAllOf1": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "a7a5ef25-8889-43a0-8cc7-f2a94268e861"
-          },
-          "label": {
-            "type": "string",
-            "example": "My organization token"
-          },
-          "is_active": {
-            "type": "boolean",
-            "example": true
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-05-20T00:54:18Z"
-          },
-          "expires_at": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time",
-            "example": "2023-05-20T00:54:18Z"
-          },
-          "last_used_at": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time",
-            "example": "2022-06-15T12:30:45Z"
-          }
-        }
-      },
-      "CreateOrgAccessTokenResponseAllOf2": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "type": "string",
-            "description": "The actual token value that can be used for authentication",
-            "example": "dckr_oat_7awgM4jG5SQvxcvmNzhKj8PQjxo"
-          },
-          "resources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrgAccessTokenResource"
-            }
-          }
-        }
-      },
-      "UpdateOrgAccessTokenResponseAllOf2": {
-        "type": "object",
-        "properties": {
-          "resources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrgAccessTokenResource"
-            },
-            "description": "Resources this token has access to"
-          }
-        }
-      },
-      "ScimBadRequestResponseScimJsonAllOf2": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "example": "400"
-          },
-          "scimType": {
-            "type": "string",
-            "description": "Some types of errors will return this per the specification."
-          }
-        }
-      },
-      "ScimUnauthorizedResponseScimJsonAllOf2": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "example": "401"
-          }
-        }
-      },
-      "ScimForbiddenResponseScimJsonAllOf2": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "example": "403"
-          }
-        }
-      },
-      "ScimNotFoundResponseScimJsonAllOf2": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "example": "404"
-          }
-        }
-      },
-      "ScimConflictResponseScimJsonAllOf2": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "example": "409"
-          }
-        }
-      },
-      "ScimErrorResponseScimJsonAllOf2": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "example": "500"
-          }
-        }
-      },
-      "GetAccessTokensResponseResultsItemAllOf2": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "type": "string",
-            "example": "***"
-          }
-        }
-      },
-      "GetAuditActionsResponseActions": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/AuditLogActions"
-        },
-        "description": "Map of audit log actions."
-      },
-      "AuditLogData": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
-      },
       "BulkInviteInviteesItem": {
         "type": "object",
         "properties": {
@@ -6977,13 +6596,6 @@
             "$ref": "#/components/schemas/Invite"
           }
         }
-      },
-      "ErrorErrinfo": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "Additional error context, when available."
       },
       "ScimServiceProviderConfigPatch": {
         "type": "object",
@@ -7205,8 +6817,6 @@
           }
         }
       },
-      "AuditLogsListAuditActions429Response": {},
-      "AuditLogsListAuditLogs429Response": {},
       "PutV2OrgsByNameSettingsRequest": {
         "examples": [
           {
@@ -7226,10 +6836,6 @@
             "$ref": "#/components/schemas/PutV2OrgsByNameSettingsRequestRestrictedImages"
           }
         }
-      },
-      "GetV2OrgsByOrgNameMembersExport200CsvResponse": {
-        "type": "string",
-        "description": "CSV columns: Name, Username, Email, Type, Role, Teams, and Date Joined. The Role column contains the assigned role label. When administrative insights are available, the export also includes Last Logged-in Date, Docker Desktop Version, Last Seen Date, and Opted Out Analytics."
       },
       "PutV2OrgsByOrgNameMembersByUsernameRequest": {
         "examples": [
@@ -7309,10 +6915,6 @@
             "description": "Role assigned to the team. Valid values are the core roles\n\u0060owner\u0060, \u0060editor\u0060, and \u0060member\u0060, or the name of an\nexisting [custom role](https://docs.docker.com/security/roles-and-permissions/custom-roles/manage/).\nUse the custom role\u0027s name identifier, not its label or UUID.\n"
           }
         }
-      },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
       },
       "AuditLogsListAuditActions429ResponseSchema": {},
       "AuditLogsListAuditLogs429ResponseSchema": {},
@@ -7539,31 +7141,36 @@
         }
       },
       "RepositoryListEntryRepositoryType": {
-        "enum": [
-          "image",
-          "plugin",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "Type of repository",
         "example": "image",
-        "x-ms-enum": {
-          "name": "RepositoryListEntryRepositoryType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "image",
-              "name": "Image"
-            },
-            {
-              "value": "plugin",
-              "name": "Plugin"
+        "anyOf": [
+          {
+            "enum": [
+              "image",
+              "plugin"
+            ],
+            "type": "string",
+            "description": "Type of repository",
+            "example": "image",
+            "x-ms-enum": {
+              "name": "RepositoryListEntryRepositoryType",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "image",
+                  "name": "Image"
+                },
+                {
+                  "value": "plugin",
+                  "name": "Plugin"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "RepositoryListEntryStatusDescription": {
         "enum": [
@@ -7821,6 +7428,36 @@
               "name": "Descending"
             }
           ]
+        }
+      },
+      "AuditLogsListAuditActions429ResponseSchemaError": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "x-client-untyped-value": true
+          }
+        },
+        "x-client-raw-error-media-type": "application/json",
+        "x-client-raw-error-schema": {
+          "$ref": "#/components/schemas/AuditLogsListAuditActions429ResponseSchema"
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AuditLogsListAuditActions429ResponseSchema"
+        }
+      },
+      "AuditLogsListAuditLogs429ResponseSchemaError": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "x-client-untyped-value": true
+          }
+        },
+        "x-client-raw-error-media-type": "application/json",
+        "x-client-raw-error-schema": {
+          "$ref": "#/components/schemas/AuditLogsListAuditLogs429ResponseSchema"
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AuditLogsListAuditLogs429ResponseSchema"
         }
       }
     },
@@ -8606,5 +8243,405 @@
         "invites"
       ]
     }
-  ]
+  ],
+  "x-client-unused-schemas": {
+    "Page": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "description": "total number of results available across all pages"
+        },
+        "next": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "link to next page of results if any"
+        },
+        "previous": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "link to previous page of results  if any"
+        }
+      }
+    },
+    "ScimError": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "The status code for the response in string format."
+        },
+        "schemas": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": "urn:ietf:params:scim:api:messages:2.0:Error"
+          }
+        },
+        "detail": {
+          "type": "string",
+          "description": "Details about why the request failed."
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The UUID trimmed",
+          "example": "0ab70deb065a43fcacd55d48caa945d8"
+        },
+        "company": {
+          "type": "string",
+          "example": "Docker Inc"
+        },
+        "date_joined": {
+          "type": "string",
+          "example": "2021-01-05T21:06:53.506400Z"
+        },
+        "full_name": {
+          "type": "string",
+          "example": "Jon Snow"
+        },
+        "gravatar_email": {
+          "type": "string"
+        },
+        "gravatar_url": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "profile_url": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/components/schemas/UserType"
+        },
+        "username": {
+          "type": "string",
+          "example": "dockeruser"
+        }
+      }
+    },
+    "EmailAddress": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "user_id": {
+          "type": "number"
+        },
+        "email": {
+          "type": "string",
+          "example": "dockeruser@docker.com"
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "primary": {
+          "type": "boolean"
+        }
+      }
+    },
+    "LegacyEmailAddress": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "user_id": {
+          "type": "number"
+        },
+        "email": {
+          "type": "string",
+          "example": "dockeruser@docker.com"
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "user": {
+          "type": "string",
+          "example": "dockeruser"
+        }
+      }
+    },
+    "EmailWithUsername": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "user_id": {
+          "type": "number"
+        },
+        "email": {
+          "type": "string",
+          "example": "dockeruser@docker.com"
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "username": {
+          "type": "string",
+          "example": "dockeruser"
+        }
+      }
+    },
+    "ScimUserUsername": {
+      "type": "string",
+      "description": "The user\u0027s email address. This must be reachable via email.",
+      "example": "jon.snow@docker.com"
+    },
+    "ScimUserDisplayName": {
+      "type": "string",
+      "description": "The username in Docker. Also known as the \u0022Docker ID\u0022.",
+      "example": "jonsnow"
+    },
+    "ScimUserSchemas": {
+      "type": "array",
+      "items": {
+        "minItems": 1,
+        "type": "string",
+        "example": "urn:ietf:params:scim:schemas:core:2.0:User"
+      }
+    },
+    "ScimUserId": {
+      "type": "string",
+      "description": "The unique identifier for the user. A v4 UUID.",
+      "example": "d80f7c79-7730-49d8-9a41-7c42fb622d9c"
+    },
+    "ListRepositoriesResponseAllOf2": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/RepositoryListEntry"
+          }
+        }
+      }
+    },
+    "PaginatedTagsAllOf2": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Tag"
+          }
+        }
+      }
+    },
+    "ScimSchemaParentAttributeAllOf2": {
+      "type": "object",
+      "properties": {
+        "subAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ScimSchemaAttribute"
+          }
+        }
+      }
+    },
+    "LegacyEmailAddressAllOf2": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "string",
+          "example": "dockeruser"
+        }
+      }
+    },
+    "EmailWithUsernameAllOf2": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "dockeruser"
+        }
+      }
+    },
+    "GetOrgAccessTokenResponseAllOf2": {
+      "type": "object",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/OrgAccessTokenResource"
+          },
+          "description": "Resources this token has access to"
+        }
+      }
+    },
+    "CreateOrgAccessTokenResponseAllOf1": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "a7a5ef25-8889-43a0-8cc7-f2a94268e861"
+        },
+        "label": {
+          "type": "string",
+          "example": "My organization token"
+        },
+        "is_active": {
+          "type": "boolean",
+          "example": true
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-05-20T00:54:18Z"
+        },
+        "expires_at": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time",
+          "example": "2023-05-20T00:54:18Z"
+        },
+        "last_used_at": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time",
+          "example": "2022-06-15T12:30:45Z"
+        }
+      }
+    },
+    "CreateOrgAccessTokenResponseAllOf2": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "The actual token value that can be used for authentication",
+          "example": "dckr_oat_7awgM4jG5SQvxcvmNzhKj8PQjxo"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/OrgAccessTokenResource"
+          }
+        }
+      }
+    },
+    "UpdateOrgAccessTokenResponseAllOf2": {
+      "type": "object",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/OrgAccessTokenResource"
+          },
+          "description": "Resources this token has access to"
+        }
+      }
+    },
+    "ScimBadRequestResponseScimJsonAllOf2": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "example": "400"
+        },
+        "scimType": {
+          "type": "string",
+          "description": "Some types of errors will return this per the specification."
+        }
+      }
+    },
+    "ScimUnauthorizedResponseScimJsonAllOf2": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "example": "401"
+        }
+      }
+    },
+    "ScimForbiddenResponseScimJsonAllOf2": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "example": "403"
+        }
+      }
+    },
+    "ScimNotFoundResponseScimJsonAllOf2": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "example": "404"
+        }
+      }
+    },
+    "ScimConflictResponseScimJsonAllOf2": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "example": "409"
+        }
+      }
+    },
+    "ScimErrorResponseScimJsonAllOf2": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "example": "500"
+        }
+      }
+    },
+    "GetAccessTokensResponseResultsItemAllOf2": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "***"
+        }
+      }
+    },
+    "GetAuditActionsResponseActions": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/AuditLogActions"
+      },
+      "description": "Map of audit log actions."
+    },
+    "AuditLogData": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "ErrorErrinfo": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "Additional error context, when available."
+    },
+    "AuditLogsListAuditActions429Response": {},
+    "AuditLogsListAuditLogs429Response": {},
+    "GetV2OrgsByOrgNameMembersExport200CsvResponse": {
+      "type": "string",
+      "description": "CSV columns: Name, Username, Email, Type, Role, Teams, and Date Joined. The Role column contains the assigned role label. When administrative insights are available, the export also includes Last Logged-in Date, Docker Desktop Version, Last Seen Date, and Opted Out Analytics."
+    },
+    "ExamplePayload": {
+      "type": "object",
+      "description": "Placeholder schema for path example refs"
+    }
+  }
 }
