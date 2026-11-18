@@ -104,7 +104,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "attributes", n => { Attributes = n.GetCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimSchemaParentAttribute>(global::Soenneker.Docker.Hub.OpenApiClient.Models.ScimSchemaParentAttribute.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },

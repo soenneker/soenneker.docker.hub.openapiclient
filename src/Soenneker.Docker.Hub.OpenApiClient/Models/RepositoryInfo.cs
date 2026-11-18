@@ -279,7 +279,7 @@ namespace Soenneker.Docker.Hub.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(26)
             {
                 { "affiliation", n => { Affiliation = n.GetStringValue(); } },
                 { "categories", n => { Categories = n.GetCollectionOfObjectValues<global::Soenneker.Docker.Hub.OpenApiClient.Models.Category>(global::Soenneker.Docker.Hub.OpenApiClient.Models.Category.CreateFromDiscriminatorValue)?.AsList(); } },
